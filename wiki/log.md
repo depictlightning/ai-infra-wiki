@@ -1,5 +1,11 @@
 # Wiki 更新记录
 
+## [2026-10-22] SOSP 2026 用户选定的 AI 基础设施论文
+
+- 按用户给定的 18 篇清单建立 [[SOSP-2026]]：11 篇有全文的论文页与 7 篇仅摘要页；摘要页明确标记未取得 PDF。
+- 全文 PDF 存于 `papers/sosp-2026/`，页码标记的文本存于 `markdowns/sosp-2026/`。本次使用 `pdftotext -raw`，没有使用 MinerU；图表和复杂公式需回 PDF 核对。
+- 重读并补强已有短页，明确 [[CrystalLLM-SOSP26]] 的 2048 GPU 精度边界、[[LLM-42-SOSP26]] 的全确定性负结果、[[llmovoice-SOSP26]] 与 KV cache 的区别、[[QProf-SOSP26]] 与 GPU 专用 profiler 的区别。
+
 ## [2026-10-22] OSDI 2026 AI 基础设施重建
 
 - 重筛 136 篇会议论文，纳入 49 篇；[[OSDI-2026]] 记录筛选口径和边界案例。

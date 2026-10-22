@@ -1,6 +1,6 @@
 # AI Infra Wiki
 
-Quartz site for the AI infrastructure papers selected from OSDI 2026.
+Quartz site for 49 AI infrastructure papers selected from OSDI 2026 and 18 user-selected papers from SOSP 2026. The SOSP collection includes 11 full-text notes and 7 clearly marked abstract-only notes.
 
 ## Local preview
 
