@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "zh-CN",
-    baseUrl: process.env.BASE_URL ?? "awesome-system-papers.pages.dev",
+    baseUrl: process.env.BASE_URL ?? "ai-infra-wiki-erx.pages.dev",
     ignorePatterns: [
       "private",
       "templates",
