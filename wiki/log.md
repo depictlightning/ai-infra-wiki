@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-23] DualPath 核对 SIGCOMM 正式版
+
+- 用户提供的正式版 PDF 已归档到 `papers/sigcomm-2026/`，用 MinerU 生成对应 Markdown；[[DualPath-SIGCOMM26]] 的来源和状态改为正式版全文、`complete`。
+- 重新核对主实验数字；修正虚拟通道高优先级保留份额为 99.9%，补充正式版附录 A.5 的流量隔离微基准及附录 A.2–A.3 的实验条件。同步更新 [[SIGCOMM-2026]] 和首页。
+
 ## [2026-10-23] SIGCOMM 2026 指定论文 DualPath
 
 - 加入 [[DualPath-SIGCOMM26]] 与 [[SIGCOMM-2026]]，只收录用户指定的这一篇；首页增加入口。

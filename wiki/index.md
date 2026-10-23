@@ -29,4 +29,4 @@
 
 ### SIGCOMM 2026 阅读入口
 
-- [[DualPath-SIGCOMM26]]：利用解码节点的存储网卡读取旧 KV cache；笔记基于 arXiv v2 全文，会议终版尚未核对。
+- [[DualPath-SIGCOMM26]]：利用解码节点的存储网卡读取旧 KV cache；已按 SIGCOMM 正式版全文核对。
