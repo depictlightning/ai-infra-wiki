@@ -5,7 +5,7 @@ full_title: "Batched in Back: Characterizing and Optimizing Offline LLM Inferenc
 authors: [Leping Yang, Xue Li, Kun Qian, Erci Xu, Mingzhen Han, et al.]
 venue: SOSP
 year: 2026
-tags: [llm-inference, offline-serving, batch-scheduling, kv-cache, production-trace]
+tags: [llm-inference, offline-serving, batch-scheduling, kv-cache, production-trace, area/llm-serving]
 source_pdf: "[[3830418.3843877.pdf]]"
 source_md: "[[3830418.3843877]]"
 review_status: complete

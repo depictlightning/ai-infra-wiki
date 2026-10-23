@@ -5,7 +5,7 @@ full_title: "Revisiting Pipeline Parallelism for LLM Serving"
 authors: [Soonjae Hwang, Jeongseob Ahn]
 venue: OSDI
 year: 2026
-tags: [llm-serving, pipeline-parallelism, chunked-prefill, scheduling, latency-slo]
+tags: [llm-serving, pipeline-parallelism, chunked-prefill, scheduling, latency-slo, area/llm-serving]
 source_pdf: "[[osdi26-hwang.pdf]]"
 source_md: "[[osdi26-hwang]]"
 review_status: complete
