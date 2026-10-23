@@ -19,6 +19,8 @@ last_reviewed: 2026-10-23
 
 > **一句话总结**：在长上下文、高复用的智能体推理中，预填充节点的存储网卡先于 GPU 饱和；DualPath 让解码节点也读取旧 KV cache，再经计算网络送给预填充节点。SIGCOMM 正式版实验中，相对同一内部框架的原始版本，离线任务完成时间对应最高 1.87× 加速，在线服务在给定延迟约束下的智能体到达率平均提高 1.96×（§7.3–7.4）。
 
+> **博客讲解（引用 zartbot）**：[DualPath 博客讲解](https://mp.weixin.qq.com/s/vrUw-a_6QiQkbiBaC3rC6Q)
+
 **版本与证据**：本页依据用户提供的 SIGCOMM 2026 正式版 PDF（DOI：[10.1145/3789240.3829159](https://doi.org/10.1145/3789240.3829159)），经 MinerU 解析并回看关键 PDF 页面。此前使用的 [arXiv v2](https://arxiv.org/abs/2602.21548) 题名为 *DualPath: Breaking the Storage Bandwidth Bottleneck in Agentic LLM Inference*，作者列表更长；两版的主要实验倍数相同，正式版把 §5.1 的高优先级保留带宽改为约 99.9%，并在附录 A.5 增加流量隔离微基准。下文以正式版为准。
 
 ## 问题与动机
