@@ -1,6 +1,6 @@
 # AI Infra Wiki
 
-Quartz site for 49 AI infrastructure papers selected from OSDI 2026, 18 user-selected papers from SOSP 2026, and one user-selected SIGCOMM 2026 paper. The SOSP collection includes 11 full-text notes and 7 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user.
+Quartz site for 49 AI infrastructure papers selected from OSDI 2026, 18 user-selected papers from SOSP 2026, one user-selected SIGCOMM 2026 paper, and curated blog entries. The SOSP collection includes 11 full-text notes and 7 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
 
 ## Local preview
 
@@ -20,6 +20,6 @@ Set BASE_URL if you later use a custom domain.
 
 ## Publishing notes from the research repository
 
-The research repository is the sibling `../awesome-system-papers` on its `ai-infra` branch. Finish and lint a paper note there, then copy only the changed `wiki/` files into the matching paths in this repository. Include affected conference pages, `wiki/index.md`, and `wiki/log.md`; update this README when the collection counts change. Keep PDFs and MinerU output in the research repository.
+The research repository is the sibling `../awesome-system-papers` on its `ai-infra` branch. Finish and lint wiki content there, then copy only the changed `wiki/` files into the matching paths in this repository. Include affected theme or conference pages, `wiki/index.md`, and `wiki/log.md`; update this README when the collection scope or counts change. Keep PDFs and MinerU output in the research repository.
 
 Review both repositories' working trees before committing. Commit the research changes locally, then commit and push this repository's `ai-infra` branch to `origin`. Its push triggers Cloudflare Pages. Verify the new paper and conference routes with GET requests and check the homepage entry. The research repository's `origin` points to `lqhl/awesome-system-papers`, which has previously rejected pushes from this account; it is not the website remote.
