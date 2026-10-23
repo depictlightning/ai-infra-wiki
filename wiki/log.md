@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-23] 建立 KV cache 系统专题入口
+
+- 参照 `main` 分支的 theme 格式建立 [[KV-Cache-Systems]]，从现有论文的 `kv-cache` 标签发现候选，并人工选定 5 篇核心论文；首页增加主题专栏入口。
+- 先写纳入范围与阅读路线，后续再补充完整的跨论文实验矩阵。
+
 ## [2026-10-23] DualPath 核对 SIGCOMM 正式版
 
 - 用户提供的正式版 PDF 已归档到 `papers/sigcomm-2026/`，用 MinerU 生成对应 Markdown；[[DualPath-SIGCOMM26]] 的来源和状态改为正式版全文、`complete`。
