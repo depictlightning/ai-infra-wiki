@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-23] 收录 DeepSeek V4.1 Flash 生产推理博客
+
+- 根据 DeepSeek 于 2026-10-20 发布的知乎原文，建立 [[DeepSeek-V4.1-Flash-Serving]]，梳理阶段分离、负载均衡、弹性、两种 KVCache 生命周期与解码路径优化；图表未逐一核对，生产数字标为作者自报。
+- 人工加入 [[LLM-Serving]] 与 [[KV-Cache-Systems]] 的「相关博客」，首页增加入口；两篇专题的 `paper_count` 保持论文数量。
+
 ## [2026-10-23] 增加博客条目与专题关联
 
 - 建立 `wiki/blogs/`，将此前引用的 zartbot DualPath 博客整理为 [[Zartbot-DualPath]]，并加入 [[LLM-Serving]] 的「相关博客」。当前仅确认原文链接，正文尚未核对，未归纳博客观点。

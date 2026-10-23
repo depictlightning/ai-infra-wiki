@@ -26,6 +26,10 @@ tags: [topic-overview, kv-cache, llm-serving]
 - [[LMetric-OSDI26]] — 在请求路由时同时考虑前缀复用与实例负载。
 - [[DualPath-SIGCOMM26]] — 利用解码节点的存储网卡读取旧 KV，再经计算网络送往预填充节点。
 
+## 相关博客
+
+- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek 对 Block KV 与 SWA KV 采用不同存储寿命，并说明共享 3FS 的前缀复用与取回路径。
+
 ## 主题导读
 
 先问 **KV 在哪里**。[[ECHO-OSDI26]] 用主机内存扩大可容纳的上下文，[[DirectKV-OSDI26]] 探索 GPU 直接访问主机内存。两篇都依赖具体模型与硬件：前者的稀疏注意力决定预取哪些 token，后者的高速 CPU–GPU 互连决定直读是否划算。
