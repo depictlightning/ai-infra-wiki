@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-23] 收录 DeepSeek EPLB 博客解读
+
+- 阅读 kaiyuan 的[知乎原文](https://zhuanlan.zhihu.com/p/29963005584)，对照 DeepSeek 官方 EPLB README 与源码，建立 [[DeepSeek-EPLB]]；区分博客的示意和工程判断、官方开源的复制放置算法，以及尚未开源的负载预测与权重搬迁环节。
+- 人工加入 [[LLM-Serving]] 的「相关博客」，更新首页和 [[DeepSeek-V4.1-Flash-Serving]] 的关联入口；博客不计入专题 `paper_count`。
+
 ## [2026-10-23] 收录 DSpark 推测解码预印本
 
 - 归档 [arXiv:2607.05147v1](https://arxiv.org/abs/2607.05147) 的 33 页 PDF，用 MinerU 分段提取并合并全文 Markdown；建立 [[DSpark-arXiv26]]，标明预印本身份和 DeepSeek-V4 预览版的生产实验边界。

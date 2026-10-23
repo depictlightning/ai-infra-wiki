@@ -42,6 +42,7 @@ LLM 服务系统要把到来的请求分配给模型实例，并在延迟、吞�
 ## 相关博客
 
 - [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek 生产推理系统：分阶段部署、路由与扩缩容、KVCache 和解码调度；已阅读正文，图表待核对。
+- [[DeepSeek-EPLB]] — 引用 kaiyuan 对 DeepSeek EPLB 的讲解，结合官方代码梳理专家复制、分层放置及动态调整的实现边界。
 - [[Zartbot-DualPath]] — zartbot 的 DualPath 讲解；目前仅记录原文入口，博客正文尚未核对。关联论文：[[DualPath-SIGCOMM26]]。
 
 ## 主题导读
