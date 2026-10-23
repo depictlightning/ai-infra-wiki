@@ -1,5 +1,9 @@
 # Wiki 更新记录
 
+## [2026-10-23] 首页增加原仓库致谢
+
+- 在 [[index]] 首页致谢 [lqhl/awesome-system-papers](https://github.com/lqhl/awesome-system-papers/) 的系统论文收藏与整理成果。
+
 ## [2026-10-23] 收录 DeepSeek EPLB 博客解读
 
 - 阅读 kaiyuan 的[知乎原文](https://zhuanlan.zhihu.com/p/29963005584)，对照 DeepSeek 官方 EPLB README 与源码，建立 [[DeepSeek-EPLB]]；区分博客的示意和工程判断、官方开源的复制放置算法，以及尚未开源的负载预测与权重搬迁环节。

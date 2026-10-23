@@ -46,3 +46,7 @@
 ### SIGCOMM 2026 阅读入口
 
 - [[DualPath-SIGCOMM26]]：利用解码节点的存储网卡读取旧 KV cache；已按 SIGCOMM 正式版全文核对。
+
+## 致谢
+
+感谢 [lqhl/awesome-system-papers](https://github.com/lqhl/awesome-system-papers/) 开放系统论文收藏与整理成果。本 Wiki 在该仓库基础上整理 AI 基础设施方向的论文与阅读笔记。
