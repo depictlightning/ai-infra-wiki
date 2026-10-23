@@ -4,7 +4,7 @@ topic: LLM-Serving
 theme_kind: area
 member_tag: area/llm-serving
 candidate_tags: [llm-serving, llm-inference, offline-serving, foundation-model-serving]
-paper_count: 9
+paper_count: 10
 first_generated: 2026-10-23
 last_updated: 2026-10-23
 tags: [topic-overview, llm-serving, scheduling]
@@ -25,6 +25,7 @@ LLM 服务系统要把到来的请求分配给模型实例，并在延迟、吞�
 - [[LMetric-OSDI26]] — 路由时结合前缀 KV 复用与实例负载。
 - [[DCP-OSDI26]] — 在流水线并行中按延迟约束调整预填充切块和解码顺序。
 - [[EcoServe-OSDI26]] — 让多个实例错峰执行预填充与解码，控制阶段干扰。
+- [[DSpark-arXiv26]] — 在实例内生成半自回归草稿，并随并发负载调整每个请求的验证长度。
 
 ### 模型、显存与数据路径
 
@@ -45,6 +46,6 @@ LLM 服务系统要把到来的请求分配给模型实例，并在延迟、吞�
 
 ## 主题导读
 
-在线服务首先要区分 **请求放到哪里** 与 **实例内怎样执行**。[[LMetric-OSDI26]] 决定路由目标；[[DCP-OSDI26]] 和 [[EcoServe-OSDI26]] 调整预填充、解码的执行时机。[[Janus-SOSP26]] 与 [[Prism-OSDI26]] 把决策扩到模型副本和显存容量，[[DualPath-SIGCOMM26]] 则处理长上下文请求从外部存储读回 KV 的网络瓶颈。这些方法涉及不同时间尺度和资源，不能仅凭单篇的吞吐倍数判断能否叠加。
+在线服务首先要区分 **请求放到哪里** 与 **实例内怎样执行**。[[LMetric-OSDI26]] 决定路由目标；[[DCP-OSDI26]] 和 [[EcoServe-OSDI26]] 调整预填充、解码的执行时机；[[DSpark-arXiv26]] 按候选 token 的预期接受率分配目标模型的验证批量。[[Janus-SOSP26]] 与 [[Prism-OSDI26]] 把决策扩到模型副本和显存容量，[[DualPath-SIGCOMM26]] 则处理长上下文请求从外部存储读回 KV 的网络瓶颈。这些方法涉及不同时间尺度和资源，不能仅凭单篇的吞吐倍数判断能否叠加。
 
 离线任务更关注一批请求何时全部完成、每块 GPU 产出多少。[[ACDC-SOSP26]] 使用任务已知信息改变执行计划，[[BatchGen-OSDI26]] 在运行中重新组合请求；它们的作业完成时间和在线论文的 TTFT、SLO 达标率不能直接互换。[[LLM-42-SOSP26]] 还表明部分服务要保证重复推理的一致输出，此时调度收益需连同验证与回滚成本一起计算。

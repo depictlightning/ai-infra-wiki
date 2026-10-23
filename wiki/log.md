@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-23] 收录 DSpark 推测解码预印本
+
+- 归档 [arXiv:2607.05147v1](https://arxiv.org/abs/2607.05147) 的 33 页 PDF，用 MinerU 分段提取并合并全文 Markdown；建立 [[DSpark-arXiv26]]，标明预印本身份和 DeepSeek-V4 预览版的生产实验边界。
+- 人工加入 [[LLM-Serving]] 核心论文，关联 [[DeepSeek-V4.1-Flash-Serving]]，更新首页与专题篇数；严格 SLA 下的 661%/406% 吞吐比单列解释，避免误当常规加速倍数。
+
 ## [2026-10-23] 收录 DeepSeek V4.1 Flash 生产推理博客
 
 - 根据 DeepSeek 于 2026-10-20 发布的知乎原文，建立 [[DeepSeek-V4.1-Flash-Serving]]，梳理阶段分离、负载均衡、弹性、两种 KVCache 生命周期与解码路径优化；图表未逐一核对，生产数字标为作者自报。
