@@ -11,11 +11,13 @@ tags: [topic-overview, deepseek, llm-serving, moe, kv-cache]
 
 # DeepSeek：从模型结构到推理基础设施
 
-DeepSeek 的模型演进会改变推理系统需要处理的资源：MLA 压缩历史 KV，MoE 把计算分散到专家，稀疏注意力改变长上下文的访存形态，智能体多轮请求又把旧 KV 的取回推到关键路径。本专题按这些问题组织阅读材料，并把模型报告、开源实现与生产部署说明放在一起看。
+根据 [DeepSeek-V2 报告](https://arxiv.org/abs/2405.04434)、[DeepSeek-V3.2 报告](https://arxiv.org/abs/2512.02556)和 [[DualPath-SIGCOMM26]]，MLA、MoE、稀疏注意力及多轮智能体请求分别改变 KV 占用、专家通信、长上下文访存和旧 KV 取回的成本。本专题按这些问题组织阅读材料，并把模型报告、开源实现与生产部署说明放在一起看。
 
 ## 纳入范围与证据
 
 收录 DeepSeek 自身的模型或基础设施、直接研究其生产推理路径的工作，以及已有的相关博客。`## 核心论文` 只列本站已完成全文笔记的论文；官方技术报告虽有原文链接，目前尚无本站全文笔记，列在后面的阅读路线中。其他论文即使使用 DeepSeek 模型做实验，也不因此成为本专题成员。博客的阅读状态以各自页面为准；外部讲解仅作为阅读线索，不据其标题推断技术结论。
+
+**引用说明**：下方论文、官方报告、代码仓库和博客链接均指向原作者的作品。技术机制是据所列来源写的转述，生产数据只代表原作者的报告；「从已有笔记能看到什么」中的跨材料判断与待测问题是本站的综合分析。本站不转载他人的原文段落、图表或代码。文末第三方讲解尚未核对正文和作者，只标为引用入口，不据此撰写技术结论。
 
 ## 核心论文
 
@@ -24,9 +26,9 @@ DeepSeek 的模型演进会改变推理系统需要处理的资源：MLA 压缩�
 
 ## 相关博客
 
-- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek 官方生产部署文章；已阅读正文，架构图和性能图尚未逐一核对。
-- [[DeepSeek-EPLB]] — kaiyuan 对专家复制与分层放置的讲解；已阅读原文并核对官方 EPLB 代码。
-- [[Zartbot-DualPath]] — zartbot 的 DualPath 讲解入口；目前仅确认链接，尚未核对正文。
+- [[DeepSeek-V4.1-Flash-Serving]] — 引用 [DeepSeek 官方生产部署文章](https://zhuanlan.zhihu.com/p/2095560295930508953)；已阅读正文，架构图和性能图尚未逐一核对。
+- [[DeepSeek-EPLB]] — 引用 [kaiyuan 的 EPLB 讲解](https://zhuanlan.zhihu.com/p/29963005584)；已阅读原文并核对官方 EPLB 代码。
+- [[Zartbot-DualPath]] — 引用 [zartbot 的 DualPath 讲解](https://mp.weixin.qq.com/s/vrUw-a_6QiQkbiBaC3rC6Q)；目前仅确认链接，尚未核对正文。
 
 ## 按问题阅读
 
@@ -37,17 +39,17 @@ DeepSeek 的模型演进会改变推理系统需要处理的资源：MLA 压缩�
 | 稀疏注意力怎样改变缓存与索引的成本？ | [DeepSeek-V3.2 报告](https://arxiv.org/abs/2512.02556)介绍 DeepSeek Sparse Attention；[DeepSeek-V4 报告](https://arxiv.org/abs/2606.19348)介绍 CSA 与 HCA 混合注意力；[DeepSeek-V4.1-Flash 报告](https://arxiv.org/abs/2609.19969)介绍 CSA2、跨层复用与 FP4 KV。 | [[DeepSeek-V4.1-Flash-Serving]]；相关模型报告目前仅核对官方入口与摘要，细节请回原文。 |
 | 多轮智能体请求如何少算旧上下文、少等旧 KV？ | [3FS](https://github.com/deepseek-ai/3FS)是 DeepSeek 开源的分布式文件系统；[DeepSpec](https://github.com/deepseek-ai/DeepSpec)提供推测解码算法的训练和评估代码。 | [[DualPath-SIGCOMM26]]看旧 KV 读路径，[[DSpark-arXiv26]]看目标模型验证预算，[[DeepSeek-V4.1-Flash-Serving]]看生产系统如何安排缓存寿命与阶段分离。 |
 
-## 从已有笔记能看到什么
+## 本站的综合判断与待验证问题
 
-[[DualPath-SIGCOMM26]] 和 [[DSpark-arXiv26]] 分别处理一次请求中的两种等待：前者在高前缀复用时借用解码节点空闲的存储网卡，后者按候选 token 被接受的概率和引擎负载分配验证长度。前者依赖分离的预填充、解码节点及两侧可用的网络带宽；后者依赖接受率估计和吞吐曲线。这两篇论文的收益不能直接相加，也没有在相同工作负载上给出联合实验。
+据 [[DualPath-SIGCOMM26]] 和 [[DSpark-arXiv26]] 两篇论文，一次请求可能分别在旧 KV 读取和目标模型验证上等待：前者在高前缀复用时借用解码节点空闲的存储网卡，后者按候选 token 被接受的概率和引擎负载分配验证长度。前者依赖分离的预填充、解码节点及两侧可用的网络带宽；后者依赖接受率估计和吞吐曲线。本站判断：两篇论文的收益不能直接相加，因为它们没有在相同工作负载上给出联合实验。
 
-[[DeepSeek-V4.1-Flash-Serving]] 描述了另一层决策：把可长期复用的 Block KV 放到共享 3FS，把短期复用的 SWA KV 留在本地，并在缺失时做有限重算。这是作者对其生产部署的陈述；它与 DualPath 的旧 KV 取回路径相关，但博客没有提供二者在同一配置下的对照。[[DeepSeek-EPLB]] 则提醒我们，专家副本的静态放置方案和线上重平衡闭环之间还有预测、搬迁及切换成本。
+据 [DeepSeek 的生产部署文章](https://zhuanlan.zhihu.com/p/2095560295930508953)，其系统把可长期复用的 Block KV 放到共享 3FS，把短期复用的 SWA KV 留在本地，并在缺失时做有限重算。这是原作者对其生产部署的陈述；文章没有提供与 DualPath 同条件的直接对照。据 [kaiyuan 的 EPLB 讲解](https://zhuanlan.zhihu.com/p/29963005584)及 [DeepSeek 官方 EPLB 说明](https://github.com/deepseek-ai/EPLB)，开源放置算法之外还需考虑线上负载预测、权重搬迁与切换。本站将这些环节视作部署时应测量的成本，不把它们归为开源代码已经实现的功能。
 
 这几份材料留下一个具体的系统问题：当模型结构继续压缩每 token 的 KV、同时请求历史变长且专家热度变化时，瓶颈会在 HBM 容量、存储读取、专家通信和验证算力之间移动。要判断哪种优化优先，应在同一请求轨迹上同时记录缓存命中后的读取量、各节点网卡利用率、专家负载偏斜、验证接受长度与尾延迟；现有两篇本站论文没有覆盖这样一组联合测量。
 
 ## 外部讲解书签
 
-以下链接来自用户本地的《DeepSeek优质资料》清单，保留作后续阅读入口；本站尚未逐篇读取、核对作者和正文。官方报告及代码应作为技术结论的首要依据。
+以下每个链接都是对第三方文章的**引用入口**，来自用户本地的《DeepSeek优质资料》清单；本站尚未逐篇读取，也未核对这些文章的作者和正文，因此暂不署未经确认的作者名，不转述其观点或内容。官方报告及代码应作为技术结论的首要依据。
 
 - **V2 / V3**：[MLA 讲解](https://zhuanlan.zhihu.com/p/16730036197)、[MoE 演进](https://zhuanlan.zhihu.com/p/18565423596)、[MTP 讲解](https://zhuanlan.zhihu.com/p/18056041194)、[V3 报告中文解读](https://zhuanlan.zhihu.com/p/14890557782)。
 - **V3.2**：[V3.2-Exp 源码逻辑](https://zhuanlan.zhihu.com/p/1956798179065443580)、[DSA 与 NSA 讲解](https://zhuanlan.zhihu.com/p/1957032283270812718)。
