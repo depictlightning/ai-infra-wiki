@@ -18,11 +18,15 @@
 - [[KV-Cache-Systems]] — 5 篇论文 | KV cache 的存放位置、搬运路径与复用调度。
 - [[LLM-Serving]] — 10 篇论文 | 在线请求与资源调度、推测解码、离线批处理及确定性服务。
 
+### 策展视角
+
+- [[DeepSeek]] — 2 篇已有全文笔记的核心论文 | 从模型结构、MoE 通信、KV 存储到生产推理的官方资料与博客阅读路线。
+
 ## 博客
 
-- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Serving]]、[[KV-Cache-Systems]]。
-- [[DeepSeek-EPLB]] — kaiyuan 解读 DeepSeek 的专家复制与分层负载均衡；所属专题：[[LLM-Serving]]。
-- [[Zartbot-DualPath]] — zartbot 的 DualPath 讲解；目前仅记录原文入口，尚未核对正文。所属专题：[[LLM-Serving]]。
+- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Serving]]、[[KV-Cache-Systems]]、[[DeepSeek]]。
+- [[DeepSeek-EPLB]] — kaiyuan 解读 DeepSeek 的专家复制与分层负载均衡；所属专题：[[LLM-Serving]]、[[DeepSeek]]。
+- [[Zartbot-DualPath]] — zartbot 的 DualPath 讲解；目前仅记录原文入口，尚未核对正文。所属专题：[[LLM-Serving]]、[[DeepSeek]]。
 
 ## 阅读入口
 

@@ -5,8 +5,8 @@ author: DeepSeek
 published: 2026-10-20
 source_url: https://zhuanlan.zhihu.com/p/2095560295930508953
 reading_status: reviewed
-tags: [llm-serving, kv-cache, load-balancing, moe, area/llm-serving, area/kv-cache-systems]
-last_updated: 2026-10-23
+tags: [llm-serving, kv-cache, load-balancing, moe, area/llm-serving, area/kv-cache-systems, lens/deepseek]
+last_updated: 2026-10-24
 ---
 
 # DeepSeek V4.1 Flash 大规模推理部署实践
@@ -43,6 +43,7 @@ SWA KVCache 的复用窗口则是分钟级。作者报告约 180 秒 TTL 下命�
 
 ## 与现有论文笔记的关系
 
+- [[DeepSeek]] 汇集模型报告、开源实现与站内系统笔记；本页负责 V4.1 Flash 生产部署这一个证据来源。
 - [[DeepSeek-EPLB]] 引用 kaiyuan 对专家复制与放置算法的拆解，并核对 DeepSeek 官方 EPLB 代码；本博客讨论整套推理服务中的 MoE 负载均衡，两篇的证据范围不同。
 - [[DSpark-arXiv26]] 专门研究半自回归草稿与按置信度分配验证长度；论文的 DeepSeek-V4 预览版实验和本文 V4.1 Flash 的生产陈述不属于同一次对照，性能数字应分别阅读。
 - [[DualPath-SIGCOMM26]] 也从分离式 Prefill/Decode 的 KV 读取路径入手，重点是借用 Decode 节点的闲置存储网卡；本博客说明 DeepSeek 整体服务中共享 3FS、缓存生命周期和多层负载均衡如何配合，但没有给出与 DualPath 同条件的直接对照。

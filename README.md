@@ -1,6 +1,6 @@
 # AI Infra Wiki
 
-Quartz site for 49 AI infrastructure papers selected from OSDI 2026, 18 user-selected papers from SOSP 2026, one user-selected SIGCOMM 2026 paper, the DSpark arXiv 2026 preprint, and curated blog entries. The SOSP collection includes 11 full-text notes and 7 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
+Quartz site for 49 AI infrastructure papers selected from OSDI 2026, 18 user-selected papers from SOSP 2026, one user-selected SIGCOMM 2026 paper, the DSpark arXiv 2026 preprint, curated blog entries, and a DeepSeek reading theme. The SOSP collection includes 11 full-text notes and 7 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
 
 ## Local preview
 

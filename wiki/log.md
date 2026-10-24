@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-24] 建立 DeepSeek 策展专题
+
+- 根据用户本地《DeepSeek优质资料》清单、DeepSeek 官方技术报告与代码入口，以及本站已有的两篇全文论文笔记和三篇博客，建立 [[DeepSeek]] 阅读路线。
+- 官方 V2、V3、V3.2、V4、V4.1 报告目前只核对入口与摘要；外部知乎讲解保留为待读书签，不当作已核对的技术证据。同步论文与博客的专题成员标签和首页入口。
+
 ## [2026-10-23] 首页增加原仓库致谢
 
 - 在 [[index]] 首页致谢 [lqhl/awesome-system-papers](https://github.com/lqhl/awesome-system-papers/) 的系统论文收藏与整理成果。

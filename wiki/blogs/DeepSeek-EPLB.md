@@ -5,8 +5,8 @@ author: kaiyuan
 published: 2025-03-15
 source_url: https://zhuanlan.zhihu.com/p/29963005584
 reading_status: reviewed
-tags: [llm-serving, moe, expert-parallelism, load-balancing, area/llm-serving]
-last_updated: 2026-10-23
+tags: [llm-serving, moe, expert-parallelism, load-balancing, area/llm-serving, lens/deepseek]
+last_updated: 2026-10-24
 ---
 
 # DeepSeek EPLB：专家复制与分层负载均衡
@@ -46,4 +46,4 @@ kaiyuan 把完整运行过程拆成统计或预测专家热度、计算新放置
 - **主要讲解**：[kaiyuan，2025，《MoE并行负载均衡：EPLB的深度解析与可视化》](https://zhuanlan.zhihu.com/p/29963005584)。本文的 75%/25% 玩具例子、动态闭环问题和分组可视化取自该文。
 - **官方实现**：[DeepSeek EPLB](https://github.com/deepseek-ai/EPLB)；用于核对算法覆盖范围、分层条件、`num_replicas` 含义和返回映射。
 - **作者的辅助工具**：[EPLB_visualization](https://github.com/CalvinXKY/EPLB_visualization)，在原算法上增加输入热图和部署图；这些图帮助理解映射，不构成性能评测。
-- **Wiki 关联**：[[LLM-Serving]]、[[DeepSeek-V4.1-Flash-Serving]]。后一篇讨论更完整的生产推理部署，不能据此认定本博客中的可视化例子就是其线上 EPLB 配置。
+- **Wiki 关联**：[[LLM-Serving]]、[[DeepSeek]]、[[DeepSeek-V4.1-Flash-Serving]]。后一篇讨论更完整的生产推理部署，不能据此认定本博客中的可视化例子就是其线上 EPLB 配置。
