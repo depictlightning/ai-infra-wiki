@@ -6,7 +6,7 @@ member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
 paper_count: 5
 first_generated: 2026-10-23
-last_updated: 2026-10-23
+last_updated: 2026-10-26
 tags: [topic-overview, kv-cache, llm-serving]
 ---
 
@@ -29,6 +29,10 @@ tags: [topic-overview, kv-cache, llm-serving]
 ## 相关博客
 
 - [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek 对 Block KV 与 SWA KV 采用不同存储寿命，并说明共享 3FS 的前缀复用与取回路径。
+
+## 延伸阅读
+
+- [2026年了，关于大模型kv cache的优化有什么新的方法吗？](https://www.zhihu.com/question/2081079592870212699) — 用户推荐的 KV cache 讨论入口；回答摘要已核对，全文待读。
 
 ## 主题导读
 
