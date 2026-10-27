@@ -5,7 +5,7 @@ full_title: "Weave: Efficient Co-Scheduling for Disaggregated RL Post-Training"
 authors: [Tianyuan Wu, Lunxi Cao, Yining Wei, Wei Gao, Yuheng Zhao, et al.]
 venue: OSDI
 year: 2026
-tags: [rl-post-training, gpu-scheduling, disaggregation, cluster-scheduling, model-synchronization]
+tags: [rl-post-training, gpu-scheduling, disaggregation, cluster-scheduling, model-synchronization, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage, lens/communication-and-parallelism, mechanism/gpu-residency, mechanism/execution-utilization, mechanism/pipeline-overlap]
 source_pdf: "[[osdi26-wu-tianyuan.pdf]]"
 source_md: "[[osdi26-wu-tianyuan]]"
 review_status: complete

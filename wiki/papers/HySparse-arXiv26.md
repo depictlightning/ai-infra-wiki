@@ -5,7 +5,7 @@ full_title: "HySparse: A Hybrid Sparse Attention Architecture with Oracle Token 
 authors: [Yizhao Gao, Jianyu Wei, Qihao Zhang, Yu Cheng, Shimao Chen, et al.]
 venue: arXiv
 year: 2026
-tags: [llm-inference, sparse-attention, kv-cache, cross-layer-sharing, long-context, area/kv-cache-systems]
+tags: [llm-inference, sparse-attention, kv-cache, cross-layer-sharing, long-context, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, mechanism/compute-work, mechanism/state-bytes, mechanism/data-movement]
 source_pdf: "[[arxiv26-gao-hysparse.pdf]]"
 source_md: "[[arxiv26-gao-hysparse]]"
 review_status: complete

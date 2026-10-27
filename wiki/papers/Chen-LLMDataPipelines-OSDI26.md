@@ -5,7 +5,7 @@ full_title: "Teaching The Old Dog New Tricks: Building Efficient Data Pipelines 
 authors: [Luofan Chen, Chenhan Wang, Weidong Zhang, Jinxin Chi, Hequan Zhang, et al.]
 venue: OSDI
 year: 2026
-tags: [llm-training, data-pipeline, hdfs, checkpoint, multimodal]
+tags: [llm-training, data-pipeline, hdfs, checkpoint, multimodal, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/access-wait]
 source_pdf: "[[osdi26-chen-luofan.pdf]]"
 source_md: "[[osdi26-chen-luofan]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "OpenTela: Unifying Decentralized Computing Resources for Heterogene
 authors: [Xiaozhe Yao, Youhe Jiang, Ilia Badanin, Qinghao Hu, Robert Matthew Smith, Binhang Yuan, Imanol Schlag, Eiko Yoneki, Ana Klimovic]
 venue: OSDI
 year: 2026
-tags: [llm-serving, hpc, orchestration, crdt, heterogeneous-scheduling, sovereign-ai]
+tags: [llm-serving, hpc, orchestration, crdt, heterogeneous-scheduling, sovereign-ai, lens/scheduling-and-resource-management]
 source_pdf: "[[osdi26-yao.pdf]]"
 source_md: "[[osdi26-yao]]"
 review_status: complete

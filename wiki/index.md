@@ -25,6 +25,21 @@
 - [[DeepSeek]] — 2 篇已有全文笔记的核心论文 | 从模型结构、MoE 通信、KV 存储到生产推理的官方资料与博客阅读路线。
 - [[vLLM-Serving]] — 0 篇站内核心论文页 | 从 PagedAttention、V1 到 vLLM-Omni 的阅读框架，官方报告与周边论文待分批整理。
 
+### 按优化方法阅读
+
+这些专题回答论文采用什么优化方法，可与上面的系统领域专题交叉。机制标签另记录计算量、状态字节、设备驻留、数据搬运、通信开销、执行利用率、流水重叠、串行轮次与等待等作用位置；论文数按当前人工确认的核心成员统计。
+
+- [[Sparsification]] — 7 篇 | 稀疏化与加速。
+- [[Lossless-Compression]] — 1 篇 | 无损压缩。
+- [[Quantization-and-Low-Precision]] — 1 篇 | 量化与低精度计算。
+- [[Operator-and-Compiler-Optimization]] — 15 篇 | 算子、编译与执行加速。
+- [[Compute-and-State-Reuse]] — 13 篇 | 计算与状态复用。
+- [[Speculative-Decoding-and-Multi-Token]] — 6 篇 | 投机解码与多 Token 生成。
+- [[Scheduling-and-Resource-Management]] — 29 篇 | 调度与资源管理。
+- [[Offloading-and-Tiered-Storage]] — 14 篇 | 卸载与分层存储。
+- [[Prefetching-and-Access-Prediction]] — 6 篇 | 预取与访问预测。
+- [[Communication-and-Parallelism]] — 17 篇 | 通信与并行优化。
+
 ## 博客
 
 - [[vLLM-Hybrid-HiSparse]] — vLLM 稀疏 KV 动态卸载的机制与资料导航；所属专题：[[KV-Cache-Systems]]、[[vLLM-Serving]]。

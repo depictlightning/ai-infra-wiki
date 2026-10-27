@@ -5,7 +5,7 @@ full_title: "Beyond Utilization: Energy-Conscious GPU Sharing for Inference Serv
 authors: [Prasoon Sinha, Dimitrios Liakopoulos, Nathan Lemma, Neeraja J. Yadwadkar]
 venue: SOSP
 year: 2026
-tags: [gpu-sharing, energy-efficiency, inference-serving, scheduling]
+tags: [gpu-sharing, energy-efficiency, inference-serving, scheduling, lens/scheduling-and-resource-management]
 source_pdf: ""
 source_md: ""
 review_status: abstract-only

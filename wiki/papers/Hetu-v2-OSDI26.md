@@ -5,7 +5,7 @@ full_title: "Hetu v2: A General and Scalable Deep Learning System with Hierarchi
 authors: [Haoyang Li, Fangcheng Fu, Hao Ge, Sheng Lin, Xuanyu Wang, Jiawen Niu, Yuming Zhou, Xupeng Miao, Bin Cui]
 venue: OSDI
 year: 2026
-tags: [distributed-training, spmd, heterogeneous-computing, elastic-training, parallelism]
+tags: [distributed-training, spmd, heterogeneous-computing, elastic-training, parallelism, lens/scheduling-and-resource-management, lens/communication-and-parallelism]
 source_pdf: "[[osdi26-li-haoyang.pdf]]"
 source_md: "[[osdi26-li-haoyang]]"
 review_status: complete

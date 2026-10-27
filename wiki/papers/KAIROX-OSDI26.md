@@ -5,7 +5,7 @@ full_title: "KAIROX: Adaptive GPU–CPU Hybrid LLM Inference via Online Neuron B
 authors: [Yapeng Jiang, Minghao Gan, Zicong Hong, Wuhui Chen, Junyuan Liang, Yue Yu, Meng Guo, Zibin Zheng]
 venue: OSDI
 year: 2026
-tags: [llm-inference, gpu-cpu, activation-sparsity, model-offloading, edge-computing]
+tags: [llm-inference, gpu-cpu, activation-sparsity, model-offloading, edge-computing, lens/sparsification, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/compute-work, mechanism/gpu-residency, mechanism/access-wait]
 source_pdf: "[[osdi26-jiang-yapeng.pdf]]"
 source_md: "[[osdi26-jiang-yapeng]]"
 review_status: complete

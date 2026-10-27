@@ -5,7 +5,7 @@ full_title: "The Clustering Strikes Back: Building Cost-Effective and High-Perfo
 authors: [Yuchen Huang, Baiteng Ma, Yiping Sun, Yang Shi, Xiao Chen, Xiaocheng Zhong, Zhiyong Wang, Yao Hu, Erci Xu, Chuliang Weng]
 venue: OSDI
 year: 2026
-tags: [anns, vector-search, nvme, clustering, production-system]
+tags: [anns, vector-search, nvme, clustering, production-system, lens/sparsification, lens/prefetching-and-access-prediction, mechanism/access-wait]
 source_pdf: "[[osdi26-huang-yuchen.pdf]]"
 source_md: "[[osdi26-huang-yuchen]]"
 review_status: complete

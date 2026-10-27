@@ -5,7 +5,7 @@ full_title: "Unlimited OCR Works 2"
 authors: [Baidu ERNIE Team]
 venue: Technical Report
 year: 2026
-tags: [document-parsing, multimodal-inference, sparse-attention, long-context, kv-cache, area/kv-cache-systems]
+tags: [document-parsing, multimodal-inference, sparse-attention, long-context, kv-cache, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, mechanism/compute-work, mechanism/state-bytes]
 source_pdf: "[[techreport26-baidu-unlimited-ocr2.pdf]]"
 source_md: "[[techreport26-baidu-unlimited-ocr2]]"
 review_status: complete

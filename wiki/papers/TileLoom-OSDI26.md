@@ -5,7 +5,7 @@ full_title: "TileLoom: Automatic Dataflow Planning for Tile-Based Languages on S
 authors: [Wei Li, Zhenyu Bai, Heru Wang, Pranav Dangi, Zhiqiang Zhang, Cheng Tan, Huiying Lan, Weng-Fai Wong, Tulika Mitra]
 venue: OSDI
 year: 2026
-tags: [compiler, spatial-dataflow, accelerator, mlir, triton]
+tags: [compiler, spatial-dataflow, accelerator, mlir, triton, lens/operator-and-compiler-optimization, mechanism/execution-utilization]
 source_pdf: "[[osdi26-li-wei.pdf]]"
 source_md: "[[osdi26-li-wei]]"
 review_status: complete

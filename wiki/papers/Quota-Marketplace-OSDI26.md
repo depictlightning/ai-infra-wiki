@@ -5,7 +5,7 @@ full_title: "Quota Marketplace: Dynamic Pricing for Efficient Allocation of ML T
 authors: [Balasubramanian Sivan, Renato Paes Leme, Mihai Tiuca, Ian McFarlane, Vasilis Gkatzelis, Nehal Mehta, Soheil Hassas Yeganeh, Vahab Mirrokni, Amin Vahdat]
 venue: OSDI
 year: 2026
-tags: [ml-cluster, resource-allocation, market-mechanism, production-system]
+tags: [ml-cluster, resource-allocation, market-mechanism, production-system, lens/scheduling-and-resource-management]
 source_pdf: "[[osdi26-sivan.pdf]]"
 source_md: "[[osdi26-sivan]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "RLinf: Flexible and Efficient Large-Scale Reinforcement Learning vi
 authors: [Chao Yu, Yuanqing Wang, Zhen Guo, Hao Lin, Si Xu, et al.]
 venue: OSDI
 year: 2026
-tags: [reinforcement-learning, distributed-training, scheduling, embodied-ai, llm]
+tags: [reinforcement-learning, distributed-training, scheduling, embodied-ai, llm, lens/scheduling-and-resource-management]
 source_pdf: "[[osdi26-yu-chao.pdf]]"
 source_md: "[[osdi26-yu-chao]]"
 review_status: complete

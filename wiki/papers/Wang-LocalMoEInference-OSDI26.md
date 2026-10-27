@@ -5,7 +5,7 @@ full_title: "Achieving Cloud-Grade SLOs for Local Mixture-of-Experts Inference t
 authors: [Wenxin Wang, Yule Hou, Yu Ji, Peng Qu, Youhui Zhang]
 venue: OSDI
 year: 2026
-tags: [llm-serving, mixture-of-experts, cpu-gpu, local-inference, expert-parallelism]
+tags: [llm-serving, mixture-of-experts, cpu-gpu, local-inference, expert-parallelism, lens/operator-and-compiler-optimization, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage, lens/communication-and-parallelism, mechanism/gpu-residency]
 source_pdf: "[[osdi26-wang-wenxin.pdf]]"
 source_md: "[[osdi26-wang-wenxin]]"
 review_status: complete

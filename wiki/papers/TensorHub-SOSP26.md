@@ -5,7 +5,7 @@ full_title: "TensorHub: Scalable and Elastic Weight Transfer for LLM RL Training
 authors: [Chenhao Ye, Huaizheng Zhang, Mingcong Han, Baoquan Zhong, Xiang Li, et al.]
 venue: SOSP
 year: 2026
-tags: [llm-training, reinforcement-learning, weight-transfer, rdma, elasticity]
+tags: [llm-training, reinforcement-learning, weight-transfer, rdma, elasticity, lens/compute-and-state-reuse, lens/communication-and-parallelism, mechanism/access-wait]
 source_pdf: "[[3830418.3843859.pdf]]"
 source_md: "[[3830418.3843859]]"
 review_status: complete

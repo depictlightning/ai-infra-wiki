@@ -5,7 +5,7 @@ full_title: "Ave: Guiding Agentic GPU Optimization Using Data-Flow Invariants"
 authors: [Haohui Mai, Xiaoyan Guo, Xiangyun Ding, Daifeng Li, Qiuchu Yu, et al.]
 venue: SOSP
 year: 2026
-tags: [gpu-kernels, compiler, agentic-optimization, static-analysis]
+tags: [gpu-kernels, compiler, agentic-optimization, static-analysis, lens/operator-and-compiler-optimization, mechanism/execution-utilization]
 source_pdf: "[[3830418.3843902.pdf]]"
 source_md: "[[3830418.3843902]]"
 review_status: complete

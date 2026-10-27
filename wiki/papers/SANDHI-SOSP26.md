@@ -5,7 +5,7 @@ full_title: "SANDHI: Fine-grained Merging for Memory Efficient Multi-Model Servi
 authors: [Vima Gupta, Oytun Kuday Duran, Nandan Suresh Meda, Ikhyun An, Ganesh Ananthanarayanan, et al.]
 venue: SOSP
 year: 2026
-tags: [multi-model-serving, gpu-memory, model-merging]
+tags: [multi-model-serving, gpu-memory, model-merging, lens/compute-and-state-reuse, mechanism/state-bytes, mechanism/gpu-residency]
 source_pdf: ""
 source_md: ""
 review_status: abstract-only

@@ -5,7 +5,7 @@ full_title: "UEP: Portable Expert-Parallel Communication"
 authors: [Ziming Mao, Yihan Zhang, Chihan Cui, Zhen Huang, Kaichao You, et al.]
 venue: OSDI
 year: 2026
-tags: [mixture-of-experts, expert-parallelism, rdma, communication-library, portability]
+tags: [mixture-of-experts, expert-parallelism, rdma, communication-library, portability, lens/communication-and-parallelism, mechanism/communication-overhead]
 source_pdf: "[[osdi26-mao-ziming-uep.pdf]]"
 source_md: "[[osdi26-mao-ziming-uep]]"
 review_status: complete

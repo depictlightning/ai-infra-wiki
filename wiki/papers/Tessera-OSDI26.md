@@ -5,7 +5,7 @@ full_title: "Tessera: A Holistic Pipeline Parallelism Framework for Trillion-Par
 authors: [Weifang Hu, Langshi Chen, Man Yuan, Youyang Yao, Xiulong Yuan, et al.]
 venue: OSDI
 year: 2026
-tags: [distributed-training, mixture-of-experts, pipeline-parallelism, communication-overlap, load-balancing]
+tags: [distributed-training, mixture-of-experts, pipeline-parallelism, communication-overlap, load-balancing, lens/scheduling-and-resource-management, lens/communication-and-parallelism, mechanism/execution-utilization, mechanism/pipeline-overlap]
 source_pdf: "[[osdi26-hu-weifang.pdf]]"
 source_md: "[[osdi26-hu-weifang]]"
 review_status: complete
