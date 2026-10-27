@@ -5,7 +5,7 @@ full_title: "DiFlow: A System for Micro-Serving Text-to-Image Diffusion Workflow
 authors: [Lingyun Yang, Suyi Li, Tianyu Feng, Xiaoxiao Jiang, Zhipeng Di, et al.]
 venue: SOSP
 year: 2026
-tags: [diffusion-serving, workflow-scheduling, model-sharing, autoscaling, lens/scheduling-and-resource-management, lens/communication-and-parallelism]
+tags: [diffusion-serving, workflow-scheduling, model-sharing, autoscaling, lens/scheduling-and-resource-management, lens/communication-and-parallelism, lens/compute-and-state-reuse, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/pipeline-overlap]
 source_pdf: "[[3830418.3843880.pdf]]"
 source_md: "[[3830418.3843880]]"
 review_status: complete

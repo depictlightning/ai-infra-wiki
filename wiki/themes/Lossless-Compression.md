@@ -3,7 +3,7 @@ type: theme
 topic: Lossless-Compression
 theme_kind: lens
 member_tag: lens/lossless-compression
-paper_count: 1
+paper_count: 2
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -11,16 +11,17 @@ tags: [topic-overview, optimization-method]
 
 # 无损压缩
 
-本专题按优化方法组织站内论文。它可与 [[KV-Cache-Systems]]、[[LLM-Serving]] 等按研究对象组织的专题交叉；一篇论文可属于多个方法专题。
+本专题按优化方法组织站内论文，可与 [[KV-Cache-Systems]]、[[LLM-Serving]] 等系统领域专题交叉。以下是本站依据论文页「核心方法」作的归类；明确的副机制也可纳入，理由在条目中说明。
 
 ## 纳入范围
 
-压缩后能精确恢复原始数据，并明确处理编码、解码或存储表示成本。准确率约束下的模型合并不属于无损压缩。核心名单按现有论文笔记人工确认，标签用于导航，不自动决定成员。只有摘要的论文标为「仅公开摘要」。
+收录能精确恢复原始表示的编码、差分、去重或紧凑布局。必须说明无损保证覆盖的对象；模型输出质量近似不变、搜索召回相近和语义摘要均不等于位级无损。核心名单由人工确认，标签不自动决定成员；「仅公开摘要」表示尚未取得全文。
 
 ## 核心论文
 
-- [[TensorDex-SOSP26]]
+- [[FlowANN-OSDI26]] — 用组内局部 ID 和互补行布局精确表示图边，减少编号字节与 padding。
+- [[TensorDex-SOSP26]] — 对 tensor 精确去重，再对原始位模式做可还原的无损差分编码。
 
 ## 主题导读
 
-目前明确符合的是 [[TensorDex-SOSP26]]：以 tensor 为粒度选择参考并保存无损差分。[[SANDHI-SOSP26]] 的模型合并受准确率约束，不能据此认定为位级无损。当前只有一篇可确认成员，后续扩充时须核对恢复语义。
+[[TensorDex-SOSP26]] 压缩模型权重，[[FlowANN-OSDI26]] 压缩图边编号与布局。后者的无损性只针对原有图边的存储编码，不代表向量 PQ 或近似搜索本身无损。[[SANDHI-SOSP26]] 允许准确率约束下的组件合并，因此属于状态共享，不列入无损压缩。

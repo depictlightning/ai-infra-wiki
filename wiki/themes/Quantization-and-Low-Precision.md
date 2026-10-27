@@ -3,7 +3,7 @@ type: theme
 topic: Quantization-and-Low-Precision
 theme_kind: lens
 member_tag: lens/quantization-and-low-precision
-paper_count: 1
+paper_count: 3
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -11,16 +11,18 @@ tags: [topic-overview, optimization-method]
 
 # 量化与低精度计算
 
-本专题按优化方法组织站内论文。它可与 [[KV-Cache-Systems]]、[[LLM-Serving]] 等按研究对象组织的专题交叉；一篇论文可属于多个方法专题。
+本专题按优化方法组织站内论文，可与 [[KV-Cache-Systems]]、[[LLM-Serving]] 等系统领域专题交叉。以下是本站依据论文页「核心方法」作的归类；明确的副机制也可纳入，理由在条目中说明。
 
 ## 纳入范围
 
-以更低数值精度减少权重、激活或计算成本，或针对量化运算设计执行路径。仅使用 FP8 数据格式作为实验配置不自动算作本专题。核心名单按现有论文笔记人工确认，标签用于导航，不自动决定成员。只有摘要的论文标为「仅公开摘要」。
+收录精度选择、量化表示或专门针对低精度格式设计的计算路径。仅把 FP8 作为实验配置不构成成员依据；为已有 FP8/INT4 格式开发专用内核则属于低精度执行研究。核心名单由人工确认，标签不自动决定成员；「仅公开摘要」表示尚未取得全文。
 
 ## 核心论文
 
-- [[ADAngel-OSDI26]]
+- [[ADAngel-OSDI26]] — 面向任意权重/激活精度组合，选择 Padding、Split 或 Bitwise 内核。
+- [[KTransformers-SOSP25]] — 为分组量化 INT4/INT8 权重设计布局及 AMX/AVX-512 执行路径。
+- [[Wang-LocalMoEInference-OSDI26]] — 专门设计 AVX-512 FP8 GEMV 与 INT4 转换融合，避免完整上转换权重。
 
 ## 主题导读
 
-[[ADAngel-OSDI26]] 针对任意权重/激活精度组合选择计算映射。其收益还来自不同 kernel 与离线画像，不能把全部加速归因于降低 bit-width。其他论文若只采用现成 FP8 权重而不研究精度选择或低精度执行，暂留在相应系统专题。
+[[ADAngel-OSDI26]] 在不同 bit-width 与计算映射间选择；[[KTransformers-SOSP25]] 与 [[Wang-LocalMoEInference-OSDI26]] 研究量化权重或原生 FP8 的 CPU 执行。后者的 FP8 GEMV 在寄存器中转换并用 BF16 指令累加，不能据此说 CPU 具备原生 FP8 乘加硬件。

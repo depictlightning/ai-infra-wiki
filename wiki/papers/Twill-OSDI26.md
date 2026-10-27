@@ -5,7 +5,7 @@ full_title: "Optimal Software Pipelining and Warp Specialization for Tensor Core
 authors: [Rupanshu Soi, Rohan Yadav, Fredrik Kjolstad, Alex Aiken, Maryam Mehri Dehnavi, Michael Garland, Michael Bauer]
 venue: OSDI
 year: 2026
-tags: [gpu-compiler, software-pipelining, warp-specialization, constraint-solving, lens/operator-and-compiler-optimization, mechanism/execution-utilization]
+tags: [gpu-compiler, software-pipelining, warp-specialization, constraint-solving, lens/operator-and-compiler-optimization, mechanism/execution-utilization, mechanism/pipeline-overlap]
 source_pdf: "[[osdi26-soi.pdf]]"
 source_md: "[[osdi26-soi]]"
 review_status: complete

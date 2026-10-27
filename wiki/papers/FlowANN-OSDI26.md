@@ -5,7 +5,7 @@ full_title: "Disentangling Graph Dependencies for Efficient Billion-Scale GPU Ve
 authors: [Haoru Zhao, Jingkai He, Jingyao Zeng, Mingkai Dong, Dong Du]
 venue: OSDI
 year: 2026
-tags: [vector-search, anns, gpu, graph, cpu-gpu-offloading, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/pipeline-overlap, mechanism/access-wait]
+tags: [vector-search, anns, gpu, graph, cpu-gpu-offloading, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/pipeline-overlap, mechanism/access-wait, lens/lossless-compression, lens/operator-and-compiler-optimization, mechanism/state-bytes, mechanism/execution-utilization]
 source_pdf: "[[osdi26-zhao.pdf]]"
 source_md: "[[osdi26-zhao]]"
 review_status: complete

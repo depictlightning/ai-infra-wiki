@@ -5,7 +5,7 @@ full_title: "Drs.NAS: Ultra-Efficient Neural Architecture Search for Recommendat
 authors: [Ruixuan Wang, Xun Jiao]
 venue: OSDI
 year: 2026
-tags: [neural-architecture-search, recommendation-system, zero-cost-proxy, efficiency, lens/sparsification, mechanism/compute-work]
+tags: [neural-architecture-search, recommendation-system, zero-cost-proxy, efficiency, mechanism/compute-work]
 source_pdf: "[[osdi26-wang-ruixuan.pdf]]"
 source_md: "[[osdi26-wang-ruixuan]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "Safeguarding LLM Training at Scale: Online SDC Detection and Insigh
 authors: [Kinman Lei, Liyan Zheng, Xiang Li, Hongmin Chen, Yun Zhang, et al.]
 venue: OSDI
 year: 2026
-tags: [distributed-training, silent-data-corruption, gpu-reliability, fault-detection, operational-systems]
+tags: [distributed-training, silent-data-corruption, gpu-reliability, fault-detection, operational-systems, lens/compute-and-state-reuse, mechanism/compute-work]
 source_pdf: "[[osdi26-lei.pdf]]"
 source_md: "[[osdi26-lei]]"
 review_status: complete

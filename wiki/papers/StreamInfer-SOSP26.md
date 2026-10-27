@@ -5,7 +5,7 @@ full_title: "StreamEP: Straggler-Tolerant MoE Decoding without Communication Bar
 authors: [Yizhuo Liang, Shaoyu Wang, Jaeyong Song, Yanqi Zhou, Geon-Woo Kim, et al.]
 venue: SOSP
 year: 2026
-tags: [moe-inference, expert-parallelism, communication, stragglers, lens/communication-and-parallelism, mechanism/communication-overhead]
+tags: [moe-inference, expert-parallelism, communication, stragglers, lens/communication-and-parallelism, mechanism/communication-overhead, lens/scheduling-and-resource-management]
 source_pdf: ""
 source_md: ""
 review_status: abstract-only

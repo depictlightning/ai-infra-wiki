@@ -5,7 +5,7 @@ full_title: "Heterogeneity at Hyperscale: Characterization and Scheduling of Lar
 authors: [Suyi Li, Lingyun Yang, Haoxuan Yu, Sheng Yao, Tianyuan Wu, et al.]
 venue: OSDI
 year: 2026
-tags: [gpu-cluster, workload-characterization, scheduling, fragmentation, production-system, lens/scheduling-and-resource-management, mechanism/execution-utilization]
+tags: [gpu-cluster, workload-characterization, scheduling, fragmentation, production-system, lens/scheduling-and-resource-management]
 source_pdf: "[[osdi26-li-suyi.pdf]]"
 source_md: "[[osdi26-li-suyi]]"
 review_status: complete
