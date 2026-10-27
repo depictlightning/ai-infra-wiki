@@ -20,30 +20,79 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-### 注意力与 KV
+本专题共 16 篇核心论文，按论文去重计数：
 
-- [[HySparse-arXiv26]] — 在模型中共享重要块索引与跨层 KV。
-- [[HySparse2-arXiv26]] — 以两级 KV 共享缩短历史缓存构建路径。
-- [[HiSparse-arXiv26]] — 用主机完整历史和 GPU 热缓存控制稀疏解码驻留。
-- [[ECHO-OSDI26]] — 对原生稀疏注意力做 KV 卸载与精确召回。
-- [[DirectKV-OSDI26]] — 让注意力内核直接读取高速互连上的主机 KV。
-- [[Strata-OSDI26]] — 优化分层 KV 的搬运、布局转换与加载时机。
+- [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
+- [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
+- [[Wang-LocalMoEInference-OSDI26]]、[[KAIROX-OSDI26]]、[[MeldKernel-SOSP26]]、[[MPK-OSDI26]]
+- [[DSpark-arXiv26]]、[[Sereno-OSDI26]]、[[SPEX-OSDI26]]、[[LLM-42-SOSP26]]
 
-### 内核、低精度与异构执行
+## 按优化方法查找
 
-- [[ADAngel-OSDI26]] — 按量化精度、形状和设备选择矩阵乘映射。
-- [[KTransformers-SOSP25]] — 协调 CPU 路由专家与 GPU 注意力，优化量化执行。
-- [[Wang-LocalMoEInference-OSDI26]] — 结合流式 prefill、CPU FP8 内核与小规模专家并行。
-- [[KAIROX-OSDI26]] — 预测活跃神经元组并平衡 CPU/GPU 执行。
-- [[MeldKernel-SOSP26]] — 在解码 attention、MoE 等内核中组织跨 SM 合作。
-- [[MPK-OSDI26]] — 将 LLM 推理张量图编译成 persistent mega-kernel。
+以下按方法交叉整理本专题的核心论文；同一论文可出现在多个方向，因此各方向的数量不相加。空标题表示现有核心论文中暂未确认合适的成员。
 
-### 解码与输出语义
+### 01 稀疏化加速
 
-- [[DSpark-arXiv26]] — 以半自回归草稿和置信度调度目标模型验证。
-- [[Sereno-OSDI26]] — 用弹性推测解码控制移动设备上的带宽争用。
-- [[SPEX-OSDI26]] — 在推理树中提前执行可能的后续分支。
-- [[LLM-42-SOSP26]] — 按固定形状核验候选，为指定请求提供确定性输出。
+- [[HySparse-arXiv26]]、[[HySparse2-arXiv26]] — 通过稀疏选择与跨层共享减少注意力处理范围。
+- [[HiSparse-arXiv26]]、[[ECHO-OSDI26]] — 利用已有稀疏选择管理 KV 驻留和回载，不改变选择器语义。
+- [[KAIROX-OSDI26]] — 预测活跃神经元组，仅计算和搬运所需组。
+
+### 02 无损压缩
+
+### 03 量化与低精度计算
+
+- [[ADAngel-OSDI26]] — 针对权重和激活精度组合选择矩阵乘映射。
+- [[KTransformers-SOSP25]] — 为量化专家权重设计 CPU 布局和执行路径。
+- [[Wang-LocalMoEInference-OSDI26]] — 使用专门的 FP8 GEMV 和量化转换融合优化 CPU MoE 执行。
+
+### 04 算子、编译与执行加速
+
+- [[ADAngel-OSDI26]] — 构造低精度矩阵乘内核，并按形状和设备选择映射。
+- [[KTransformers-SOSP25]]、[[Wang-LocalMoEInference-OSDI26]] — 分别优化 CPU 专家内核、融合与同步。
+- [[MeldKernel-SOSP26]] — 通过跨 SM 协作与即时归约减少阶段间写回。
+- [[MPK-OSDI26]] — 将 LLM 张量图编译为 persistent mega-kernel。
+- [[DirectKV-OSDI26]]、[[HiSparse-arXiv26]]、[[Strata-OSDI26]] — 分别优化远端 KV 读取、召回和搬运布局的内核。
+
+### 05 计算与状态复用
+
+- [[HySparse-arXiv26]]、[[HySparse2-arXiv26]] — 复用跨层 KV、索引或投影输入。
+- [[HiSparse-arXiv26]]、[[ECHO-OSDI26]] — 复用热缓存命中的 KV，避免重复从主机取回。
+- [[Strata-OSDI26]] — 复用多层前缀缓存及同批请求的共同加载结果。
+- [[Sereno-OSDI26]] — 复用 n-gram 草稿候选，仍由目标模型验证。
+- [[Wang-LocalMoEInference-OSDI26]] — 节点内 prefill 和 decode 共享一份 DRAM 权重。
+
+### 06 投机解码与多 Token 生成
+
+- [[DSpark-arXiv26]] — 使用半自回归草稿，并按置信度分配验证预算。
+- [[Sereno-OSDI26]] — 调整草稿与验证批次，以控制移动设备上的带宽争用。
+- [[SPEX-OSDI26]] — 邻近机制：推测执行推理树的后续分支，不等同于逐 token 投机解码。
+- [[LLM-42-SOSP26]] — 邻近机制：通过候选生成与固定形状核验保证确定性，目标不是减少生成轮次。
+
+### 07 调度与资源管理
+
+- [[DSpark-arXiv26]]、[[Sereno-OSDI26]] — 分别调节验证预算及草稿、验证的执行时机。
+- [[SPEX-OSDI26]] — 在推理树分支和请求间分配空闲 GPU 并行度。
+- [[LLM-42-SOSP26]] — 将确定性请求组成固定形状验证批次。
+- [[KAIROX-OSDI26]]、[[Wang-LocalMoEInference-OSDI26]] — 分别调整 CPU/GPU 工作分工与执行路径。
+- [[Strata-OSDI26]] — 联合安排缓存加载与计算，利用 decode 填补 I/O 等待。
+
+### 08 卸载与分层存储
+
+- [[HiSparse-arXiv26]]、[[ECHO-OSDI26]] — 在主机保存完整 KV，并按需管理 GPU 热缓存。
+- [[DirectKV-OSDI26]] — 从 GPU 直接读取高速互连上的主机 KV。
+- [[Strata-OSDI26]] — 管理 GPU、主机与外部存储之间的 KV。
+- [[KTransformers-SOSP25]]、[[KAIROX-OSDI26]]、[[Wang-LocalMoEInference-OSDI26]] — 在 CPU/GPU 之间分配专家或神经元组的存储与计算。
+
+### 09 预取与访问预测
+
+- [[HiSparse-arXiv26]] — 在共享索引层组中提前回载所需 KV。
+- [[ECHO-OSDI26]] — 利用跨层稀疏选择相关性提前取回 KV。
+- [[Strata-OSDI26]] — 在排队期间将 SSD 命中的 KV 预取到 DRAM。
+- [[KAIROX-OSDI26]]、[[Wang-LocalMoEInference-OSDI26]] — 分别预测活跃组或提前准备下一专家权重。
+
+### 10 通信与并行优化
+
+- [[Wang-LocalMoEInference-OSDI26]] — 面向少量 PCIe GPU 优化专家并行的 dispatch 和 combine 流量。
 
 ## 相关博客
 
