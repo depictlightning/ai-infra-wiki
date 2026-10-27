@@ -1,5 +1,9 @@
 # Wiki 更新记录
 
+## [2026-10-27] Unlimited OCR 2 加入 KV cache 专题
+
+- 按用户确认，将 [[UnlimitedOCR2-TechReport26]] 纳入 [[KV-Cache-Systems]]，补充多页 OCR 的视觉 KV 驻留与跨块复用边界，并更新成员标签和首页计数。
+
 ## [2026-10-27] 收录 Unlimited OCR 2 技术报告
 
 - 归档百度文心团队的技术报告，经 MinerU 解析全文并核对原图、表 1–4；建立 [[UnlimitedOCR2-TechReport26]]，记录稀疏视觉参考、跨块 KV 复用、实验结果及全局上下文限制。

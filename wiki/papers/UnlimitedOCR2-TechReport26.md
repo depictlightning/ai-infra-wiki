@@ -5,7 +5,7 @@ full_title: "Unlimited OCR Works 2"
 authors: [Baidu ERNIE Team]
 venue: Technical Report
 year: 2026
-tags: [document-parsing, multimodal-inference, sparse-attention, long-context, kv-cache]
+tags: [document-parsing, multimodal-inference, sparse-attention, long-context, kv-cache, area/kv-cache-systems]
 source_pdf: "[[techreport26-baidu-unlimited-ocr2.pdf]]"
 source_md: "[[techreport26-baidu-unlimited-ocr2]]"
 review_status: complete
@@ -86,7 +86,7 @@ last_reviewed: 2026-10-27
 
 ## 相关
 
-- **站内对照**：[[HySparse-arXiv26]] 同样通过稀疏注意力和 KV 共享降低长上下文成本，但处理的是语言模型的层间缓存；[[ECHO-OSDI26]] 研究将已有模型的 KV 放到主机内存并按需召回。三者的模型、工作负载和基线不同，性能数字不能直接相乘比较。
+- **专题与站内对照**：[[KV-Cache-Systems]]；[[HySparse-arXiv26]] 同样通过稀疏注意力和 KV 共享降低长上下文成本，但处理的是语言模型的层间缓存；[[ECHO-OSDI26]] 研究将已有模型的 KV 放到主机内存并按需召回。三者的模型、工作负载和基线不同，性能数字不能直接相乘比较。
 - **原始材料**：[[techreport26-baidu-unlimited-ocr2.pdf]]、[[techreport26-baidu-unlimited-ocr2]]。
 
 ## 参考文献
