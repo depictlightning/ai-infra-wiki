@@ -5,7 +5,7 @@ theme_kind: lens
 member_tag: lens/vllm
 paper_count: 0
 first_generated: 2026-10-24
-last_updated: 2026-10-24
+last_updated: 2026-10-27
 tags: [topic-overview, vllm, llm-serving, pagedattention]
 ---
 
@@ -20,6 +20,10 @@ tags: [topic-overview, vllm, llm-serving, pagedattention]
 ## 核心论文
 
 待建立 vLLM 自身的站内论文页；当前成员数为 0。
+
+## 相关博客
+
+- [[vLLM-Hybrid-HiSparse]] — 官方博客、原始研究、设计文档与实现追踪，围绕稀疏 KV 动态驻留和长上下文服务。
 
 ## 官方论文与技术报告
 

@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-27] 整理 vLLM Hybrid HiSparse 资料
+
+- 建立 [[vLLM-Hybrid-HiSparse]]，汇集官方博客、设计文档、实现追踪、相关论文与中文讨论入口；区分论文摘要、官方实验和待核对的讨论全文。
+- 根据用户确认，加入 [[KV-Cache-Systems]] 和 [[vLLM-Serving]] 的相关博客，并更新首页；博客不计入专题论文数。
+
 ## [2026-10-27] 收录 HySparse2 预印本
 
 - 归档 arXiv:2609.26368v1 PDF，经 MinerU 解析全文并回看图 2–5 与表 1–5，建立 [[HySparse2-arXiv26]]；区分跨层桥接、MQA 头配置和预填充 FLOPs 分析的贡献。

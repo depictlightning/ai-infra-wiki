@@ -31,6 +31,7 @@ tags: [topic-overview, kv-cache, llm-serving]
 
 ## 相关博客
 
+- [[vLLM-Hybrid-HiSparse]] — 按显存压力动态调整稀疏 KV 驻留的 vLLM 实现与阅读资料。
 - [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek 对 Block KV 与 SWA KV 采用不同存储寿命，并说明共享 3FS 的前缀复用与取回路径。
 
 ## 延伸阅读
