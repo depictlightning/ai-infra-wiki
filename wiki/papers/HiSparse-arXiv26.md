@@ -5,7 +5,7 @@ full_title: "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Ca
 authors: [Zhiqiang Xie, Zhangheng Huang, Tingwei Huang, Ziyi Xu, Ruiyang Ma, Christos Kozyrakis]
 venue: arXiv
 year: 2026
-tags: [llm-inference, sparse-attention, kv-cache, offloading, prefetching, sglang, area/llm-inference, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, lens/operator-and-compiler-optimization, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/data-movement, mechanism/pipeline-overlap, mechanism/access-wait]
+tags: [llm-inference, sparse-attention, kv-cache, offloading, prefetching, sglang, area/llm-inference, area/kv-cache-systems, mechanism/gpu-residency, mechanism/data-movement, mechanism/pipeline-overlap, mechanism/access-wait]
 source_pdf: "[[arxiv26-xie-hisparse.pdf]]"
 source_md: "[[arxiv26-xie-hisparse]]"
 review_status: complete
@@ -133,7 +133,7 @@ host KV 是完整历史的后备副本，备份流、预取流、计算流之间
 - **同类系统**：[[ECHO-OSDI26]] 也以主机完整 KV 和 GPU 热缓存服务原生稀疏注意力，并以提前预测加最终召回保持原选择；[[DirectKV-OSDI26]] 则研究高速互连上的直接读取。各自的硬件、工作负载和基线不同，不能排列其最高加速比。
 - **缓存与 I/O**：[[Strata-OSDI26]] 是本文 GPU 辅助 I/O 的引用来源。附录 A 说明 HiSparse 复用 HiCache 主机基础设施，但 HiCache 侧重跨请求的前缀复用，HiSparse 管活动请求的解码工作集。[^paper]
 - **模型与系统**：[[HySparse-arXiv26]]、[[HySparse2-arXiv26]] 与本工作使用不同的跨层共享对象；[[vLLM-Hybrid-HiSparse]] 汇集后续 vLLM 实现资料，原论文实验主要在 SGLang 上。
-- **专题**：[[LLM-Inference]]、[[KV-Cache-Systems]]、[[Sparsification]]、[[Compute-and-State-Reuse]]、[[Operator-and-Compiler-Optimization]]、[[Offloading-and-Tiered-Storage]]、[[Prefetching-and-Access-Prediction]]。
+- **专题**：[[LLM-Inference]]、[[KV-Cache-Systems]]。
 - **原始材料**：[[arxiv26-xie-hisparse.pdf]]、[[arxiv26-xie-hisparse]]。
 
 ## 参考文献

@@ -5,7 +5,7 @@ full_title: "DynaRL: Flexible and Dynamic Scheduling of Large-Scale Reinforcemen
 authors: [Yuanqing Wang, Hao Lin, Junhao Hu, Chunyang Zhu, Quanlu Zhang, et al.]
 venue: OSDI
 year: 2026
-tags: [reinforcement-learning, distributed-training, dynamic-scheduling, resource-migration, agentic-rl, lens/scheduling-and-resource-management]
+tags: [reinforcement-learning, distributed-training, dynamic-scheduling, resource-migration, agentic-rl, area/llm-training]
 source_pdf: "[[osdi26-wang-yuanqing.pdf]]"
 source_md: "[[osdi26-wang-yuanqing]]"
 review_status: complete

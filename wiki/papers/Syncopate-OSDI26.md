@@ -5,7 +5,7 @@ full_title: "Syncopate: Efficient Multi-GPU AI Kernels via Automatic Chunk-Centr
 authors: [Xinwei Qiang, Yue Guan, Zhengding Hu, Keren Zhou, Yufei Ding, Adnan Aziz]
 venue: OSDI
 year: 2026
-tags: [compiler, multi-gpu, triton, communication-overlap, kernel-fusion, lens/operator-and-compiler-optimization, lens/communication-and-parallelism, mechanism/communication-overhead, mechanism/execution-utilization, mechanism/pipeline-overlap]
+tags: [compiler, multi-gpu, triton, communication-overlap, kernel-fusion, mechanism/communication-overhead, mechanism/execution-utilization, mechanism/pipeline-overlap]
 source_pdf: "[[osdi26-qiang.pdf]]"
 source_md: "[[osdi26-qiang]]"
 review_status: complete

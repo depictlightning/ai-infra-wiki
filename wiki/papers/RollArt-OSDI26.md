@@ -5,7 +5,7 @@ full_title: "ROLLART: Disaggregated Multi-Task Agentic RL Training at Scale"
 authors: [Wei Gao, Yuheng Zhao, Tianyuan Wu, Shaopan Xiong, Weixun Wang, et al.]
 venue: OSDI
 year: 2026
-tags: [agentic-rl, disaggregation, heterogeneous-computing, distributed-training, serverless, lens/scheduling-and-resource-management, lens/communication-and-parallelism, mechanism/execution-utilization, mechanism/pipeline-overlap]
+tags: [agentic-rl, disaggregation, heterogeneous-computing, distributed-training, serverless, mechanism/execution-utilization, mechanism/pipeline-overlap, area/llm-training]
 source_pdf: "[[osdi26-gao.pdf]]"
 source_md: "[[osdi26-gao]]"
 review_status: complete

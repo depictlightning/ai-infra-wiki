@@ -5,7 +5,7 @@ full_title: "Efficient GPU Multitasking with Morphable Kernels"
 authors: [Tingxu Ren, Ruwen Fan, Hao Guo, Minhui Xie, Shiwei Gao, et al.]
 venue: SOSP
 year: 2026
-tags: [gpu-sharing, multitasking, kernels, scheduling, lens/scheduling-and-resource-management, mechanism/execution-utilization, lens/operator-and-compiler-optimization]
+tags: [gpu-sharing, multitasking, kernels, scheduling, mechanism/execution-utilization]
 source_pdf: ""
 source_md: ""
 review_status: abstract-only

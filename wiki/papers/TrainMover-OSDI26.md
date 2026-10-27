@@ -5,7 +5,7 @@ full_title: "TrainMover: An Interruption-Resilient Runtime for ML Training"
 authors: [ChonLam Lao, Jiaqi Gao, Jiamin Cao, Zhipeng Zhang, Pengcheng Zhang, et al.]
 venue: OSDI
 year: 2026
-tags: [distributed-training, fault-tolerance, live-migration, collective-communication, checkpointing, lens/communication-and-parallelism, mechanism/access-wait, mechanism/pipeline-overlap]
+tags: [distributed-training, fault-tolerance, live-migration, collective-communication, checkpointing, mechanism/access-wait, mechanism/pipeline-overlap, area/llm-training]
 source_pdf: "[[osdi26-lao.pdf]]"
 source_md: "[[osdi26-lao]]"
 review_status: complete

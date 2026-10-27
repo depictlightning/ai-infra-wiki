@@ -1,6 +1,7 @@
 ---
 type: theme
 topic: KV-Cache-Systems
+title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
@@ -10,7 +11,7 @@ last_updated: 2026-10-27
 tags: [topic-overview, kv-cache, llm-serving]
 ---
 
-# KV cache 系统专题
+# KV Cache Systems
 
 长上下文推理会反复使用历史 KV cache。以下论文从模型结构、缓存驻留、数据搬运和请求分配等位置处理这个问题。本页先给出阅读路线；更细的实验对照与设计空间留待后续补充。
 

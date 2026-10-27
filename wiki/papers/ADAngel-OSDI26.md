@@ -5,7 +5,7 @@ full_title: "ADAngel: Accelerating Arbitrary-Precision Quantized LLMs with Adapt
 authors: [Yao Liu, Wenjie Wang, Yifei Feng, Bo Peng, Jianguo Yao, Haibing Guan]
 venue: OSDI
 year: 2026
-tags: [llm-inference, quantization, mixed-precision, gpu-kernel, lens/quantization-and-low-precision, lens/operator-and-compiler-optimization, mechanism/state-bytes, mechanism/execution-utilization, area/llm-inference]
+tags: [llm-inference, quantization, mixed-precision, gpu-kernel, mechanism/state-bytes, mechanism/execution-utilization, area/llm-inference]
 source_pdf: "[[osdi26-liu-yao.pdf]]"
 source_md: "[[osdi26-liu-yao]]"
 review_status: complete

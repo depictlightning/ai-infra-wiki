@@ -5,7 +5,7 @@ full_title: "GraCE: Unlocking CUDA Graphs with Compiler Support for ML Workloads
 authors: [Abhishek Ghosh, Ajay Nayak, Ashish Panwar, Arkaprava Basu]
 venue: OSDI
 year: 2026
-tags: [ml-systems, gpu, cuda-graph, compiler, pytorch, lens/operator-and-compiler-optimization, mechanism/execution-utilization]
+tags: [ml-systems, gpu, cuda-graph, compiler, pytorch, mechanism/execution-utilization]
 source_pdf: "[[osdi26-ghosh.pdf]]"
 source_md: "[[osdi26-ghosh]]"
 review_status: complete

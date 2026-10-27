@@ -5,7 +5,7 @@ full_title: "No Buffer, No Bottleneck: Efficient Zero-Copy KV Cache Offloading f
 authors: [Shutian Luo, Haiying Shen]
 venue: OSDI
 year: 2026
-tags: [llm-serving, kv-cache, zero-copy, cpu-gpu-memory, nvlink-c2c, area/kv-cache-systems, lens/operator-and-compiler-optimization, lens/offloading-and-tiered-storage, mechanism/gpu-residency, mechanism/data-movement, mechanism/pipeline-overlap, area/llm-inference]
+tags: [llm-serving, kv-cache, zero-copy, cpu-gpu-memory, nvlink-c2c, area/kv-cache-systems, mechanism/gpu-residency, mechanism/data-movement, mechanism/pipeline-overlap, area/llm-inference]
 source_pdf: "[[osdi26-luo.pdf]]"
 source_md: "[[osdi26-luo]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "Umap: Revisiting Memory-mapped I/O on Distributed File Systems for 
 authors: [Yongchao He, Guangyan Zhang, Zane Cao, Wenfei Wu]
 venue: OSDI
 year: 2026
-tags: [distributed-file-system, memory-mapped-io, user-space-cache, matrix-access, disaggregated-storage, lens/offloading-and-tiered-storage, mechanism/access-wait]
+tags: [distributed-file-system, memory-mapped-io, user-space-cache, matrix-access, disaggregated-storage, mechanism/access-wait]
 source_pdf: "[[osdi26-he-yongchao.pdf]]"
 source_md: "[[osdi26-he-yongchao]]"
 review_status: complete

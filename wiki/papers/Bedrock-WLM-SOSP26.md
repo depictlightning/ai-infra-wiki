@@ -5,7 +5,7 @@ full_title: "Taming Inference Workloads at Global Scale: Foundation Model Servin
 authors: [Pratik Pankaj Raichura, Somu Perianayagam, Rama Krishna Sandeep Pokkunuri, Divya Jain]
 venue: SOSP
 year: 2026
-tags: [foundation-model-serving, global-routing, admission-control, production, lens/scheduling-and-resource-management]
+tags: [foundation-model-serving, global-routing, admission-control, production]
 source_pdf: ""
 source_md: ""
 review_status: abstract-only

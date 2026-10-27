@@ -5,7 +5,7 @@ author: DeepSeek
 published: 2026-10-20
 source_url: https://zhuanlan.zhihu.com/p/2095560295930508953
 reading_status: reviewed
-tags: [llm-serving, kv-cache, load-balancing, moe, area/llm-serving, area/kv-cache-systems, lens/deepseek, area/llm-inference]
+tags: [llm-serving, kv-cache, load-balancing, moe, area/llm-serving, area/kv-cache-systems, lens/deepseek]
 last_updated: 2026-10-27
 ---
 

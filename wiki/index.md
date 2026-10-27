@@ -13,44 +13,31 @@
 
 ## 主题
 
-专题根据标签发现候选，再人工确定收录内容；标签相同不代表研究问题或实验条件相同。论文与博客分别列出，博客的阅读状态在各自页面标明。
+### 主线
 
-### 系统领域
+- [[LLM-Inference]] — 16 篇论文 | 注意力与 KV、低精度内核、异构执行、解码和输出语义。
+- [[LLM-Serving]] — 10 篇论文 | 批处理、阶段调度、路由、模型放置、数据路径与生产观测。
+- [[LLM-Training]] — 16 篇论文 | 并行训练、RL 后训练、权重同步、数据供给、容错和调试。
 
-- [[LLM-Inference]] — 29 篇论文 | 模型执行、低精度内核、KV 管理、解码、批处理与性能观测的综合入口。
-- [[KV-Cache-Systems]] — 9 篇论文 | KV cache 的跨层共享、驻留、搬运路径与复用调度。
-- [[LLM-Serving]] — 11 篇论文 | 在线请求与资源调度、推测解码、离线批处理及确定性服务。
+具体方法在这三页内部组织。按论文的主要问题归类，核心成员均已有全文笔记；不符合范围的内容仍可从论文和会议目录阅读。
 
-### 策展视角
+### 专项
 
-- [[DeepSeek]] — 2 篇已有全文笔记的核心论文 | 从模型结构、MoE 通信、KV 存储到生产推理的官方资料与博客阅读路线。
-- [[vLLM-Serving]] — 0 篇站内核心论文页 | 从 PagedAttention、V1 到 vLLM-Omni 的阅读框架，官方报告与周边论文待分批整理。
+- [[KV-Cache-Systems]] — 9 篇论文 | KV cache 的共享、驻留、搬运与复用。
+- [[DeepSeek]] — 2 篇核心论文 | DeepSeek 模型与推理基础设施资料。
 
-### 按优化方法阅读
-
-这些专题回答论文采用什么优化方法，可与上面的系统领域专题交叉。机制标签另记录计算量、状态字节、设备驻留、数据搬运、通信开销、执行利用率、流水重叠、串行轮次与等待等作用位置；论文数按当前人工确认的核心成员统计。同一论文可跨专题，篇数不能相加。各专题条目写明归类理由，邻近机制单列且不计入核心成员。
-
-- [[Sparsification]] — 7 篇 | 稀疏化与加速。
-- [[Lossless-Compression]] — 2 篇 | 无损压缩。
-- [[Quantization-and-Low-Precision]] — 3 篇 | 量化与低精度计算。
-- [[Operator-and-Compiler-Optimization]] — 19 篇 | 算子、编译与执行加速。
-- [[Compute-and-State-Reuse]] — 21 篇 | 计算与状态复用。
-- [[Speculative-Decoding-and-Multi-Token]] — 4 篇 | 投机解码与多 Token 生成。
-- [[Scheduling-and-Resource-Management]] — 33 篇 | 调度与资源管理。
-- [[Offloading-and-Tiered-Storage]] — 19 篇 | 卸载与分层存储。
-- [[Prefetching-and-Access-Prediction]] — 10 篇 | 预取与访问预测。
-- [[Communication-and-Parallelism]] — 19 篇 | 通信与并行优化。
+专项可与主线交叉；博客另列，不计入论文数。
 
 ## 博客
 
-- [[vLLM-Hybrid-HiSparse]] — vLLM 稀疏 KV 动态卸载的机制与资料导航；所属专题：[[LLM-Inference]]、[[KV-Cache-Systems]]、[[vLLM-Serving]]。
-- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Inference]]、[[LLM-Serving]]、[[KV-Cache-Systems]]、[[DeepSeek]]。
-- [[DeepSeek-EPLB]] — kaiyuan 解读 DeepSeek 的专家复制与分层负载均衡；所属专题：[[LLM-Inference]]、[[LLM-Serving]]、[[DeepSeek]]。
+- [[vLLM-Hybrid-HiSparse]] — vLLM 稀疏 KV 动态卸载的机制与资料导航；所属专题：[[LLM-Inference]]、[[KV-Cache-Systems]]。
+- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Serving]]、[[KV-Cache-Systems]]、[[DeepSeek]]。
+- [[DeepSeek-EPLB]] — kaiyuan 解读 DeepSeek 的专家复制与分层负载均衡；所属专题：[[LLM-Inference]]、[[DeepSeek]]。
 - [[Zartbot-DualPath]] — zartbot 的 DualPath 讲解；目前仅记录原文入口，尚未核对正文。所属专题：[[LLM-Serving]]、[[DeepSeek]]。
 
 ## 阅读入口
 
-- 推理总览：[[LLM-Inference]]
+- 主线入口：[[LLM-Inference]]、[[LLM-Serving]]、[[LLM-Training]]
 - 长上下文缓存：[[HiSparse-arXiv26]]、[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[Strata-OSDI26]]、[[ECHO-OSDI26]]、[[DirectKV-OSDI26]]
 - 多页文档解析：[[UnlimitedOCR2-TechReport26]]
 - 推理服务：[[KTransformers-SOSP25]]、[[BatchGen-OSDI26]]、[[EcoServe-OSDI26]]、[[Prism-OSDI26]]、[[DSpark-arXiv26]]

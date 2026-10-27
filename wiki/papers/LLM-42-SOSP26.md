@@ -5,7 +5,7 @@ full_title: "LLM-42: Enabling Determinism in LLM Inference with Verified Specula
 authors: [Raja Gond, Aditya K Kamath, Ramachandran Ramjee, Ashish Panwar]
 venue: SOSP
 year: 2026
-tags: [llm-inference, determinism, batching, speculation, area/llm-serving, lens/scheduling-and-resource-management, area/llm-inference]
+tags: [llm-inference, determinism, batching, speculation, area/llm-inference]
 source_pdf: "[[3830418.3843901.pdf]]"
 source_md: "[[3830418.3843901]]"
 review_status: complete

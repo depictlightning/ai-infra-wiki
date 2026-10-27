@@ -5,7 +5,7 @@ full_title: "A Few GPUs, A Whole Lotta Scale: Faithful LLM Training Emulation wi
 authors: [Shaoke Xi, ChonLam Lao, Boyi Jia, Jiaqi Gao, Zhipeng Zhang, et al.]
 venue: SOSP
 year: 2026
-tags: [llm-training, emulation, distributed-debugging, performance-modeling]
+tags: [llm-training, emulation, distributed-debugging, performance-modeling, area/llm-training]
 source_pdf: "[[3830418.3843852.pdf]]"
 source_md: "[[3830418.3843852]]"
 review_status: complete

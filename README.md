@@ -1,6 +1,6 @@
 # AI Infra Wiki
 
-Quartz site for 49 AI infrastructure papers selected from OSDI 2026, 18 user-selected papers from SOSP 2026, one user-selected SOSP 2025 paper, one user-selected SIGCOMM 2026 paper, four arXiv 2026 preprints (DSpark, HiSparse, HySparse and HySparse2), the Unlimited OCR 2 technical report, and curated blog entries. Reading themes cover LLM inference and serving, KV cache systems, DeepSeek, vLLM, and optimization methods. The SOSP 2026 collection includes 11 full-text notes and 7 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
+Quartz site for 49 AI infrastructure papers selected from OSDI 2026, 18 user-selected papers from SOSP 2026, one user-selected SOSP 2025 paper, one user-selected SIGCOMM 2026 paper, four arXiv 2026 preprints (DSpark, HiSparse, HySparse and HySparse2), the Unlimited OCR 2 technical report, and curated blog entries. The main reading themes are LLM Inference, LLM Serving, and LLM Training; KV Cache Systems and DeepSeek remain as focused collections. Optimization methods are subsections within the main themes. The SOSP 2026 collection includes 11 full-text notes and 7 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
 
 ## Local preview
 

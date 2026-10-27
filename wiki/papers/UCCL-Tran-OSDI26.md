@@ -5,7 +5,7 @@ full_title: "UCCL-Tran: An Extensible Software Transport Layer for GPU Networkin
 authors: [Yang Zhou, Zhongjie Chen, Ziming Mao, ChonLam Lao, Shuo Yang, et al.]
 venue: OSDI
 year: 2026
-tags: [gpu-networking, rdma, software-transport, multipath, collective-communication, lens/communication-and-parallelism, mechanism/communication-overhead]
+tags: [gpu-networking, rdma, software-transport, multipath, collective-communication, mechanism/communication-overhead]
 source_pdf: "[[osdi26-zhou-yang.pdf]]"
 source_md: "[[osdi26-zhou-yang]]"
 review_status: complete

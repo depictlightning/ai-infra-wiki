@@ -5,7 +5,7 @@ full_title: "TensorDex: A Compact, Tensor-Centric Storage System for Modern AI M
 authors: [Tingfeng Lan, Zirui Wang, Yunjia Zheng, Zhaoyuan Su, Juncheng Yang, Yue Cheng]
 venue: SOSP
 year: 2026
-tags: [model-storage, tensor-compression, delta-compression, model-hub, lens/lossless-compression, lens/compute-and-state-reuse, mechanism/state-bytes, mechanism/data-movement]
+tags: [model-storage, tensor-compression, delta-compression, model-hub, mechanism/state-bytes, mechanism/data-movement]
 source_pdf: "[[3830418.3843872.pdf]]"
 source_md: "[[3830418.3843872]]"
 review_status: complete

@@ -5,7 +5,7 @@ author: kaiyuan
 published: 2025-03-15
 source_url: https://zhuanlan.zhihu.com/p/29963005584
 reading_status: reviewed
-tags: [llm-serving, moe, expert-parallelism, load-balancing, area/llm-serving, lens/deepseek, area/llm-inference]
+tags: [llm-serving, moe, expert-parallelism, load-balancing, lens/deepseek, area/llm-inference]
 last_updated: 2026-10-27
 ---
 

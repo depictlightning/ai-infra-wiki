@@ -5,7 +5,7 @@ full_title: "Anchor: Mitigating GPU Shallow Disruptions with Decoupled Memory"
 authors: [Haoyi Ma, Shiwei Gao, Youmin Chen, Junrong Huang, Youyou Lu, Jiwu Shu]
 venue: SOSP
 year: 2026
-tags: [gpu-memory, fault-recovery, llm-serving, training, lens/compute-and-state-reuse]
+tags: [gpu-memory, fault-recovery, llm-serving, training]
 source_pdf: ""
 source_md: ""
 review_status: abstract-only

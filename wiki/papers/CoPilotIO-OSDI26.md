@@ -5,7 +5,7 @@ full_title: "CoPilotIO: CPU as a Co-pilot for GPU I/O to Free GPU Compute"
 authors: [Guanyi Chen, Qi Chen, Shu Yin, Jian Zhang]
 venue: OSDI
 year: 2026
-tags: [gpu-io, nvme, storage, gpu-computing, asynchronous-io, lens/operator-and-compiler-optimization, lens/offloading-and-tiered-storage, mechanism/execution-utilization, mechanism/pipeline-overlap]
+tags: [gpu-io, nvme, storage, gpu-computing, asynchronous-io, mechanism/execution-utilization, mechanism/pipeline-overlap]
 source_pdf: "[[osdi26-chen-guanyi.pdf]]"
 source_md: "[[osdi26-chen-guanyi]]"
 review_status: complete

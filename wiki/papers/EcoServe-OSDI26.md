@@ -5,7 +5,7 @@ full_title: "Efficient LLM Serving on Commodity GPU Clusters with Data-Reduced C
 authors: [Jiangsu Du, Hongbin Zhang, Taosheng Wei, Zhenyi Zheng, Jiazhi Jiang, Kaiyi Wu, Zhiguang Chen, Yutong Lu]
 venue: OSDI
 year: 2026
-tags: [llm-serving, scheduling, gpu-cluster, disaggregation, kv-cache, area/llm-serving, lens/scheduling-and-resource-management, lens/communication-and-parallelism, mechanism/data-movement, mechanism/communication-overhead, area/llm-inference]
+tags: [llm-serving, scheduling, gpu-cluster, disaggregation, kv-cache, area/llm-serving, mechanism/data-movement, mechanism/communication-overhead]
 source_pdf: "[[osdi26-du.pdf]]"
 source_md: "[[osdi26-du]]"
 review_status: complete

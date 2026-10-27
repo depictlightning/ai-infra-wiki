@@ -5,7 +5,7 @@ full_title: "DualPath: Accelerating Agentic LLM Inference by Harvesting Disaggre
 authors: [Yongtong Wu, Shaoyuan Chen, Rilin Huang, Yixuan Tan, Yinmin Zhong, Mingxing Zhang, Xin Jin, Panpan Huang]
 venue: SIGCOMM
 year: 2026
-tags: [agentic-inference, llm-serving, kv-cache, disaggregated-storage, network-qos, area/kv-cache-systems, area/llm-serving, lens/deepseek, lens/offloading-and-tiered-storage, lens/communication-and-parallelism, mechanism/access-wait, area/llm-inference]
+tags: [agentic-inference, llm-serving, kv-cache, disaggregated-storage, network-qos, area/kv-cache-systems, area/llm-serving, lens/deepseek, mechanism/access-wait]
 source_pdf: "[[sigcomm26-wu-dualpath.pdf]]"
 source_md: "[[sigcomm26-wu-dualpath]]"
 review_status: complete

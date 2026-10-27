@@ -5,7 +5,7 @@ full_title: "Cocoon: A System Architecture for Differentially Private Training w
 authors: [Donghwan Kim, Xin Gu, Jinho Baek, Timothy Lo, Younghoon Min, Kwangsik Shin, Jongryool Kim, Jongse Park, Kiwan Maeng]
 venue: OSDI
 year: 2026
-tags: [differential-privacy, ml-training, correlated-noise, cxl, near-memory-processing, lens/compute-and-state-reuse, lens/offloading-and-tiered-storage, mechanism/gpu-residency, lens/prefetching-and-access-prediction, mechanism/state-bytes, mechanism/data-movement, mechanism/pipeline-overlap, mechanism/compute-work]
+tags: [differential-privacy, ml-training, correlated-noise, cxl, near-memory-processing, mechanism/gpu-residency, mechanism/state-bytes, mechanism/data-movement, mechanism/pipeline-overlap, mechanism/compute-work]
 source_pdf: "[[osdi26-kim-donghwan.pdf]]"
 source_md: "[[osdi26-kim-donghwan]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "Strata: Hierarchical Context Caching for Long Context Language Mode
 authors: [Zhiqiang Xie, Ziyi Xu, Mark Zhao, Yuwei An, Vikram Sharma Mailthody, Scott Mahlke, Michael Garland, Christos Kozyrakis]
 venue: OSDI
 year: 2026
-tags: [llm-serving, kv-cache, storage-hierarchy, gpu-assisted-io, cache-aware-scheduling, area/kv-cache-systems, lens/compute-and-state-reuse, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/pipeline-overlap, mechanism/access-wait, lens/operator-and-compiler-optimization, lens/scheduling-and-resource-management, mechanism/execution-utilization, area/llm-inference]
+tags: [llm-serving, kv-cache, storage-hierarchy, gpu-assisted-io, cache-aware-scheduling, area/kv-cache-systems, mechanism/gpu-residency, mechanism/pipeline-overlap, mechanism/access-wait, mechanism/execution-utilization, area/llm-inference]
 source_pdf: "[[osdi26-xie-zhiqiang.pdf]]"
 source_md: "[[osdi26-xie-zhiqiang]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoreg
 authors: [Xin Cheng, Xingkai Yu, Chenze Shao, Jiashi Li, Yunfan Xiong, et al.]
 venue: arXiv
 year: 2026
-tags: [llm-serving, speculative-decoding, draft-model, verification-scheduling, production-inference, area/llm-serving, lens/deepseek, lens/speculative-decoding-and-multi-token, mechanism/serial-rounds, lens/scheduling-and-resource-management, area/llm-inference]
+tags: [llm-serving, speculative-decoding, draft-model, verification-scheduling, production-inference, lens/deepseek, mechanism/serial-rounds, area/llm-inference]
 source_pdf: "[[arxiv26-cheng-dspark.pdf]]"
 source_md: "[[arxiv26-cheng-dspark]]"
 review_status: complete

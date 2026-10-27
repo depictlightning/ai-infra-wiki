@@ -5,7 +5,7 @@ full_title: "Unleash All Cores: Asymmetry-aware Scalable DNN Inference on Mobile
 authors: [Qianlong Sang, Puyi He, Huanghuang Liang, Yili Gong, Chuang Hu, Xiaobo Zhou, Dazhao Cheng]
 venue: OSDI
 year: 2026
-tags: [mobile-inference, asymmetric-multiprocessing, scheduling, arm, lens/operator-and-compiler-optimization, lens/scheduling-and-resource-management, mechanism/execution-utilization]
+tags: [mobile-inference, asymmetric-multiprocessing, scheduling, arm, mechanism/execution-utilization]
 source_pdf: "[[osdi26-sang.pdf]]"
 source_md: "[[osdi26-sang]]"
 review_status: complete

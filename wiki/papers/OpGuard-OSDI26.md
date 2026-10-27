@@ -5,7 +5,7 @@ full_title: "OpGuard: Bitwise Alignment for Precise and General Debugging of Pro
 authors: [Ziming Zhou, Yinjie Zhao, Hang Zhu, Wenxiao Wang, Zhihao Bai, Yun Zhang, Shuguang Wang, Haibin Lin, Peng Huang]
 venue: OSDI
 year: 2026
-tags: [distributed-training, debugging, determinism, silent-data-corruption, observability]
+tags: [distributed-training, debugging, determinism, silent-data-corruption, observability, area/llm-training]
 source_pdf: "[[osdi26-zhou-ziming.pdf]]"
 source_md: "[[osdi26-zhou-ziming]]"
 review_status: complete

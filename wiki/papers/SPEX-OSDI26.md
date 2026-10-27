@@ -5,7 +5,7 @@ full_title: "Breaking the Reward Barrier: Accelerating Tree-of-Thought Reasoning
 authors: [Shuzhang Zhong, Haochen Huang, Shengxuan Qiu, Pengfei Zuo, Runsheng Wang, Meng Li]
 venue: OSDI
 year: 2026
-tags: [llm-inference, tree-of-thought, speculative-execution, reasoning, scheduling, lens/scheduling-and-resource-management, mechanism/pipeline-overlap, mechanism/access-wait, area/llm-inference]
+tags: [llm-inference, tree-of-thought, speculative-execution, reasoning, scheduling, mechanism/pipeline-overlap, mechanism/access-wait, area/llm-inference]
 source_pdf: "[[osdi26-zhong.pdf]]"
 source_md: "[[osdi26-zhong]]"
 review_status: complete

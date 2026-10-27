@@ -5,7 +5,7 @@ full_title: "BatchGen: An Architecture for Scalable and Efficient Batch Inferenc
 authors: [Tairan Xu, Leyang Xue, Zhan Lu, Jinfu Deng, Hongyang Xiao, Yinsicheng Jiang, Congjie He, Matej Sandor, Le Xu, Luo Mai]
 venue: OSDI
 year: 2026
-tags: [llm-inference, batch-inference, coroutine, mixture-of-experts, scheduling, area/llm-serving, lens/scheduling-and-resource-management, mechanism/execution-utilization, area/llm-inference]
+tags: [llm-inference, batch-inference, coroutine, mixture-of-experts, scheduling, area/llm-serving, mechanism/execution-utilization]
 source_pdf: "[[osdi26-xu-tairan.pdf]]"
 source_md: "[[osdi26-xu-tairan]]"
 review_status: complete

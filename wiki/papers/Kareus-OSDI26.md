@@ -5,7 +5,7 @@ full_title: "Kareus: Joint Reduction of Dynamic and Static Energy in Large Model
 authors: [Ruofan Wu, Jae-Won Chung, Mosharaf Chowdhury]
 venue: OSDI
 year: 2026
-tags: [distributed-training, energy-efficiency, gpu-frequency, kernel-scheduling, communication-overlap, lens/scheduling-and-resource-management, lens/communication-and-parallelism, mechanism/execution-utilization, mechanism/pipeline-overlap]
+tags: [distributed-training, energy-efficiency, gpu-frequency, kernel-scheduling, communication-overlap, mechanism/execution-utilization, mechanism/pipeline-overlap, area/llm-training]
 source_pdf: "[[osdi26-wu-ruofan.pdf]]"
 source_md: "[[osdi26-wu-ruofan]]"
 review_status: complete

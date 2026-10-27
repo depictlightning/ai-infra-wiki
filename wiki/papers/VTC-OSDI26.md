@@ -5,7 +5,7 @@ full_title: "VTC: DNN Compilation with Virtual Tensors for Data Movement Elimina
 authors: [Muyan Hu, Ahan Gupta, Jiachen Yuan, Vima Gupta, Taeksang Kim, Xin Xu, Janardhan Kulkarni, Ofer Dekel, Vikram Adve, Charith Mendis]
 venue: OSDI
 year: 2026
-tags: [tensor-compiler, gpu, data-movement, virtual-tensor, dnn-inference, lens/operator-and-compiler-optimization, mechanism/state-bytes, mechanism/data-movement]
+tags: [tensor-compiler, gpu, data-movement, virtual-tensor, dnn-inference, mechanism/state-bytes, mechanism/data-movement]
 source_pdf: "[[osdi26-hu-muyan.pdf]]"
 source_md: "[[osdi26-hu-muyan]]"
 review_status: complete

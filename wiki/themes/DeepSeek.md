@@ -1,15 +1,16 @@
 ---
 type: theme
 topic: DeepSeek
+title: DeepSeek
 theme_kind: lens
 member_tag: lens/deepseek
 paper_count: 2
 first_generated: 2026-10-24
-last_updated: 2026-10-24
+last_updated: 2026-10-27
 tags: [topic-overview, deepseek, llm-serving, moe, kv-cache]
 ---
 
-# DeepSeek：从模型结构到推理基础设施
+# DeepSeek
 
 根据 DeepSeek-V2、DeepSeek-V3.2 和 DualPath 的原文，MLA、MoE、稀疏注意力及多轮智能体请求分别改变 KV 占用、专家通信、长上下文访存和旧 KV 取回的成本。[^v2][^v32][^dualpath] 本专题按这些问题组织阅读材料，并把模型报告、开源实现与生产部署说明放在一起看。
 

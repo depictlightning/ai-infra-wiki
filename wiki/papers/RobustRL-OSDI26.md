@@ -5,7 +5,7 @@ full_title: "RobustRL: Role-based Fault Tolerance System for RL Post-Training"
 authors: [Zhenqian Chen, Baoquan Zhong, Xiang Li, Qing Dai, Xinkui Zhao, Miao Ye, Ren Cheng, Lufei Zhang, Jianwei Yin]
 venue: OSDI
 year: 2026
-tags: [rl-post-training, fault-tolerance, distributed-training, checkpointing, llm, lens/compute-and-state-reuse, lens/communication-and-parallelism, mechanism/compute-work, mechanism/access-wait]
+tags: [rl-post-training, fault-tolerance, distributed-training, checkpointing, llm, mechanism/compute-work, mechanism/access-wait, area/llm-training]
 source_pdf: "[[osdi26-chen-zhenqian.pdf]]"
 source_md: "[[osdi26-chen-zhenqian]]"
 review_status: complete

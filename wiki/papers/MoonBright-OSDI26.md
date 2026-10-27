@@ -5,7 +5,7 @@ full_title: "MoonBright: A GPU Memory Allocator with Device-Side Page Table Mate
 authors: [Yangyu Zhang, Lei Chen, Chunwei Xia, Shuaijiang Li, Shuoming Zhang, et al.]
 venue: OSDI
 year: 2026
-tags: [gpu, memory-management, virtual-memory, page-table, tlb, lens/operator-and-compiler-optimization, mechanism/execution-utilization]
+tags: [gpu, memory-management, virtual-memory, page-table, tlb, mechanism/execution-utilization]
 source_pdf: "[[osdi26-zhang-yangyu.pdf]]"
 source_md: "[[osdi26-zhang-yangyu]]"
 review_status: complete
