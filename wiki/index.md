@@ -1,6 +1,6 @@
 # AI 基础设施 Wiki
 
-本分支目前整理 OSDI 2026 的 49 篇 AI 基础设施论文、用户人工选定的 SOSP 2026 的 18 篇、SOSP 2025 论文 [[KTransformers-SOSP25]]、SIGCOMM 2026 论文 [[DualPath-SIGCOMM26]]、arXiv 预印本 [[DSpark-arXiv26]] 与 [[HySparse-arXiv26]]，以及技术报告 [[UnlimitedOCR2-TechReport26]]。SOSP 2026 中 11 篇已按全文阅读，7 篇只有公开摘要；每篇页面和会议综述都标明证据等级。
+本分支目前整理 OSDI 2026 的 49 篇 AI 基础设施论文、用户人工选定的 SOSP 2026 的 18 篇、SOSP 2025 论文 [[KTransformers-SOSP25]]、SIGCOMM 2026 论文 [[DualPath-SIGCOMM26]]、arXiv 预印本 [[DSpark-arXiv26]]、[[HySparse-arXiv26]] 与 [[HySparse2-arXiv26]]，以及技术报告 [[UnlimitedOCR2-TechReport26]]。SOSP 2026 中 11 篇已按全文阅读，7 篇只有公开摘要；每篇页面和会议综述都标明证据等级。
 
 ## 论文来源
 
@@ -8,7 +8,7 @@
 - [[SOSP-2025]] — 指定收录 1 篇：KTransformers 的 CPU/GPU 混合 MoE 推理。
 - [[SOSP-2026]] — 人工选定 18 篇：推理与服务、训练与工作流、GPU 内核与调度、模型存储、可观测性。
 - [[SIGCOMM-2026]] — 指定收录 1 篇：分离式 KV cache 存储 I/O 与智能体推理。
-- arXiv 2026 — [[DSpark-arXiv26]]：按置信度调度验证的半自回归推测解码；[[HySparse-arXiv26]]：跨层共享 KV 的混合稀疏注意力。
+- arXiv 2026 — [[DSpark-arXiv26]]：按置信度调度验证的半自回归推测解码；[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]：跨层共享 KV 的混合稀疏注意力。
 - 技术报告 2026 — [[UnlimitedOCR2-TechReport26]]：稀疏视觉参考与分块长文档解析。
 
 ## 主题
@@ -17,7 +17,7 @@
 
 ### 系统领域
 
-- [[KV-Cache-Systems]] — 7 篇论文 | KV cache 的跨层共享、驻留、搬运路径与复用调度。
+- [[KV-Cache-Systems]] — 8 篇论文 | KV cache 的跨层共享、驻留、搬运路径与复用调度。
 - [[LLM-Serving]] — 11 篇论文 | 在线请求与资源调度、推测解码、离线批处理及确定性服务。
 
 ### 策展视角
@@ -33,7 +33,7 @@
 
 ## 阅读入口
 
-- 长上下文缓存：[[HySparse-arXiv26]]、[[Strata-OSDI26]]、[[ECHO-OSDI26]]、[[DirectKV-OSDI26]]
+- 长上下文缓存：[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[Strata-OSDI26]]、[[ECHO-OSDI26]]、[[DirectKV-OSDI26]]
 - 多页文档解析：[[UnlimitedOCR2-TechReport26]]
 - 推理服务：[[KTransformers-SOSP25]]、[[BatchGen-OSDI26]]、[[EcoServe-OSDI26]]、[[Prism-OSDI26]]、[[DSpark-arXiv26]]
 - 训练与 RL：[[Tessera-OSDI26]]、[[RollArt-OSDI26]]、[[Weave-OSDI26]]

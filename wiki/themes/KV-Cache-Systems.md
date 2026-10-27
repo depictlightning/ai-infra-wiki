@@ -4,7 +4,7 @@ topic: KV-Cache-Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 7
+paper_count: 8
 first_generated: 2026-10-23
 last_updated: 2026-10-27
 tags: [topic-overview, kv-cache, llm-serving]
@@ -21,6 +21,7 @@ tags: [topic-overview, kv-cache, llm-serving]
 ## 核心论文
 
 - [[UnlimitedOCR2-TechReport26]] — 面向长文档 OCR，限制视觉参考范围，并通过页面分块与边界页 KV 复用控制显存驻留。
+- [[HySparse2-arXiv26]] — 通过跨解码器桥接生成各层 KV，结合 token 级稀疏选择和强制局部窗口缩短预填充路径。
 - [[HySparse-arXiv26]] — 让稀疏注意力层复用前一完整层的块索引与 KV，局部滑窗另存 KV；论文测了模型质量，未测服务性能。
 - [[Strata-OSDI26]] — 处理分层缓存命中后的碎片搬运、布局转换和加载时机。
 - [[ECHO-OSDI26]] — 为原生稀疏注意力模型把大部分 KV cache 放入主机内存，按需预取被选 token。
@@ -38,8 +39,15 @@ tags: [topic-overview, kv-cache, llm-serving]
 
 ## 主题导读
 
-先问 **模型本身必须生成和保存多少 KV**。[[HySparse-arXiv26]] 在模型预训练时安排少数完整注意力层，后续稀疏层共享其长期 KV；它需要重新训练，论文没有给出推理服务性能。[[UnlimitedOCR2-TechReport26]] 面向多页 OCR，通过视觉块选择减少单步读取，并用页面分块、边界页复用和旧块释放控制 KV 驻留；其跨页上下文能力受分块范围限制。二者的模型、工作负载和测量指标不同。
+先问 **模型本身必须生成和保存多少 KV**。[[HySparse-arXiv26]] 在模型预训练时安排少数完整注意力层，后续稀疏层共享其长期 KV；[[HySparse2-arXiv26]] 进一步让后半模型的完整层从前半隐藏状态分别投影出各自的 KV，从而缩短预填充缓存构建路径。第二代对照实验还改变了 KV 头数与维度，报告的缓存差异不能全部归因于跨层桥接。两篇都改变了模型架构，其成本数据不能直接当作线上服务加速。[^hysparse][^hysparse2]
+
+[[UnlimitedOCR2-TechReport26]] 面向多页 OCR，通过视觉块选择减少单步读取，并用页面分块、边界页复用和旧块释放控制 KV 驻留；其跨页上下文能力受分块范围限制。它与 HySparse 系列的模型、工作负载和测量指标不同。
 
 再看 **KV 在哪里**。[[ECHO-OSDI26]] 用主机内存扩大可容纳的上下文，[[DirectKV-OSDI26]] 探索 GPU 直接访问主机内存。两篇都依赖具体模型与硬件：前者的稀疏注意力决定预取哪些 token，后者的高速 CPU–GPU 互连决定直读是否划算。
 
 再问 **命中后怎样送达计算设备**。[[Strata-OSDI26]] 处理单条分层路径上的小页传输，[[DualPath-SIGCOMM26]] 在预填充与解码两侧分担外部存储读取。[[LMetric-OSDI26]] 则在请求进入实例前权衡前缀复用与排队负载。它们优化的瓶颈位置不同；后续比较应统一工作负载、硬件拓扑与延迟指标，不能直接排列论文报告的加速倍数。
+
+## 参考文献
+
+[^hysparse]: Yizhao Gao 等. 《HySparse: A Hybrid Sparse Attention Architecture with Oracle Token Selection and KV Cache Sharing》. arXiv 计算机科学预印本，2026-02-03。[原文](https://arxiv.org/abs/2602.03560v1)。
+[^hysparse2]: Jianyu Wei 等. 《HySparse2: Hybrid Sparse Attention with Two-Level KV Sharing》. arXiv，2026-09-22。[原文](https://arxiv.org/abs/2609.26368v1)。

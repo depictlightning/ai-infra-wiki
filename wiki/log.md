@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-27] 收录 HySparse2 预印本
+
+- 归档 arXiv:2609.26368v1 PDF，经 MinerU 解析全文并回看图 2–5 与表 1–5，建立 [[HySparse2-arXiv26]]；区分跨层桥接、MQA 头配置和预填充 FLOPs 分析的贡献。
+- 按用户确认将其纳入 [[KV-Cache-Systems]]，与 [[HySparse-arXiv26]] 对照，更新专题计数和首页。
+
 ## [2026-10-27] KTransformers 加入 LLM Serving 专题
 
 - 按用户确认，将 [[KTransformers-SOSP25]] 纳入 [[LLM-Serving]]，补充单机 CPU/GPU 专家放置与专家延迟的范围，并更新成员标签和首页计数。
