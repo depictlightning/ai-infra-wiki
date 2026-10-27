@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-27] 收录 SOSP 2025 指定论文 KTransformers
+
+- 依据仓库已有的 SOSP 正式版 PDF 与 MinerU Markdown，建立 [[KTransformers-SOSP25]]，回看内核、执行时间线、实验图与质量消融，区分原计算顺序和专家延迟的收益。
+- 建立 [[SOSP-2025]] 指定论文入口并更新首页；本次未筛选会议其他论文。
+
 ## [2026-10-27] Unlimited OCR 2 加入 KV cache 专题
 
 - 按用户确认，将 [[UnlimitedOCR2-TechReport26]] 纳入 [[KV-Cache-Systems]]，补充多页 OCR 的视觉 KV 驻留与跨块复用边界，并更新成员标签和首页计数。
