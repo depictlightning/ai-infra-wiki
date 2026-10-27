@@ -1,5 +1,9 @@
 # Wiki 更新记录
 
+## [2026-10-27] KTransformers 加入 LLM Serving 专题
+
+- 按用户确认，将 [[KTransformers-SOSP25]] 纳入 [[LLM-Serving]]，补充单机 CPU/GPU 专家放置与专家延迟的范围，并更新成员标签和首页计数。
+
 ## [2026-10-27] 收录 SOSP 2025 指定论文 KTransformers
 
 - 依据仓库已有的 SOSP 正式版 PDF 与 MinerU Markdown，建立 [[KTransformers-SOSP25]]，回看内核、执行时间线、实验图与质量消融，区分原计算顺序和专家延迟的收益。

@@ -4,9 +4,9 @@ topic: LLM-Serving
 theme_kind: area
 member_tag: area/llm-serving
 candidate_tags: [llm-serving, llm-inference, offline-serving, foundation-model-serving]
-paper_count: 10
+paper_count: 11
 first_generated: 2026-10-23
-last_updated: 2026-10-23
+last_updated: 2026-10-27
 tags: [topic-overview, llm-serving, scheduling]
 ---
 
@@ -29,6 +29,7 @@ LLM 服务系统要把到来的请求分配给模型实例，并在延迟、吞�
 
 ### 模型、显存与数据路径
 
+- [[KTransformers-SOSP25]] — 在单机 CPU/GPU 间放置和执行 MoE 专家；可选专家延迟以改变计算顺序换取重叠。
 - [[Janus-SOSP26]] — 在生产多模型负载中协调模型放置和弹性副本。
 - [[Prism-OSDI26]] — 联合管理模型权重与 KV cache 的显存占用。
 - [[DualPath-SIGCOMM26]] — 借用解码节点的存储网卡读取长上下文 KV cache。
@@ -48,5 +49,7 @@ LLM 服务系统要把到来的请求分配给模型实例，并在延迟、吞�
 ## 主题导读
 
 在线服务首先要区分 **请求放到哪里** 与 **实例内怎样执行**。[[LMetric-OSDI26]] 决定路由目标；[[DCP-OSDI26]] 和 [[EcoServe-OSDI26]] 调整预填充、解码的执行时机；[[DSpark-arXiv26]] 按候选 token 的预期接受率分配目标模型的验证批量。[[Janus-SOSP26]] 与 [[Prism-OSDI26]] 把决策扩到模型副本和显存容量，[[DualPath-SIGCOMM26]] 则处理长上下文请求从外部存储读回 KV 的网络瓶颈。这些方法涉及不同时间尺度和资源，不能仅凭单篇的吞吐倍数判断能否叠加。
+
+[[KTransformers-SOSP25]] 将路由专家放在 CPU 内存并由 CPU 执行，让受显存限制的单机也能运行大型 MoE 模型。它的实验重点是 batch 1 和 CPU/GPU 协同；可选专家延迟会改变模型计算顺序，不能直接当作保持原模型行为的调度优化。
 
 离线任务更关注一批请求何时全部完成、每块 GPU 产出多少。[[ACDC-SOSP26]] 使用任务已知信息改变执行计划，[[BatchGen-OSDI26]] 在运行中重新组合请求；它们的作业完成时间和在线论文的 TTFT、SLO 达标率不能直接互换。[[LLM-42-SOSP26]] 还表明部分服务要保证重复推理的一致输出，此时调度收益需连同验证与回滚成本一起计算。

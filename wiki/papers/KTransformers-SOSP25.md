@@ -5,7 +5,7 @@ full_title: "KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Infe
 authors: [Hongtao Chen, Weiyu Xie, Boxin Zhang, Jingqi Tang, Jiahao Wang, et al.]
 venue: SOSP
 year: 2025
-tags: [llm-inference, moe, cpu-gpu-hybrid, expert-offloading, amx, numa]
+tags: [llm-inference, moe, cpu-gpu-hybrid, expert-offloading, amx, numa, area/llm-serving]
 source_pdf: "[[3731569.3764843.pdf]]"
 source_md: "[[3731569.3764843]]"
 review_status: complete
@@ -97,7 +97,7 @@ MoE 模型每个 token 只激活少量专家，但全部专家权重仍要有地
 
 ## 相关
 
-- **会议**：[[SOSP-2025]]。
+- **会议与专题**：[[SOSP-2025]]、[[LLM-Serving]]。
 - **站内对照**：[[Janus-SOSP26]] 研究生产多模型的资源放置和弹性；[[Prism-OSDI26]] 管理模型权重与 KV cache 的显存占用。KTransformers 的重点是单机 CPU/GPU 分工及专家执行重叠，工作负载与前两者不同。
 - **原始材料**：[[3731569.3764843.pdf]]、[[3731569.3764843]]。
 
