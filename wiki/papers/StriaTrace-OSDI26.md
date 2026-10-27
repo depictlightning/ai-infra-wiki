@@ -5,7 +5,7 @@ full_title: "StriaTrace: Efficient Tracing and Diagnosis for Online LLM Inferenc
 authors: [Haonan Wu, Yanqing Chen, Kun Qian, Xue Li, Jingbo Xu, Erci Xu, Ennan Zhai, Wenyuan Yu, Guangtao Xue, Jingren Zhou]
 venue: OSDI
 year: 2026
-tags: [llm-inference, distributed-tracing, performance-diagnosis, observability, production-system]
+tags: [llm-inference, distributed-tracing, performance-diagnosis, observability, production-system, area/llm-inference]
 source_pdf: "[[osdi26-wu-haonan.pdf]]"
 source_md: "[[osdi26-wu-haonan]]"
 review_status: complete

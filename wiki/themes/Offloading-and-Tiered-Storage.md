@@ -3,7 +3,7 @@ type: theme
 topic: Offloading-and-Tiered-Storage
 theme_kind: lens
 member_tag: lens/offloading-and-tiered-storage
-paper_count: 18
+paper_count: 19
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -19,6 +19,7 @@ tags: [topic-overview, optimization-method]
 
 ## 核心论文
 
+- [[HiSparse-arXiv26]] — 主机 DRAM 保留完整注意力 KV，GPU 热缓存承载当前及近期所选记录。
 - [[Chen-LLMDataPipelines-OSDI26]] — 把多模态转换下推至存储节点，缓解训练端 CPU 数据加载瓶颈。
 - [[Cocoon-OSDI26]] — 将噪声历史分在 GPU、CPU 和 CXL-NMP，并就地执行 GEMV。
 - [[CoPilotIO-OSDI26]] — 卸载 NVMe completion 控制工作到 CPU，数据 payload 仍直接进入 GPU。

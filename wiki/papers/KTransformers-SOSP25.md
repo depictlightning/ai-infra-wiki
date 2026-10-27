@@ -5,7 +5,7 @@ full_title: "KTransformers: Unleashing the Full Potential of CPU/GPU Hybrid Infe
 authors: [Hongtao Chen, Weiyu Xie, Boxin Zhang, Jingqi Tang, Jiahao Wang, et al.]
 venue: SOSP
 year: 2025
-tags: [llm-inference, moe, cpu-gpu-hybrid, expert-offloading, amx, numa, area/llm-serving, lens/operator-and-compiler-optimization, lens/offloading-and-tiered-storage, mechanism/gpu-residency, mechanism/pipeline-overlap, lens/quantization-and-low-precision, mechanism/state-bytes, mechanism/data-movement]
+tags: [llm-inference, moe, cpu-gpu-hybrid, expert-offloading, amx, numa, area/llm-serving, lens/operator-and-compiler-optimization, lens/offloading-and-tiered-storage, mechanism/gpu-residency, mechanism/pipeline-overlap, lens/quantization-and-low-precision, mechanism/state-bytes, mechanism/data-movement, area/llm-inference]
 source_pdf: "[[3731569.3764843.pdf]]"
 source_md: "[[3731569.3764843]]"
 review_status: complete

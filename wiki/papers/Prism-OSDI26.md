@@ -5,7 +5,7 @@ full_title: "Prism: Cost-Efficient Multi-LLM Serving via GPU Memory Ballooning"
 authors: [Shan Yu, Yifan Qiao, Mingyuan Ma, Yangmin Li, Shuo Yang, et al.]
 venue: OSDI
 year: 2026
-tags: [llm-serving, gpu-memory, multi-model, memory-ballooning, scheduling, area/llm-serving, lens/scheduling-and-resource-management, mechanism/gpu-residency, mechanism/execution-utilization, lens/offloading-and-tiered-storage]
+tags: [llm-serving, gpu-memory, multi-model, memory-ballooning, scheduling, area/llm-serving, lens/scheduling-and-resource-management, mechanism/gpu-residency, mechanism/execution-utilization, lens/offloading-and-tiered-storage, area/llm-inference]
 source_pdf: "[[osdi26-yu-shan.pdf]]"
 source_md: "[[osdi26-yu-shan]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "Taming Dynamism on GPUs: Cross-SM Kernel Fusion via SM Cooperation 
 authors: [Jingkai He, Guangda Sun, Tianjian Li, Dong Du, Yubin Xia, Haibo Chen]
 venue: SOSP
 year: 2026
-tags: [gpu-kernels, kernel-fusion, moe-inference, dynamic-shapes, compiler, lens/operator-and-compiler-optimization, mechanism/execution-utilization, mechanism/pipeline-overlap, mechanism/data-movement]
+tags: [gpu-kernels, kernel-fusion, moe-inference, dynamic-shapes, compiler, lens/operator-and-compiler-optimization, mechanism/execution-utilization, mechanism/pipeline-overlap, mechanism/data-movement, area/llm-inference]
 source_pdf: "[[3830418.3843857.pdf]]"
 source_md: "[[3830418.3843857]]"
 review_status: complete

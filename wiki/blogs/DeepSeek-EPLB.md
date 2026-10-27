@@ -5,8 +5,8 @@ author: kaiyuan
 published: 2025-03-15
 source_url: https://zhuanlan.zhihu.com/p/29963005584
 reading_status: reviewed
-tags: [llm-serving, moe, expert-parallelism, load-balancing, area/llm-serving, lens/deepseek]
-last_updated: 2026-10-24
+tags: [llm-serving, moe, expert-parallelism, load-balancing, area/llm-serving, lens/deepseek, area/llm-inference]
+last_updated: 2026-10-27
 ---
 
 # DeepSeek EPLB：专家复制与分层负载均衡

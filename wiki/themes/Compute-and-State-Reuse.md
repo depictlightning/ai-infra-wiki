@@ -3,7 +3,7 @@ type: theme
 topic: Compute-and-State-Reuse
 theme_kind: lens
 member_tag: lens/compute-and-state-reuse
-paper_count: 20
+paper_count: 21
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -19,6 +19,7 @@ tags: [topic-overview, optimization-method]
 
 ## 核心论文
 
+- [[HiSparse-arXiv26]] — 逐请求、逐层保留近期选中的 KV，热缓存命中时避免重复从主机取回。
 - [[ACDC-SOSP26]] — 按已知任务前缀排序，并复用重复图片的编码结果。
 - [[AEGIS-OSDI26]] — 利用训练原有的确定性重计算作自等价校验，避免另做一份检查计算。
 - [[Anchor-SOSP26]] — 独立进程保留健康显存中的对象，worker 重启后重新连接。（仅公开摘要）

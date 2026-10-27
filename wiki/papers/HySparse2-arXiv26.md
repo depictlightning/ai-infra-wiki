@@ -5,7 +5,7 @@ full_title: "HySparse2: Hybrid Sparse Attention with Two-Level KV Sharing"
 authors: [Jianyu Wei, Yizhao Gao, Qihao Zhang, Shimao Chen, Zhengju Tang, et al.]
 venue: arXiv
 year: 2026
-tags: [llm-inference, sparse-attention, kv-cache, cross-layer-sharing, long-context, agentic-inference, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, mechanism/compute-work, mechanism/state-bytes, mechanism/data-movement]
+tags: [llm-inference, sparse-attention, kv-cache, cross-layer-sharing, long-context, agentic-inference, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, mechanism/compute-work, mechanism/state-bytes, mechanism/data-movement, area/llm-inference]
 source_pdf: "[[arxiv26-wei-hysparse2.pdf]]"
 source_md: "[[arxiv26-wei-hysparse2]]"
 review_status: complete

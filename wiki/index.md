@@ -1,6 +1,6 @@
 # AI 基础设施 Wiki
 
-本分支目前整理 OSDI 2026 的 49 篇 AI 基础设施论文、用户人工选定的 SOSP 2026 的 18 篇、SOSP 2025 论文 [[KTransformers-SOSP25]]、SIGCOMM 2026 论文 [[DualPath-SIGCOMM26]]、arXiv 预印本 [[DSpark-arXiv26]]、[[HySparse-arXiv26]] 与 [[HySparse2-arXiv26]]，以及技术报告 [[UnlimitedOCR2-TechReport26]]。SOSP 2026 中 11 篇已按全文阅读，7 篇只有公开摘要；每篇页面和会议综述都标明证据等级。
+本分支目前整理 OSDI 2026 的 49 篇 AI 基础设施论文、用户人工选定的 SOSP 2026 的 18 篇、SOSP 2025 论文 [[KTransformers-SOSP25]]、SIGCOMM 2026 论文 [[DualPath-SIGCOMM26]]、arXiv 预印本 [[DSpark-arXiv26]]、[[HiSparse-arXiv26]]、[[HySparse-arXiv26]] 与 [[HySparse2-arXiv26]]，以及技术报告 [[UnlimitedOCR2-TechReport26]]。SOSP 2026 中 11 篇已按全文阅读，7 篇只有公开摘要；每篇页面和会议综述都标明证据等级。
 
 ## 论文来源
 
@@ -8,7 +8,7 @@
 - [[SOSP-2025]] — 指定收录 1 篇：KTransformers 的 CPU/GPU 混合 MoE 推理。
 - [[SOSP-2026]] — 人工选定 18 篇：推理与服务、训练与工作流、GPU 内核与调度、模型存储、可观测性。
 - [[SIGCOMM-2026]] — 指定收录 1 篇：分离式 KV cache 存储 I/O 与智能体推理。
-- arXiv 2026 — [[DSpark-arXiv26]]：按置信度调度验证的半自回归推测解码；[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]：跨层共享 KV 的混合稀疏注意力。
+- arXiv 2026 — [[DSpark-arXiv26]]：按置信度调度验证的半自回归推测解码；[[HiSparse-arXiv26]]：稀疏注意力解码的分层 KV 管理；[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]：跨层共享 KV 的混合稀疏注意力。
 - 技术报告 2026 — [[UnlimitedOCR2-TechReport26]]：稀疏视觉参考与分块长文档解析。
 
 ## 主题
@@ -17,7 +17,8 @@
 
 ### 系统领域
 
-- [[KV-Cache-Systems]] — 8 篇论文 | KV cache 的跨层共享、驻留、搬运路径与复用调度。
+- [[LLM-Inference]] — 29 篇论文 | 模型执行、低精度内核、KV 管理、解码、批处理与性能观测的综合入口。
+- [[KV-Cache-Systems]] — 9 篇论文 | KV cache 的跨层共享、驻留、搬运路径与复用调度。
 - [[LLM-Serving]] — 11 篇论文 | 在线请求与资源调度、推测解码、离线批处理及确定性服务。
 
 ### 策展视角
@@ -29,27 +30,28 @@
 
 这些专题回答论文采用什么优化方法，可与上面的系统领域专题交叉。机制标签另记录计算量、状态字节、设备驻留、数据搬运、通信开销、执行利用率、流水重叠、串行轮次与等待等作用位置；论文数按当前人工确认的核心成员统计。同一论文可跨专题，篇数不能相加。各专题条目写明归类理由，邻近机制单列且不计入核心成员。
 
-- [[Sparsification]] — 6 篇 | 稀疏化与加速。
+- [[Sparsification]] — 7 篇 | 稀疏化与加速。
 - [[Lossless-Compression]] — 2 篇 | 无损压缩。
 - [[Quantization-and-Low-Precision]] — 3 篇 | 量化与低精度计算。
-- [[Operator-and-Compiler-Optimization]] — 18 篇 | 算子、编译与执行加速。
-- [[Compute-and-State-Reuse]] — 20 篇 | 计算与状态复用。
+- [[Operator-and-Compiler-Optimization]] — 19 篇 | 算子、编译与执行加速。
+- [[Compute-and-State-Reuse]] — 21 篇 | 计算与状态复用。
 - [[Speculative-Decoding-and-Multi-Token]] — 4 篇 | 投机解码与多 Token 生成。
 - [[Scheduling-and-Resource-Management]] — 33 篇 | 调度与资源管理。
-- [[Offloading-and-Tiered-Storage]] — 18 篇 | 卸载与分层存储。
-- [[Prefetching-and-Access-Prediction]] — 9 篇 | 预取与访问预测。
+- [[Offloading-and-Tiered-Storage]] — 19 篇 | 卸载与分层存储。
+- [[Prefetching-and-Access-Prediction]] — 10 篇 | 预取与访问预测。
 - [[Communication-and-Parallelism]] — 19 篇 | 通信与并行优化。
 
 ## 博客
 
-- [[vLLM-Hybrid-HiSparse]] — vLLM 稀疏 KV 动态卸载的机制与资料导航；所属专题：[[KV-Cache-Systems]]、[[vLLM-Serving]]。
-- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Serving]]、[[KV-Cache-Systems]]、[[DeepSeek]]。
-- [[DeepSeek-EPLB]] — kaiyuan 解读 DeepSeek 的专家复制与分层负载均衡；所属专题：[[LLM-Serving]]、[[DeepSeek]]。
+- [[vLLM-Hybrid-HiSparse]] — vLLM 稀疏 KV 动态卸载的机制与资料导航；所属专题：[[LLM-Inference]]、[[KV-Cache-Systems]]、[[vLLM-Serving]]。
+- [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Inference]]、[[LLM-Serving]]、[[KV-Cache-Systems]]、[[DeepSeek]]。
+- [[DeepSeek-EPLB]] — kaiyuan 解读 DeepSeek 的专家复制与分层负载均衡；所属专题：[[LLM-Inference]]、[[LLM-Serving]]、[[DeepSeek]]。
 - [[Zartbot-DualPath]] — zartbot 的 DualPath 讲解；目前仅记录原文入口，尚未核对正文。所属专题：[[LLM-Serving]]、[[DeepSeek]]。
 
 ## 阅读入口
 
-- 长上下文缓存：[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[Strata-OSDI26]]、[[ECHO-OSDI26]]、[[DirectKV-OSDI26]]
+- 推理总览：[[LLM-Inference]]
+- 长上下文缓存：[[HiSparse-arXiv26]]、[[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[Strata-OSDI26]]、[[ECHO-OSDI26]]、[[DirectKV-OSDI26]]
 - 多页文档解析：[[UnlimitedOCR2-TechReport26]]
 - 推理服务：[[KTransformers-SOSP25]]、[[BatchGen-OSDI26]]、[[EcoServe-OSDI26]]、[[Prism-OSDI26]]、[[DSpark-arXiv26]]
 - 训练与 RL：[[Tessera-OSDI26]]、[[RollArt-OSDI26]]、[[Weave-OSDI26]]

@@ -3,7 +3,7 @@ type: theme
 topic: Operator-and-Compiler-Optimization
 theme_kind: lens
 member_tag: lens/operator-and-compiler-optimization
-paper_count: 18
+paper_count: 19
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -19,6 +19,7 @@ tags: [topic-overview, optimization-method]
 
 ## 核心论文
 
+- [[HiSparse-arXiv26]] — 将哈希、槽位扫描、LRU 更新与 GPU 辅助 I/O 融合进可捕获的召回内核。
 - [[ADAngel-OSDI26]] — 构造多种低精度矩阵乘内核，并按形状与设备选择映射。
 - [[Ave-SOSP26]] — 利用编译期数据流不变量辅助智能体生成和组合 GPU 内核优化。
 - [[CoPilotIO-OSDI26]] — 将 completion 轮询交给 CPU，GPU warp 通过硬件 barrier 等待。

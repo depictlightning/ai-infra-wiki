@@ -5,7 +5,7 @@ full_title: "Janus: Multi-LLM Serving at Production Scale"
 authors: [Tianbao Zhou, Yi Wang, Yu Zhou, Zirui Liu, Zhiming Wang, et al.]
 venue: SOSP
 year: 2026
-tags: [llm-serving, multi-model-serving, elastic-scaling, gpu-scheduling, production-trace, area/llm-serving, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage]
+tags: [llm-serving, multi-model-serving, elastic-scaling, gpu-scheduling, production-trace, area/llm-serving, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage, area/llm-inference]
 source_pdf: "[[3830418.3843867.pdf]]"
 source_md: "[[3830418.3843867]]"
 review_status: complete

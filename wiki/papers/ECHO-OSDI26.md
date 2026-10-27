@@ -5,7 +5,7 @@ full_title: "ECHO: Efficient KV Cache Offloading with Lossless Prefetching for S
 authors: [Guangda Liu, Wenhao Chen, Chengwei Li, Zhenyu Ning, Jing Lin, Yiwu Yao, Quan Chen, Shixuan Sun, Jieru Zhao, Minyi Guo]
 venue: OSDI
 year: 2026
-tags: [llm-serving, kv-cache, sparse-attention, offloading, prefetching, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/data-movement, mechanism/access-wait]
+tags: [llm-serving, kv-cache, sparse-attention, offloading, prefetching, area/kv-cache-systems, lens/sparsification, lens/compute-and-state-reuse, lens/offloading-and-tiered-storage, lens/prefetching-and-access-prediction, mechanism/gpu-residency, mechanism/data-movement, mechanism/access-wait, area/llm-inference]
 source_pdf: "[[osdi26-liu-guangda.pdf]]"
 source_md: "[[osdi26-liu-guangda]]"
 review_status: complete

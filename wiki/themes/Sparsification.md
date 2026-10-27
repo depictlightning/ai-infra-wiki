@@ -3,7 +3,7 @@ type: theme
 topic: Sparsification
 theme_kind: lens
 member_tag: lens/sparsification
-paper_count: 6
+paper_count: 7
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -19,6 +19,7 @@ tags: [topic-overview, optimization-method]
 
 ## 核心论文
 
+- [[HiSparse-arXiv26]] — 利用已有稀疏选择控制 KV 驻留和按需召回；未改变选择器的计算语义。
 - [[ECHO-OSDI26]] — 利用原生稀疏注意力的 token 选择按需回载 KV；未提出新的注意力稀疏化算法。
 - [[Helmsman-OSDI26]] — 以学习式 nprobe 决定每个查询扫描的簇，裁剪检索候选。
 - [[HySparse-arXiv26]] — 少数完整层选择重要块，后续层只关注选中块与局部窗口。

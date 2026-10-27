@@ -5,13 +5,13 @@ author: vLLM Team
 published: 2026-09-08
 source_url: https://vllm.ai/blog/2026-09-08-glm53-part1-hybrid-sparse-offloading
 reading_status: reviewed
-tags: [vllm, llm-serving, kv-cache, offloading, sparse-attention, area/kv-cache-systems, lens/vllm]
+tags: [vllm, llm-serving, kv-cache, offloading, sparse-attention, area/kv-cache-systems, lens/vllm, area/llm-inference]
 last_updated: 2026-10-27
 ---
 
 # vLLM Hybrid HiSparse：技术解读与资料导航
 
-这页以 vLLM 官方第一篇博客为主线，整理相关论文、实现文档、代码和后续部署文章。上方作者与日期对应**原博客**；本页是 Wiki 的转述和资料汇编，并非 vLLM 团队撰写的原文。官方系列两篇及设计文档已阅读；论文作为背景入口，以下对论文的介绍依据摘要，不代表已完成全文笔记。
+这页以 vLLM 官方第一篇博客为主线，整理相关论文、实现文档、代码和后续部署文章。上方作者与日期对应**原博客**；本页是 Wiki 的转述和资料汇编，并非 vLLM 团队撰写的原文。官方系列两篇及设计文档已阅读；HiSparse 已有本站全文笔记 [[HiSparse-arXiv26]]，IndexCache 仍作为摘要级背景入口。
 
 ## 先理解它解决什么问题
 
@@ -48,7 +48,7 @@ vLLM 的 **Hybrid HiSparse** 则在有显存余量时保留 GPU 上的 KV，显�
 
 ### 3. 看论文：原始方法和 indexer 背景
 
-- [HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management](https://arxiv.org/abs/2608.07009v1)：Zhiqiang Xie 等的原始研究，适合看主机分层缓存、GPU 命中与替换、按层预取的设计；摘要报告的系统和硬件条件须与 vLLM 官方实验分开看。[^hisparse]
+- [HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Cache Management](https://arxiv.org/abs/2608.07009v1)：Zhiqiang Xie 等的原始研究，适合看主机分层缓存、GPU 命中与替换、按层预取的设计；已整理本站全文笔记 [[HiSparse-arXiv26]]，其中的 SGLang 实验须与 vLLM 官方实验分开看。[^hisparse]
 - [IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse](https://arxiv.org/abs/2603.12201v1)：Yushi Bai 等研究跨层复用 indexer 的 token 选择，用来理解官方博客提及的 GLM 5.3 IndexShare 背景；它处理索引计算复用，与 HiSparse 管理 KV 驻留是不同问题。[^indexcache][^part1]
 
 ### 4. 看实现和版本状态

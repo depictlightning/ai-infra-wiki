@@ -5,7 +5,7 @@ full_title: "Nixie: Efficient, Transparent Temporal Multiplexing for Consumer GP
 authors: [Yechen Xu, Yifei Wang, Nathanael Ren, Yiran Chen, Danyang Zhuo]
 venue: OSDI
 year: 2026
-tags: [gpu, memory-management, temporal-multiplexing, llm-inference, scheduling, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage, mechanism/gpu-residency]
+tags: [gpu, memory-management, temporal-multiplexing, llm-inference, scheduling, lens/scheduling-and-resource-management, lens/offloading-and-tiered-storage, mechanism/gpu-residency, area/llm-inference]
 source_pdf: "[[osdi26-xu-yechen.pdf]]"
 source_md: "[[osdi26-xu-yechen]]"
 review_status: complete

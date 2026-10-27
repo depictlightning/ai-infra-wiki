@@ -3,7 +3,7 @@ type: theme
 topic: Prefetching-and-Access-Prediction
 theme_kind: lens
 member_tag: lens/prefetching-and-access-prediction
-paper_count: 9
+paper_count: 10
 first_generated: 2026-10-27
 last_updated: 2026-10-27
 tags: [topic-overview, optimization-method]
@@ -19,6 +19,7 @@ tags: [topic-overview, optimization-method]
 
 ## 核心论文
 
+- [[HiSparse-arXiv26]] — 在共享索引层组中提前回载各层所需 KV；普通相邻层猜测未获端到端收益。
 - [[Chen-LLMDataPipelines-OSDI26]] — 利用 evaluation 计划和恢复 rank 映射，提前复制 checkpoint 与热点文件。
 - [[Cocoon-OSDI26]] — 由 sampler seed 确定 embedding 下一次访问，安排合并噪声写入。
 - [[DiFlow-SOSP26]] — 编译时前移 LoRA 加载，使其与早期去噪步骤重叠。
