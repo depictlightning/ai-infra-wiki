@@ -4,7 +4,7 @@ topic: LLM-Serving
 title: LLM Serving
 theme_kind: area
 member_tag: area/llm-serving
-paper_count: 16
+paper_count: 18
 first_generated: 2026-10-23
 last_updated: 2026-10-28
 tags: [topic-overview, llm-serving]
@@ -40,6 +40,8 @@ tags: [topic-overview, llm-serving]
 - [[Bidaw-FAST26]] — 协同请求调度和分层 KV 缓存替换，减少多轮对话的存储等待。
 - [[MAIO-FAST26]] — 按模型加载轨迹预取权重，缩短推理服务冷启动。
 - [[MorphServe-MLSys26]] — 按负载调整层精度，将释放的显存分配给 KV cache。
+- [[BreakingTheIce-MLSys26]] — 拆解并预测 vLLM 引擎启动成本，为扩缩容提供测量依据。
+- [[HELIOS-MLSys26]] — 根据提前退出画像选择模型和加载层数，权衡资源、吞吐与输出质量。
 
 ### 生产观测
 

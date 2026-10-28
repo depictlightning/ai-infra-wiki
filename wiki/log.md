@@ -2,6 +2,11 @@
 
 ## [2026-10-28] 开始整理 FAST 2026 与 MLSys 2026
 
+- 增加 [[HELIOS-MLSys26]] 全文笔记，纳入 [[LLM-Serving]]，说明提前退出与输出质量边界。
+- 增加 [[BreakingTheIce-MLSys26]] 全文笔记，纳入 [[LLM-Serving]]，区分引擎启动与线上完整冷启动。
+- 增加 [[TokenWeave-MLSys26]] 全文笔记，纳入 [[LLM-Inference]]，区分融合、重叠和无通信参照的实验边界。
+- 增加 [[SuperInfer-MLSys26]] 全文笔记，标出调度公式中 SLO 参数与请求状态的对应疑点，暂不纳入专题核心名单。
+- 增加 [[OPKV-MLSys26]] 全文笔记，纳入 [[LLM-Inference]] 与 [[KV-Cache-Systems]]，记录选择器语义和内存预算边界。
 - 按直接相关原则筛选 FAST 2026，建立 7 篇论文页并阅读正式版全文；6 篇完成复核，[[CacheSlide-FAST26]] 的算法阈值与论文解释存在矛盾，结合作者仓库审计后仍保留待复核状态。
 - 开始筛选 MLSys 2026；[[MorphServe-MLSys26]]、[[FlexiCache-MLSys26]]、[[BatchLLM-MLSys26]]、[[SparseSpec-MLSys26]]、[[AXLearn-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[Stream2LLM-MLSys26]]、[[PRISM-MLSys26]]、[[ProTrain-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]] 和 [[ScaleSearch-MLSys26]] 完成全文和图表复核，[[CRAFT-MLSys26]]、[[LAPS-MLSys26]]、[[SkipKV-MLSys26]] 与 [[DistCA-MLSys26]] 是待复核初稿，会议筛选尚未结束。部分本地论文与会议正式版 PDF 不一致，另存正式版并调用 MinerU 解析；另检查并解析会议页面单独提供的补充材料。
 - 将已完成且直接相关的论文同步到 [[LLM-Inference]]、[[LLM-Serving]]、[[LLM-Training]] 和 [[KV-Cache-Systems]]；通用 GPU 工作未强行列入核心专题。

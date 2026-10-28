@@ -4,7 +4,7 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 25
+paper_count: 27
 first_generated: 2026-10-27
 last_updated: 2026-10-28
 tags: [topic-overview, llm-inference]
@@ -20,13 +20,13 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 25 篇核心论文，按论文去重计数：
+本专题共 27 篇核心论文，按论文去重计数：
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
 - [[Wang-LocalMoEInference-OSDI26]]、[[KAIROX-OSDI26]]、[[MeldKernel-SOSP26]]、[[MPK-OSDI26]]
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]]、[[SPEX-OSDI26]]、[[LLM-42-SOSP26]]
-- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]
+- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]、[[OPKV-MLSys26]]、[[TokenWeave-MLSys26]]
 
 ## 按优化方法查找
 
@@ -40,6 +40,7 @@ tags: [topic-overview, llm-inference]
 - [[SolidAttention-FAST26]] — 以块级稀疏选择控制从 SSD 读取的 KV。
 - [[FlexiCache-MLSys26]] — 按注意力头选择高关注 KV 页面，结合稳定性控制重排频率。
 - [[SparseSpec-MLSys26]] — 以完整核验的注意力分数选择下一轮稀疏草稿所需 KV。
+- [[OPKV-MLSys26]] — 将稀疏选择的 KV 重新聚合成页，减少召回搬运。
 
 ### 02 无损压缩
 
@@ -60,6 +61,7 @@ tags: [topic-overview, llm-inference]
 - [[MPK-OSDI26]] — 将 LLM 张量图编译为 persistent mega-kernel。
 - [[Dataflow-MLSys26]] — 在数据流加速器上循环化解码层、跨样本流水并下放调度。
 - [[ProfInfer-MLSys26]] — 关联端侧推理算子、线程和性能计数器，辅助定位执行瓶颈。
+- [[TokenWeave-MLSys26]] — 融合张量并行中的通信、残差与归一化，减少重复计算和访存。
 - [[DirectKV-OSDI26]]、[[HiSparse-arXiv26]]、[[Strata-OSDI26]] — 分别优化远端 KV 读取、召回和搬运布局的内核。
 
 ### 05 计算与状态复用
@@ -108,6 +110,7 @@ tags: [topic-overview, llm-inference]
 
 ### 10 通信与并行优化
 
+- [[TokenWeave-MLSys26]] — 按 GPU 波次拆分 token，使张量并行的计算和通信重叠。
 - [[Wang-LocalMoEInference-OSDI26]] — 面向少量 PCIe GPU 优化专家并行的 dispatch 和 combine 流量。
 
 ## 相关博客

@@ -5,7 +5,7 @@ title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 16
+paper_count: 17
 first_generated: 2026-10-23
 last_updated: 2026-10-28
 tags: [topic-overview, kv-cache, llm-serving]
@@ -39,6 +39,7 @@ tags: [topic-overview, kv-cache, llm-serving]
 - [[Stream2LLM-MLSys26]] — 在上下文更新时按最长公共前缀失效 KV，并按成本选择重算或换出。
 - [[Kitty-MLSys26]] — 用混合精度分页与融合反量化降低长上下文 KV 容量。
 - [[ScaleSearch-MLSys26]] — 以尺度搜索和混合精度缓存支持 NVFP4 注意力。
+- [[OPKV-MLSys26]] — 在保留完整 CPU KV 的同时聚合和复用稀疏召回页面。
 
 ## 相关博客
 
