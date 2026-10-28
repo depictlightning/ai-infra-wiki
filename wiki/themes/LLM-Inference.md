@@ -4,9 +4,9 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 16
+paper_count: 25
 first_generated: 2026-10-27
-last_updated: 2026-10-27
+last_updated: 2026-10-28
 tags: [topic-overview, llm-inference]
 ---
 
@@ -20,12 +20,13 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 16 篇核心论文，按论文去重计数：
+本专题共 25 篇核心论文，按论文去重计数：
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
 - [[Wang-LocalMoEInference-OSDI26]]、[[KAIROX-OSDI26]]、[[MeldKernel-SOSP26]]、[[MPK-OSDI26]]
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]]、[[SPEX-OSDI26]]、[[LLM-42-SOSP26]]
+- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]
 
 ## 按优化方法查找
 
@@ -36,6 +37,9 @@ tags: [topic-overview, llm-inference]
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]] — 通过稀疏选择与跨层共享减少注意力处理范围。
 - [[HiSparse-arXiv26]]、[[ECHO-OSDI26]] — 利用已有稀疏选择管理 KV 驻留和回载，不改变选择器语义。
 - [[KAIROX-OSDI26]] — 预测活跃神经元组，仅计算和搬运所需组。
+- [[SolidAttention-FAST26]] — 以块级稀疏选择控制从 SSD 读取的 KV。
+- [[FlexiCache-MLSys26]] — 按注意力头选择高关注 KV 页面，结合稳定性控制重排频率。
+- [[SparseSpec-MLSys26]] — 以完整核验的注意力分数选择下一轮稀疏草稿所需 KV。
 
 ### 02 无损压缩
 
@@ -44,6 +48,9 @@ tags: [topic-overview, llm-inference]
 - [[ADAngel-OSDI26]] — 针对权重和激活精度组合选择矩阵乘映射。
 - [[KTransformers-SOSP25]] — 为量化专家权重设计 CPU 布局和执行路径。
 - [[Wang-LocalMoEInference-OSDI26]] — 使用专门的 FP8 GEMV 和量化转换融合优化 CPU MoE 执行。
+- [[IntAttention-MLSys26]] — 用整数查表与量化归一化减少端侧注意力的类型转换开销。
+- [[Kitty-MLSys26]] — 动态提高部分 Key 通道精度，并以低位宽页布局降低 KV 容量。
+- [[ScaleSearch-MLSys26]] — 搜索低位宽块尺度并应用于量化注意力与 KV。
 
 ### 04 算子、编译与执行加速
 
@@ -51,6 +58,8 @@ tags: [topic-overview, llm-inference]
 - [[KTransformers-SOSP25]]、[[Wang-LocalMoEInference-OSDI26]] — 分别优化 CPU 专家内核、融合与同步。
 - [[MeldKernel-SOSP26]] — 通过跨 SM 协作与即时归约减少阶段间写回。
 - [[MPK-OSDI26]] — 将 LLM 张量图编译为 persistent mega-kernel。
+- [[Dataflow-MLSys26]] — 在数据流加速器上循环化解码层、跨样本流水并下放调度。
+- [[ProfInfer-MLSys26]] — 关联端侧推理算子、线程和性能计数器，辅助定位执行瓶颈。
 - [[DirectKV-OSDI26]]、[[HiSparse-arXiv26]]、[[Strata-OSDI26]] — 分别优化远端 KV 读取、召回和搬运布局的内核。
 
 ### 05 计算与状态复用
@@ -64,6 +73,9 @@ tags: [topic-overview, llm-inference]
 ### 06 投机解码与多 Token 生成
 
 - [[DSpark-arXiv26]] — 使用半自回归草稿，并按置信度分配验证预算。
+- [[SparseSpec-MLSys26]] — 使用同一模型的稀疏注意力生成草稿，完整注意力核验。
+- [[Dataflow-MLSys26]] — 利用数据流执行加速草稿与目标模型的推测解码。
+- [[PRISM-MLSys26]] — 为不同草稿阶段分配参数路径，提高所测草稿接受长度和吞吐。
 - [[Sereno-OSDI26]] — 调整草稿与验证批次，以控制移动设备上的带宽争用。
 - [[SPEX-OSDI26]] — 邻近机制：推测执行推理树的后续分支，不等同于逐 token 投机解码。
 - [[LLM-42-SOSP26]] — 邻近机制：通过候选生成与固定形状核验保证确定性，目标不是减少生成轮次。
@@ -71,6 +83,7 @@ tags: [topic-overview, llm-inference]
 ### 07 调度与资源管理
 
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]] — 分别调节验证预算及草稿、验证的执行时机。
+- [[SparseSpec-MLSys26]] — 在请求间混合草稿与核验，并以主机卸载控制 KV 容量。
 - [[SPEX-OSDI26]] — 在推理树分支和请求间分配空闲 GPU 并行度。
 - [[LLM-42-SOSP26]] — 将确定性请求组成固定形状验证批次。
 - [[KAIROX-OSDI26]]、[[Wang-LocalMoEInference-OSDI26]] — 分别调整 CPU/GPU 工作分工与执行路径。
@@ -81,6 +94,8 @@ tags: [topic-overview, llm-inference]
 - [[HiSparse-arXiv26]]、[[ECHO-OSDI26]] — 在主机保存完整 KV，并按需管理 GPU 热缓存。
 - [[DirectKV-OSDI26]] — 从 GPU 直接读取高速互连上的主机 KV。
 - [[Strata-OSDI26]] — 管理 GPU、主机与外部存储之间的 KV。
+- [[SolidAttention-FAST26]] — 将完整 KV 存在 SSD，按需加载所选块。
+- [[FlexiCache-MLSys26]] — 将稳定头的完整 KV 存在主机，按需回载新选页面。
 - [[KTransformers-SOSP25]]、[[KAIROX-OSDI26]]、[[Wang-LocalMoEInference-OSDI26]] — 在 CPU/GPU 之间分配专家或神经元组的存储与计算。
 
 ### 09 预取与访问预测
@@ -88,6 +103,7 @@ tags: [topic-overview, llm-inference]
 - [[HiSparse-arXiv26]] — 在共享索引层组中提前回载所需 KV。
 - [[ECHO-OSDI26]] — 利用跨层稀疏选择相关性提前取回 KV。
 - [[Strata-OSDI26]] — 在排队期间将 SSD 命中的 KV 预取到 DRAM。
+- [[SolidAttention-FAST26]] — 根据上一次选择预测并预取下一步的 KV 块。
 - [[KAIROX-OSDI26]]、[[Wang-LocalMoEInference-OSDI26]] — 分别预测活跃组或提前准备下一专家权重。
 
 ### 10 通信与并行优化

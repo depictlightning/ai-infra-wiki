@@ -5,9 +5,9 @@ title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 9
+paper_count: 16
 first_generated: 2026-10-23
-last_updated: 2026-10-27
+last_updated: 2026-10-28
 tags: [topic-overview, kv-cache, llm-serving]
 ---
 
@@ -32,6 +32,13 @@ tags: [topic-overview, kv-cache, llm-serving]
 - [[DirectKV-OSDI26]] — 在高带宽 CPU–GPU 互连上直接读取主机内存中的 KV，减少显存暂存区。
 - [[LMetric-OSDI26]] — 在请求路由时同时考虑前缀复用与实例负载。
 - [[DualPath-SIGCOMM26]] — 利用解码节点的存储网卡读取旧 KV，再经计算网络送往预填充节点。
+- [[SolidAttention-FAST26]] — 将完整历史保存在 SSD，以块级稀疏选择、预取和重叠计算降低单请求等待。
+- [[Bidaw-FAST26]] — 利用用户交互线索选择缓存内容，并按 KV 位置和大小调度请求。
+- [[FlexiCache-MLSys26]] — 依据不同注意力头的时间稳定性，选择 GPU 驻留和主机回载策略。
+- [[BatchLLM-MLSys26]] — 对离线大批次预先识别并分组共享前缀，缩短公共 KV 生命周期。
+- [[Stream2LLM-MLSys26]] — 在上下文更新时按最长公共前缀失效 KV，并按成本选择重算或换出。
+- [[Kitty-MLSys26]] — 用混合精度分页与融合反量化降低长上下文 KV 容量。
+- [[ScaleSearch-MLSys26]] — 以尺度搜索和混合精度缓存支持 NVFP4 注意力。
 
 ## 相关博客
 

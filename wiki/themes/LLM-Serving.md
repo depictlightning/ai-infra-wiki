@@ -4,9 +4,9 @@ topic: LLM-Serving
 title: LLM Serving
 theme_kind: area
 member_tag: area/llm-serving
-paper_count: 10
+paper_count: 16
 first_generated: 2026-10-23
-last_updated: 2026-10-27
+last_updated: 2026-10-28
 tags: [topic-overview, llm-serving]
 ---
 
@@ -26,6 +26,9 @@ tags: [topic-overview, llm-serving]
 - [[EcoServe-OSDI26]] — 错峰安排多个实例的 prefill/decode，控制阶段干扰。
 - [[ACDC-SOSP26]] — 按离线任务组织并行配置、缓存顺序和执行计划。
 - [[BatchGen-OSDI26]] — 在执行中重组序列批次，并用空闲 GPU 缩短长尾。
+- [[BatchLLM-MLSys26]] — 提前识别离线批次中的共享前缀，并按组重排与混合 prefill/decode。
+- [[Stream2LLM-MLSys26]] — 在检索上下文流式到达时重叠 prefill，并按资源压力调整请求与 KV 抢占。
+- [[SparseSpec-MLSys26]] — 混合多个请求的稀疏草稿与完整核验，减少批量长推理的资源波动。
 
 ### 路由、资源与数据路径
 
@@ -34,6 +37,9 @@ tags: [topic-overview, llm-serving]
 - [[Prism-OSDI26]] — 联合管理多模型权重、KV 显存气球与执行空隙。
 - [[DualPath-SIGCOMM26]] — 在预填充与解码节点间分担外部 KV 存储读取。
 - [[OpenTela-OSDI26]] — 在异构 HPC 资源之上组织可发现的 LLM 服务。
+- [[Bidaw-FAST26]] — 协同请求调度和分层 KV 缓存替换，减少多轮对话的存储等待。
+- [[MAIO-FAST26]] — 按模型加载轨迹预取权重，缩短推理服务冷启动。
+- [[MorphServe-MLSys26]] — 按负载调整层精度，将释放的显存分配给 KV cache。
 
 ### 生产观测
 

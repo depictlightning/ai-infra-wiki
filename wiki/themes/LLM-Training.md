@@ -4,9 +4,9 @@ topic: LLM-Training
 title: LLM Training
 theme_kind: area
 member_tag: area/llm-training
-paper_count: 16
+paper_count: 20
 first_generated: 2026-10-27
-last_updated: 2026-10-27
+last_updated: 2026-10-28
 tags: [topic-overview, llm-training]
 ---
 
@@ -25,6 +25,8 @@ tags: [topic-overview, llm-training]
 - [[Tessera-OSDI26]] — 联合规划异构 MoE 训练的流水分段与通信重叠。
 - [[Hetu-v2-OSDI26]] — 以分层异构 SPMD 与图切换表达异构大模型训练。
 - [[Kareus-OSDI26]] — 联合优化训练通信时机、SM 份额和 GPU 频率。
+- [[AXLearn-MLSys26]] — 通过模块化配置、硬件适配与运行时支持跨硬件大模型训练。
+- [[ProTrain-MLSys26]] — 联合搜索训练状态驻留、激活卸载与重计算配置。
 
 ### RL 后训练与权重同步
 
@@ -41,6 +43,8 @@ tags: [topic-overview, llm-training]
 - [[RobustRL-OSDI26]] — 按角色恢复 RL worker，保留有效 rollout 进度。
 - [[TrainMover-OSDI26]] — 为训练迁移预热运行时和通信组，缩短切换停机。
 - [[AEGIS-OSDI26]] — 在生产 LLM 训练中以在线传感和异步确认检测 SDC。
+- [[AITurbo-FAST26]] — 利用分组写入、去重和计算互连降低训练检查点 I/O 等待。
+- [[AdaCheck-FAST26]] — 识别训练状态冗余，并用梯度和远端更新提高检查点频率。
 
 ### 调试与仿真
 

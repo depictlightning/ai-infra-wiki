@@ -1,5 +1,11 @@
 # Wiki 更新记录
 
+## [2026-10-28] 开始整理 FAST 2026 与 MLSys 2026
+
+- 按直接相关原则筛选 FAST 2026，建立 7 篇论文页并阅读正式版全文；6 篇完成复核，[[CacheSlide-FAST26]] 的算法阈值与论文解释存在矛盾，结合作者仓库审计后仍保留待复核状态。
+- 开始筛选 MLSys 2026；[[MorphServe-MLSys26]]、[[FlexiCache-MLSys26]]、[[BatchLLM-MLSys26]]、[[SparseSpec-MLSys26]]、[[AXLearn-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[Stream2LLM-MLSys26]]、[[PRISM-MLSys26]]、[[ProTrain-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]] 和 [[ScaleSearch-MLSys26]] 完成全文和图表复核，[[CRAFT-MLSys26]]、[[LAPS-MLSys26]]、[[SkipKV-MLSys26]] 与 [[DistCA-MLSys26]] 是待复核初稿，会议筛选尚未结束。部分本地论文与会议正式版 PDF 不一致，另存正式版并调用 MinerU 解析；另检查并解析会议页面单独提供的补充材料。
+- 将已完成且直接相关的论文同步到 [[LLM-Inference]]、[[LLM-Serving]]、[[LLM-Training]] 和 [[KV-Cache-Systems]]；通用 GPU 工作未强行列入核心专题。
+
 ## [2026-10-28] 调整站名与首页入口
 
 - 将站名改为 Awesome AI Infra Papers Wiki；首页致谢前置，阅读入口保留五个专题。
