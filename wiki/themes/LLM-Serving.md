@@ -4,7 +4,7 @@ topic: LLM-Serving
 title: LLM Serving
 theme_kind: area
 member_tag: area/llm-serving
-paper_count: 19
+paper_count: 21
 first_generated: 2026-10-23
 last_updated: 2026-10-28
 tags: [topic-overview, llm-serving]
@@ -21,6 +21,10 @@ tags: [topic-overview, llm-serving]
 ## 核心论文
 
 ### 批处理与阶段调度
+
+- [[TriInfer-MLSys26]] — 为图文大模型选择编码、预填充与解码的部署组合，并按阶段组批。
+
+- [[BEAM-MLSys26]] — 联合调节分块、微批和频率，在时延约束下减少 GPU 能耗。
 
 - [[DCP-OSDI26]] — 按延迟约束调整流水并行的预填充块与解码顺序。
 - [[EcoServe-OSDI26]] — 错峰安排多个实例的 prefill/decode，控制阶段干扰。
