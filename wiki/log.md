@@ -2,9 +2,9 @@
 
 ## [2026-10-28] 开始整理 FAST 2026 与 MLSys 2026
 
-- 增加 [[HELIOS-MLSys26]] 全文笔记，纳入 [[LLM-Serving]]，说明提前退出与输出质量边界。
-- 增加 [[BreakingTheIce-MLSys26]] 全文笔记，纳入 [[LLM-Serving]]，区分引擎启动与线上完整冷启动。
-- 增加 [[TokenWeave-MLSys26]] 全文笔记，纳入 [[LLM-Inference]]，区分融合、重叠和无通信参照的实验边界。
+- 增加 [[SpecDecodeBench-MLSys26]] 全文笔记，纳入 [[LLM-Inference]]，区分实测吞吐与 oracle 模拟上界。
+- 建立 [[FlexTrain-MLSys26]] 全文初稿，标出 DP+PP 加速倍数的图文差异，暂不纳入专题。
+- [[TokenWeave-MLSys26]]、[[BreakingTheIce-MLSys26]] 和 [[HELIOS-MLSys26]] 已补读全文与附录并纳入专题；[[FaaScale-MLSys26]] 已通读但图示时间轴存在疑点，暂不纳入专题。
 - 增加 [[SuperInfer-MLSys26]] 全文笔记，标出调度公式中 SLO 参数与请求状态的对应疑点，暂不纳入专题核心名单。
 - 增加 [[OPKV-MLSys26]] 全文笔记，纳入 [[LLM-Inference]] 与 [[KV-Cache-Systems]]，记录选择器语义和内存预算边界。
 - 按直接相关原则筛选 FAST 2026，建立 7 篇论文页并阅读正式版全文；6 篇完成复核，[[CacheSlide-FAST26]] 的算法阈值与论文解释存在矛盾，结合作者仓库审计后仍保留待复核状态。
