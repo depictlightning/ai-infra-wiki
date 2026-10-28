@@ -5,7 +5,7 @@ title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 17
+paper_count: 19
 first_generated: 2026-10-23
 last_updated: 2026-10-28
 tags: [topic-overview, kv-cache, llm-serving]
@@ -22,6 +22,8 @@ tags: [topic-overview, kv-cache, llm-serving]
 本专题收录以 **KV cache 的跨层共享、驻留、搬运或复用调度** 为主要问题的论文。`kv-cache` 标签用于发现候选，`## 核心论文` 是人工确认的成员名单；同样带有该标签、但主要研究别的问题的论文不会自动加入。成员可以同时属于其他专题。模型结构论文和运行时系统论文的评测指标不同，不能直接比较吞吐收益。
 
 ## 核心论文
+
+- [[LocalityAwareBeam-MLSys26]] — 分组调度多分支搜索，利用时间局部性与共享前缀减少主机 KV 换入。
 
 - [[HiSparse-arXiv26]] — 主机保存完整稀疏 KV，以逐请求热缓存和共享索引预取控制解码驻留；索引器及元数据另计。
 - [[UnlimitedOCR2-TechReport26]] — 面向长文档 OCR，限制视觉参考范围，并通过页面分块与边界页 KV 复用控制显存驻留。
@@ -40,6 +42,7 @@ tags: [topic-overview, kv-cache, llm-serving]
 - [[Kitty-MLSys26]] — 用混合精度分页与融合反量化降低长上下文 KV 容量。
 - [[ScaleSearch-MLSys26]] — 以尺度搜索和混合精度缓存支持 NVFP4 注意力。
 - [[OPKV-MLSys26]] — 在保留完整 CPU KV 的同时聚合和复用稀疏召回页面。
+- [[ContextPilot-MLSys26]] — 重排和调度共享文档，使引擎前缀缓存更易命中。
 
 ## 相关博客
 

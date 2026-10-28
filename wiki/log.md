@@ -2,6 +2,11 @@
 
 ## [2026-10-28] 开始整理 FAST 2026 与 MLSys 2026
 
+- 增加 [[LocalityAwareBeam-MLSys26]] 全文笔记，纳入推理与 KV 专题，区分分支搜索的性能收益与未测任务质量。
+
+- 增加 [[ContextPilot-MLSys26]] 全文与独立附录笔记，纳入推理、服务和 KV 专题，区分输入改写与精确前缀复用。
+- 增加 [[MoEServingTax-MLSys26]] 全文笔记，纳入 [[LLM-Inference]]，区分 prefill 长尾与 decode 权重读取成本。
+- 增加 [[GhostServe-MLSys26]] 全文初稿；记录节点内故障边界，摘要与结论的数字归属相反，暂不纳入专题。
 - 增加 [[SpecDecodeBench-MLSys26]] 全文笔记，纳入 [[LLM-Inference]]，区分实测吞吐与 oracle 模拟上界。
 - 建立 [[FlexTrain-MLSys26]] 全文初稿，标出 DP+PP 加速倍数的图文差异，暂不纳入专题。
 - [[TokenWeave-MLSys26]]、[[BreakingTheIce-MLSys26]] 和 [[HELIOS-MLSys26]] 已补读全文与附录并纳入专题；[[FaaScale-MLSys26]] 已通读但图示时间轴存在疑点，暂不纳入专题。

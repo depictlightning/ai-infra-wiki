@@ -4,7 +4,7 @@ topic: LLM-Serving
 title: LLM Serving
 theme_kind: area
 member_tag: area/llm-serving
-paper_count: 18
+paper_count: 19
 first_generated: 2026-10-23
 last_updated: 2026-10-28
 tags: [topic-overview, llm-serving]
@@ -42,6 +42,7 @@ tags: [topic-overview, llm-serving]
 - [[MorphServe-MLSys26]] — 按负载调整层精度，将释放的显存分配给 KV cache。
 - [[BreakingTheIce-MLSys26]] — 拆解并预测 vLLM 引擎启动成本，为扩缩容提供测量依据。
 - [[HELIOS-MLSys26]] — 根据提前退出画像选择模型和加载层数，权衡资源、吞吐与输出质量。
+- [[ContextPilot-MLSys26]] — 对齐并调度共享上下文的请求，提高前缀命中机会。
 
 ### 生产观测
 
