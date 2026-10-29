@@ -5,7 +5,7 @@ full_title: "Accelerating Large-Scale Reasoning Model Inference: Self-Speculativ
 authors: [Yilong Zhao, Jiaming Tang, Kan Zhu, Zihao Ye, Chi-Chih Chang, et al.]
 venue: MLSys
 year: 2026
-tags: [llm-inference, speculative-decoding, sparse-attention, kv-cache, batching, area/llm-inference, area/llm-serving]
+tags: [llm-inference, speculative-decoding, sparse-attention, kv-cache, batching, area/llm-inference, area/llm-serving, lens/speculative-decoding]
 source_pdf: "[[6f4922f45568161a8cdf4ad2299f6d23.pdf]]"
 source_md: "[[6f4922f45568161a8cdf4ad2299f6d23]]"
 review_status: complete

@@ -5,7 +5,7 @@ full_title: "Speculative Decoding: Performance or Illusion?"
 authors: [Xiaoxuan Liu, Jiaxiang Yu, Jongseok Park, Ion Stoica, Alvin Cheung]
 venue: MLSys
 year: 2026
-tags: [llm-inference, speculative-decoding, benchmarking, vllm, area/llm-inference]
+tags: [llm-inference, speculative-decoding, benchmarking, vllm, area/llm-inference, lens/speculative-decoding]
 source_pdf: "[[f0935e4cd5920aa6c7c996a5ee53a70f.pdf]]"
 source_md: "[[f0935e4cd5920aa6c7c996a5ee53a70f]]"
 review_status: complete

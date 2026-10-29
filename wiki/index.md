@@ -35,6 +35,7 @@
 
 - [[KV-Cache-Systems]] — 20 篇论文 | KV cache 的共享、驻留、搬运与复用。
 - [[DeepSeek]] — 2 篇核心论文 | DeepSeek 模型与推理基础设施资料。
+- [[Speculative-Decoding]] — 8 篇论文 | 推测解码的无损采样、草稿生成、验证与系统调度。
 
 专项可与主线交叉；博客另列，不计入论文数。
 
@@ -47,4 +48,4 @@
 
 ## 阅读入口
 
-- [[LLM-Inference]]、[[LLM-Serving]]、[[LLM-Training]]、[[KV-Cache-Systems]]、[[DeepSeek]]
+- [[LLM-Inference]]、[[LLM-Serving]]、[[LLM-Training]]、[[KV-Cache-Systems]]、[[DeepSeek]]、[[Speculative-Decoding]]

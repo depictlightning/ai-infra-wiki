@@ -5,7 +5,7 @@ full_title: "TiDAR: Think in Diffusion, Talk in Autoregression"
 authors: [Jingyu Liu, Xin Dong, Zhifan Ye, Rishabh Mehta, Yonggan Fu, Vartika Singh, Jan Kautz, Ce Zhang, Pavlo Molchanov]
 venue: MLSys
 year: 2026
-tags: [llm-inference, speculative-decoding, diffusion-model, inference-acceleration, area/llm-inference]
+tags: [llm-inference, speculative-decoding, diffusion-model, inference-acceleration, area/llm-inference, lens/speculative-decoding]
 source_pdf: "[[1367d856028f65a9555b0274db09e608.pdf]]"
 source_md: "[[1367d856028f65a9555b0274db09e608]]"
 review_status: complete

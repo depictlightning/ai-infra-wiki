@@ -5,7 +5,7 @@ full_title: "Seer: Online Context Learning for Fast Synchronous LLM Reinforcemen
 authors: [Ruoyu Qin, Weiran He, Weixiao Huang, Yangkun Zhang, Yikai Zhao, Bo Pang, Xinran Xu, Yingdi Shan, Yongwei Wu, Mingxing Zhang]
 venue: OSDI
 year: 2026
-tags: [llm-training, reinforcement-learning, rollout, scheduling, speculative-decoding, mechanism/serial-rounds, mechanism/gpu-residency, mechanism/compute-work, area/llm-training]
+tags: [llm-training, reinforcement-learning, rollout, scheduling, speculative-decoding, mechanism/serial-rounds, mechanism/gpu-residency, mechanism/compute-work, area/llm-training, lens/speculative-decoding]
 source_pdf: "[[osdi26-qin.pdf]]"
 source_md: "[[osdi26-qin]]"
 review_status: complete

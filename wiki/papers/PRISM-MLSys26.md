@@ -5,7 +5,7 @@ full_title: "PRISM: Parametrically Refactor Inference for Speculative Decoding D
 authors: [Xuliang Wang, Yuetao Chen, Maochan Zhen, Fang Liu, Xinzhou Zheng, Xingwu Liu, Hong Xu, Ming Li]
 venue: MLSys
 year: 2026
-tags: [llm-inference, speculative-decoding, draft-model, sglang, area/llm-inference]
+tags: [llm-inference, speculative-decoding, draft-model, sglang, area/llm-inference, lens/speculative-decoding]
 source_pdf: "[[414fd191b3246a19a55741b938380136.pdf]]"
 source_md: "[[414fd191b3246a19a55741b938380136]]"
 review_status: complete

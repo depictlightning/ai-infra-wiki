@@ -5,7 +5,7 @@ full_title: "Dataflow Is All You Need"
 authors: [Darshan Gandhi, Pushkar Nandkar, David Koeplinger, Nasim Farahini, Romy Tsoupidi, et al.]
 venue: MLSys
 year: 2026
-tags: [llm-inference, speculative-decoding, dataflow, kernel-fusion, accelerator, area/llm-inference]
+tags: [llm-inference, speculative-decoding, dataflow, kernel-fusion, accelerator, area/llm-inference, lens/speculative-decoding]
 source_pdf: "[[33e75ff09dd601bbe69f351039152189.pdf]]"
 source_md: "[[33e75ff09dd601bbe69f351039152189]]"
 review_status: complete
