@@ -1,5 +1,41 @@
 # Wiki 更新记录
 
+## [2026-10-29] 核查 BLIS 候选
+
+- 在 [[Inference-Simulation]] 的候选列表中补充 BLIS 的会议接收声明、全局拟合思路和论文版本不建模跨池 KV 传输的边界；全文解析和独立笔记尚未完成。
+
+## [2026-10-29] 新建大模型推理模拟器专题
+
+- 建立 [[Inference-Simulation]]，补充 [[Vidur-MLSys24]]、[[LLMServingSim2-ISPASS26]]、[[Charon-MLSys26]] 全文笔记，纳入已有 [[MetaInferenceConfig-MLSys26]]，整理画像、事件调度、配置搜索与 P/D 配比的验证边界。
+
+## [2026-10-29] 补充 GPU 内 P/D 资源划分
+
+- 新增 [[MuxWise-ASPLOS26]] 全文笔记并纳入 [[PD-Serving]]；区分 GPU 内 SM 划分与实例数量分配，记录严格 token 延迟实验、共享带宽竞争和画像开销。
+
+## [2026-10-29] 补充动态请求切分与多模态分离论文
+
+- 新增 [[Libra-NSDI26]] 与 [[EPDServe-ICML25]] 正式版全文笔记并纳入 [[PD-Serving]]；区分请求切分与实例配比、token goodput 与双 SLO 达成率，并标记 EPDServe 正文与表格的不一致。
+
+## [2026-10-29] 补充 P/D 异构部署代表工作
+
+- 建立 [[ThunderServe-MLSys25]]、[[TetriInfer-arXiv24]]、[[Seesaw-MLSys25]] 和 [[PDServe-arXiv24]] 全文笔记并纳入 [[PD-Serving]]，补充异构分配、早期分离、离线重分片和组级配比调整，并记录其评测边界。
+
+## [2026-10-29] 补充 P/D 资源配比研究
+
+- 将 [[FluidPD-arXiv26]] 和 [[SplitScaling-IJCAI26]] 全文笔记纳入 [[PD-Serving]]，梳理固定配比、动态借用、角色切换与扩缩容，并登记近期检索候选及其证据状态。
+
+## [2026-10-29] 扩充 PD 论文笔记
+
+- 按全文补充 [[SarathiServe-OSDI24]]、[[DistServe-OSDI24]]、[[Splitwise-ISCA24]]、[[Mooncake-FAST25]]、[[TaiChi-arXiv25]] 和 [[DuetServe-ICML26]] 的机制、实验口径及限制，保留各页实际审阅状态。
+
+## [2026-10-29] 补充 PD 服务代表论文初稿
+
+- 为 [[SarathiServe-OSDI24]]、[[DistServe-OSDI24]]、[[Splitwise-ISCA24]]、[[Mooncake-FAST25]]、[[TaiChi-arXiv25]] 和 [[DuetServe-ICML26]] 准备 PDF、MinerU 文本和论文笔记，按用户要求直接纳入 [[PD-Serving]]；各页保留实际审阅状态。
+
+## [2026-10-29] 新建预填充与解码专题
+
+- 新建 [[PD-Serving]]，整理现有全文笔记中的阶段调度、分离部署与 KV 数据路径；代表性外部论文正在按全文流程补充。
+
 ## [2026-10-29] 根据用户审阅移除边界论文
 
 - 移除 13 篇用户确认的论文笔记，更新 OSDI、SOSP 会议综述及首页；保留原始论文和解析材料。

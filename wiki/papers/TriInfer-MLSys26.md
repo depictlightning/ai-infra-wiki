@@ -5,7 +5,7 @@ full_title: "TriInfer: Hybrid Disaggregated Scheduling for Multimodal Large Lang
 authors: [Xianzhe Dong, Tongxuan Liu, Yuting Zeng, Weizhe Huang, Xiaoyang Zhao, Siyu Wu, Liangyu Liu, Yang Liu, Yu Wu, Hailong Yang, Ke Zhang, Jing Li]
 venue: MLSys
 year: 2026
-tags: [llm-serving, multimodal-inference, disaggregated-serving, scheduling, batching, area/llm-serving]
+tags: [lens/pd-serving, llm-serving, multimodal-inference, disaggregated-serving, scheduling, batching, area/llm-serving]
 source_pdf: "[[6974ce5ac660610b44d9b9fed0ff9548.pdf]]"
 source_md: "[[6974ce5ac660610b44d9b9fed0ff9548]]"
 review_status: complete
@@ -69,7 +69,7 @@ last_reviewed: 2026-10-28
 | 迁移 | 表 4 中 4E12P16D 在 64 / 320 请求每秒下，EP 迁移 P95 为 2.6 / 4.2 ms，PD 为 8.4 / 14.4 ms；迁移相关 TBT 违约率为 0.4% / 0.9%，不能概括为始终没有影响。 |
 | 启发式 | 8 实例实验枚举 35 个方案，比较启发式选择的平均排名；这不构成大规模全局最优保证（§5.4）。 |
 
-比较设置影响解读：vLLM 和 SGLang 使用非分离配置，关闭前缀缓存与 CUDA Graph，vLLM 使用 eager 模式；EPDServe 和 DistServe 的核心分离方式由作者在 TriInfer 内重实现，并非直接运行两者原版系统（§5.1）。[^paper]
+比较设置影响解读：vLLM 和 SGLang 使用非分离配置，关闭前缀缓存与 CUDA Graph，vLLM 使用 eager 模式；[[EPDServe-ICML25]] 和 DistServe 的核心分离方式由作者在 TriInfer 内重实现，并非直接运行两者原版系统（§5.1）。[^paper]
 
 ## 论断—证据表
 

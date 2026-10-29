@@ -5,7 +5,7 @@ full_title: "BatchLLM: Optimizing Large Batched LLM Inference with Global Prefix
 authors: [Zhen Zheng, Xin Ji, Taosong Fang, Fanghao Zhou, Chuanjie Liu, Gang Peng]
 venue: MLSys
 year: 2026
-tags: [llm-serving, offline-inference, prefix-sharing, scheduling, batching, area/llm-serving, area/kv-cache-systems]
+tags: [lens/pd-serving, llm-serving, offline-inference, prefix-sharing, scheduling, batching, area/llm-serving, area/kv-cache-systems]
 source_pdf: "[[5b7ae1758452854dee4e962207d38304.pdf]]"
 source_md: "[[5b7ae1758452854dee4e962207d38304]]"
 review_status: complete

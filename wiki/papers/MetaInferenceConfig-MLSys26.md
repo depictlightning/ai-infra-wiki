@@ -5,7 +5,7 @@ full_title: "Optimizing Deployment Configurations for LLM Inference"
 authors: [Sung Min Cho, Jaewon Lee, Chunqiang Tang, Yejin Lee, Geonhwa Jeong, Anca Agape]
 venue: MLSys
 year: 2026
-tags: [llm-serving, deployment, performance-modeling, parallelism, moe, area/llm-serving]
+tags: [llm-serving, deployment, performance-modeling, parallelism, moe, area/llm-serving, lens/inference-simulation]
 source_pdf: "[[c7e1249ffc03eb9ded908c236bd1996d.pdf]]"
 source_md: "[[c7e1249ffc03eb9ded908c236bd1996d]]"
 review_status: complete
@@ -102,6 +102,7 @@ LLM 服务配置不仅包括模型和 GPU，还涉及 TP、PP、EP、CP、DP、�
 ## 相关
 
 - [[LLM-Serving]]：服务配置、阶段并行与资源规划。
+- [[Inference-Simulation]]：比较算子画像、服务模拟与配置搜索的证据边界。
 - [[PragmaticDisaggregation-MLSys26]]：同样研究阶段分离和资源比例，采用不同模拟框架；其图文倍数待复核。
 - [[MoEServingTax-MLSys26]]：从专家权重读取、路由及 kernel 拆解 MoE 推理成本。
 

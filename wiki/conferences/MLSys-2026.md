@@ -2,7 +2,7 @@
 type: conference
 venue: MLSys
 year: 2026
-paper_count: 48
+paper_count: 49
 first_generated: 2026-10-28
 last_updated: 2026-10-29
 ---
@@ -28,6 +28,8 @@ last_updated: 2026-10-29
 [[BOute-MLSys26]] 已阅读正式版全文；部分实验阈值和示例降幅待复核。
 
 [[CDLM-MLSys26]] 已阅读正式版全文；部分吞吐图表口径待复核。
+
+[[Charon-MLSys26]] 已阅读全文并核对关键图表；摘要与部分推理指标的误差范围需要进一步核实。
 
 ## 参考文献
 
