@@ -4,7 +4,7 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 31
+paper_count: 32
 first_generated: 2026-10-27
 last_updated: 2026-10-28
 tags: [topic-overview, llm-inference]
@@ -20,13 +20,13 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 31 篇核心论文，按论文去重计数：
+本专题共 32 篇核心论文，按论文去重计数：
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
 - [[Wang-LocalMoEInference-OSDI26]]、[[KAIROX-OSDI26]]、[[MeldKernel-SOSP26]]、[[MPK-OSDI26]]
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]]、[[SPEX-OSDI26]]、[[LLM-42-SOSP26]]
-- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]、[[OPKV-MLSys26]]、[[TokenWeave-MLSys26]]、[[SpecDecodeBench-MLSys26]]、[[MoEServingTax-MLSys26]]、[[ContextPilot-MLSys26]]、[[LocalityAwareBeam-MLSys26]]
+- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]、[[OPKV-MLSys26]]、[[TokenWeave-MLSys26]]、[[SpecDecodeBench-MLSys26]]、[[MoEServingTax-MLSys26]]、[[ContextPilot-MLSys26]]、[[LocalityAwareBeam-MLSys26]]、[[CORE-MLSys26]]
 
 ## 按优化方法查找
 
@@ -88,6 +88,8 @@ tags: [topic-overview, llm-inference]
 - [[LLM-42-SOSP26]] — 邻近机制：通过候选生成与固定形状核验保证确定性，目标不是减少生成轮次。
 
 ### 07 调度与资源管理
+
+- [[CORE-MLSys26]] — 预先画像并按推理阶段设置端侧 CPU/GPU 频率，权衡延迟与能耗。
 
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]] — 分别调节验证预算及草稿、验证的执行时机。
 - [[SparseSpec-MLSys26]] — 在请求间混合草稿与核验，并以主机卸载控制 KV 容量。
