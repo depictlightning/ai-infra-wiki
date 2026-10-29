@@ -2,6 +2,8 @@
 
 ## [2026-10-29] 继续整理 MLSys 推理论文
 
+- 增加 [[PipelinedSharding-MLSys26]] 全文笔记，纳入推理专题，区分显存预算、主机内存和模型量化。
+
 - 增加 [[CORE-MLSys26]] 正文及独立附录笔记，纳入推理专题，区分 CPU/GPU 调频和默认内存 governor。
 
 - 增加 [[MetaInferenceConfig-MLSys26]] 全文笔记，纳入服务专题，区分算子画像模拟与生产经验。

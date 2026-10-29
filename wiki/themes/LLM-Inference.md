@@ -4,7 +4,7 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 32
+paper_count: 33
 first_generated: 2026-10-27
 last_updated: 2026-10-28
 tags: [topic-overview, llm-inference]
@@ -20,13 +20,13 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 32 篇核心论文，按论文去重计数：
+本专题共 33 篇核心论文，按论文去重计数：
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
 - [[Wang-LocalMoEInference-OSDI26]]、[[KAIROX-OSDI26]]、[[MeldKernel-SOSP26]]、[[MPK-OSDI26]]
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]]、[[SPEX-OSDI26]]、[[LLM-42-SOSP26]]
-- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]、[[OPKV-MLSys26]]、[[TokenWeave-MLSys26]]、[[SpecDecodeBench-MLSys26]]、[[MoEServingTax-MLSys26]]、[[ContextPilot-MLSys26]]、[[LocalityAwareBeam-MLSys26]]、[[CORE-MLSys26]]
+- [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]、[[OPKV-MLSys26]]、[[TokenWeave-MLSys26]]、[[SpecDecodeBench-MLSys26]]、[[MoEServingTax-MLSys26]]、[[ContextPilot-MLSys26]]、[[LocalityAwareBeam-MLSys26]]、[[CORE-MLSys26]]、[[PipelinedSharding-MLSys26]]
 
 ## 按优化方法查找
 
@@ -89,6 +89,8 @@ tags: [topic-overview, llm-inference]
 
 ### 07 调度与资源管理
 
+- [[PipelinedSharding-MLSys26]] — 按 token 档位与资源画像选择 CPU/GPU 推理计划。
+
 - [[CORE-MLSys26]] — 预先画像并按推理阶段设置端侧 CPU/GPU 频率，权衡延迟与能耗。
 
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]] — 分别调节验证预算及草稿、验证的执行时机。
@@ -99,6 +101,8 @@ tags: [topic-overview, llm-inference]
 - [[Strata-OSDI26]] — 联合安排缓存加载与计算，利用 decode 填补 I/O 等待。
 
 ### 08 卸载与分层存储
+
+- [[PipelinedSharding-MLSys26]] — 在主机内存与 GPU 显存之间调度权重、KV 和计算。
 
 - [[LocalityAwareBeam-MLSys26]] — 分组连续生成多个 token，降低主机与 GPU 间的 KV 搬运。
 
