@@ -4,9 +4,9 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 33
+paper_count: 34
 first_generated: 2026-10-27
-last_updated: 2026-10-28
+last_updated: 2026-10-29
 tags: [topic-overview, llm-inference]
 ---
 
@@ -20,13 +20,14 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 33 篇核心论文，按论文去重计数：
+本专题共 34 篇核心论文，按论文去重计数：
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
 - [[Wang-LocalMoEInference-OSDI26]]、[[KAIROX-OSDI26]]、[[MeldKernel-SOSP26]]、[[MPK-OSDI26]]
 - [[DSpark-arXiv26]]、[[Sereno-OSDI26]]、[[SPEX-OSDI26]]、[[LLM-42-SOSP26]]
 - [[SolidAttention-FAST26]]、[[FlexiCache-MLSys26]]、[[SparseSpec-MLSys26]]、[[Dataflow-MLSys26]]、[[IntAttention-MLSys26]]、[[PRISM-MLSys26]]、[[ProfInfer-MLSys26]]、[[Kitty-MLSys26]]、[[ScaleSearch-MLSys26]]、[[OPKV-MLSys26]]、[[TokenWeave-MLSys26]]、[[SpecDecodeBench-MLSys26]]、[[MoEServingTax-MLSys26]]、[[ContextPilot-MLSys26]]、[[LocalityAwareBeam-MLSys26]]、[[CORE-MLSys26]]、[[PipelinedSharding-MLSys26]]
+- [[TiDAR-MLSys26]]
 
 ## 按优化方法查找
 
@@ -78,6 +79,7 @@ tags: [topic-overview, llm-inference]
 
 ### 06 投机解码与多 Token 生成
 
+- [[TiDAR-MLSys26]] — 在适配后的单一模型中并行执行扩散草稿与自回归验证。
 - [[SpecDecodeBench-MLSys26]] — 比较不同草稿方法的吞吐、接受分布与理想化收益。
 - [[DSpark-arXiv26]] — 使用半自回归草稿，并按置信度分配验证预算。
 - [[SparseSpec-MLSys26]] — 使用同一模型的稀疏注意力生成草稿，完整注意力核验。
