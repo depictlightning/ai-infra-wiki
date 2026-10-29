@@ -2,6 +2,8 @@
 
 ## [2026-10-29] 继续整理 MLSys 推理论文
 
+- 增加 [[MetaInferenceConfig-MLSys26]] 全文笔记，纳入服务专题，区分算子画像模拟与生产经验。
+
 - 增加 [[TeleRAG-MLSys26]] 正文与独立附录初稿，区分检索索引簇与 KV，记录摘要数字及预取公式待核对。
 
 - 增加 [[PragmaticDisaggregation-MLSys26]] 正文与独立附录初稿，区分模拟和实机实验，图表倍数待复核。
