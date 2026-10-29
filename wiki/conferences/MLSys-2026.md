@@ -2,7 +2,7 @@
 type: conference
 venue: MLSys
 year: 2026
-paper_count: 44
+paper_count: 45
 first_generated: 2026-10-28
 last_updated: 2026-10-29
 ---
@@ -20,6 +20,8 @@ last_updated: 2026-10-29
 [[AttributionSparse-MLSys26]] 已阅读正式版与独立补充材料；理论适用条件和端到端开销待复核。
 
 [[DriftBench-MLSys26]] 已阅读正式版全文；预测器特征和部分评测口径待复核。
+
+[[BLASST-MLSys26]] 已阅读正式版全文；注意力输出误差界和标定结果口径待复核。
 
 ## 参考文献
 
