@@ -4,7 +4,7 @@ topic: LLM-Serving
 title: LLM Serving
 theme_kind: area
 member_tag: area/llm-serving
-paper_count: 23
+paper_count: 24
 first_generated: 2026-10-23
 last_updated: 2026-10-28
 tags: [topic-overview, llm-serving]
@@ -35,6 +35,8 @@ tags: [topic-overview, llm-serving]
 - [[SparseSpec-MLSys26]] — 混合多个请求的稀疏草稿与完整核验，减少批量长推理的资源波动。
 
 ### 路由、资源与数据路径
+
+- [[SHIP-MLSys26]] — 在 SRAM 芯片流水线上组织大规模 LLM 推理和缓存。
 
 - [[MetaInferenceConfig-MLSys26]] — 基于性能画像搜索并行、硬件和运行时部署配置。
 
