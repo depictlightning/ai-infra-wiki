@@ -2,7 +2,7 @@
 type: conference
 venue: MLSys
 year: 2026
-paper_count: 47
+paper_count: 48
 first_generated: 2026-10-28
 last_updated: 2026-10-29
 ---
@@ -26,6 +26,8 @@ last_updated: 2026-10-29
 [[MACAttention-MLSys26]] 已阅读正式版全文；辅助缓存与窗口配置口径待复核。
 
 [[BOute-MLSys26]] 已阅读正式版全文；部分实验阈值和示例降幅待复核。
+
+[[CDLM-MLSys26]] 已阅读正式版全文；部分吞吐图表口径待复核。
 
 ## 参考文献
 
