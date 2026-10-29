@@ -60,5 +60,5 @@ last_reviewed: 2026-10-22
 
 ## 相关
 
-- **同会议**：[[SOSP-2026]]；**相邻系统**：[[Janus-SOSP26]]、[[ACDC-SOSP26]]、[[QProf-SOSP26]]。
+- **同会议**：[[SOSP-2026]]；**相邻系统**：[[Janus-SOSP26]]、[[ACDC-SOSP26]]。
 - **会议记录**：[SOSP DOI](https://doi.org/10.1145/3830418.3843855)。

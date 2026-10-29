@@ -82,5 +82,5 @@ MeldKernel（论文简称 Meld）把跨 SM 合作提升为编程抽象：程序�
 
 ## 相关
 
-- **同会议**：[[SOSP-2026]]；**相邻系统**：[[Ave-SOSP26]] 的内核优化约束、[[MorphX-SOSP26]] 的 GPU 多任务资源调整。
+- **同会议**：[[SOSP-2026]]。
 - **全文**：[作者机构 PDF](https://ipads.sjtu.edu.cn/zh/publications/sosp26-he.pdf)。

@@ -4,7 +4,7 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 34
+paper_count: 35
 first_generated: 2026-10-27
 last_updated: 2026-10-29
 tags: [topic-overview, llm-inference]
@@ -20,7 +20,9 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 34 篇核心论文，按论文去重计数：
+本专题共 35 篇核心论文，按论文去重计数：
+
+- [[DFlash-ICML26]]
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
@@ -79,6 +81,7 @@ tags: [topic-overview, llm-inference]
 
 ### 06 投机解码与多 Token 生成
 
+- [[DFlash-ICML26]] — 利用目标模型多层特征，以块扩散一次生成候选并由目标模型验证。
 - [[TiDAR-MLSys26]] — 在适配后的单一模型中并行执行扩散草稿与自回归验证。
 - [[SpecDecodeBench-MLSys26]] — 比较不同草稿方法的吞吐、接受分布与理想化收益。
 - [[DSpark-arXiv26]] — 使用半自回归草稿，并按置信度分配验证预算。

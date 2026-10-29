@@ -21,7 +21,7 @@ last_reviewed: 2026-10-22
 
 ## 问题与动机
 
-高 GPU 利用率不保证低能耗：共置可能提高频率/功耗，也可能触发干扰，导致在同一 SLO 下每瓦性能更差。摘要介绍能耗感知 GPU 共享：用性能与功耗模型预测不同任务共置、GPU 分配、频率和批处理配置的成本，再把能耗纳入 placement/bin-packing 决策。相对 [[MorphX-SOSP26]] 的 kernel 级资源伸缩，它主要在集群放置和配置层优化。
+高 GPU 利用率不保证低能耗：共置可能提高频率/功耗，也可能触发干扰，导致在同一 SLO 下每瓦性能更差。摘要介绍能耗感知 GPU 共享：用性能与功耗模型预测不同任务共置、GPU 分配、频率和批处理配置的成本，再把能耗纳入 placement/bin-packing 决策。
 
 ## 关键观察 / 隐含假设
 
@@ -60,5 +60,5 @@ last_reviewed: 2026-10-22
 
 ## 相关
 
-- **同会议**：[[SOSP-2026]]；**相邻系统**：[[MorphX-SOSP26]]、[[Janus-SOSP26]]。
+- **同会议**：[[SOSP-2026]]；**相邻系统**：[[Janus-SOSP26]]。
 - **会议记录**：[SOSP DOI](https://doi.org/10.1145/3830418.3843913)；**代码**：[EnerTune](https://github.com/UT-SysML/EnerTune)。

@@ -5,7 +5,7 @@ title: Speculative Decoding
 theme_kind: lens
 member_tag: lens/speculative-decoding
 candidate_tags: [speculative-decoding]
-paper_count: 8
+paper_count: 9
 first_generated: 2026-10-29
 last_updated: 2026-10-29
 tags: [topic-overview, speculative-decoding, llm-inference]
@@ -28,6 +28,7 @@ tags: [topic-overview, speculative-decoding, llm-inference]
 
 ## 核心论文
 
+- [[DFlash-ICML26]] — 将目标模型多层特征注入轻量草稿模型，以块扩散并行生成候选。
 - [[DSpark-arXiv26]] — 依据置信度分配半自回归草稿的验证预算。
 - [[SpecDecodeBench-MLSys26]] — 量化不同草稿方法的接受分布、实际吞吐与理想化收益。
 - [[SparseSpec-MLSys26]] — 用同一模型的稀疏注意力生成草稿，再以完整注意力核验。

@@ -21,7 +21,7 @@ last_reviewed: 2026-10-22
 
 ## 问题与动机
 
-普通 CPU tracing 看不到 GPU kernel 内部与异步队列的细粒度瓶颈，而全量 GPU profiler 可能干扰生产服务。摘要和项目页介绍 LMTracer：通过 GPU 上的轻量 probe/fence kernel、图嵌入式测量与 CPU 侧缓冲流式汇总，把请求层事件关联到 GPU 执行细节，供在线瓶颈定位。它与 [[QProf-SOSP26]] 的跨服务**成本归因**不同，更接近单个 LLM serving 栈的性能剖析。
+普通 CPU tracing 看不到 GPU kernel 内部与异步队列的细粒度瓶颈，而全量 GPU profiler 可能干扰生产服务。摘要和项目页介绍 LMTracer：通过 GPU 上的轻量 probe/fence kernel、图嵌入式测量与 CPU 侧缓冲流式汇总，把请求层事件关联到 GPU 执行细节，供在线瓶颈定位。
 
 ## 关键观察 / 隐含假设
 
@@ -60,5 +60,5 @@ last_reviewed: 2026-10-22
 
 ## 相关
 
-- **同会议**：[[SOSP-2026]]；**相邻系统**：[[QProf-SOSP26]]、[[ACDC-SOSP26]]。
+- **同会议**：[[SOSP-2026]]；**相邻系统**：[[ACDC-SOSP26]]。
 - **会议记录**：[SOSP DOI](https://doi.org/10.1145/3830418.3843871)；**作者项目**：[LMTracer](https://llm-profiling.github.io/)。
