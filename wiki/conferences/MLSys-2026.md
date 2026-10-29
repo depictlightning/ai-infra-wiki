@@ -2,7 +2,7 @@
 type: conference
 venue: MLSys
 year: 2026
-paper_count: 45
+paper_count: 46
 first_generated: 2026-10-28
 last_updated: 2026-10-29
 ---
@@ -22,6 +22,8 @@ last_updated: 2026-10-29
 [[DriftBench-MLSys26]] 已阅读正式版全文；预测器特征和部分评测口径待复核。
 
 [[BLASST-MLSys26]] 已阅读正式版全文；注意力输出误差界和标定结果口径待复核。
+
+[[MACAttention-MLSys26]] 已阅读正式版全文；辅助缓存与窗口配置口径待复核。
 
 ## 参考文献
 
