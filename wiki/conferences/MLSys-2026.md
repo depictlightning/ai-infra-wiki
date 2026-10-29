@@ -2,7 +2,7 @@
 type: conference
 venue: MLSys
 year: 2026
-paper_count: 42
+paper_count: 43
 first_generated: 2026-10-28
 last_updated: 2026-10-29
 ---
@@ -16,6 +16,8 @@ last_updated: 2026-10-29
 [[SpecDiff2-MLSys26]] 已阅读正式版全文；数据集名称与部分实验口径有待复核。
 
 [[TiDAR-MLSys26]] 已完成正式版全文与图表核对。
+
+[[AttributionSparse-MLSys26]] 已阅读正式版与独立补充材料；理论适用条件和端到端开销待复核。
 
 ## 参考文献
 
