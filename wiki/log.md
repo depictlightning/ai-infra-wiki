@@ -2,6 +2,8 @@
 
 ## [2026-10-29] 继续整理 MLSys 推理论文
 
+- 增加 [[PragmaticDisaggregation-MLSys26]] 正文与独立附录初稿，区分模拟和实机实验，图表倍数待复核。
+
 - 增加 [[LayeredPrefill-MLSys26]] 正式版全文初稿，记录按层调度和能耗分母的冲突，暂不纳入专题。
 
 - 增加 [[RaidServe-MLSys26]] 全文笔记，纳入服务与 KV 专题，区分状态恢复和完整故障处理时间。
