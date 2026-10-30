@@ -31,18 +31,18 @@ last_reviewed: 2026-08-14
 
 ## 关键观察 / 隐含假设
 
-- **观察 1：碎片I/O需要提高并发度，不必放大cache page。** GPU可让数千threads各搬128-byte片段，聚合利用host-GPU链路；逻辑page仍可保持1 token以维持细粒度prefix match（§3.1、§4.2）。
-  - **代价假设**：搬运kernel会占SM、register和cache。两block配置在H200达到48 GB/s，但并发prefill下降少于5%、decode少于10%；它不是“免费DMA”（§4.2、图 5）。
-- **观察 2：GPU计算布局与慢层传输布局不必相同。** GPU使用layer-first，使每层attention读连续K/V；host/SSD使用page-first，使一个page跨所有layers形成大连续块。I/O kernel只多算一次destination offset即可在线转置（§4.2.1、图 6）。
-  - **依赖假设**：转换是规则重排，offset算术相对搬运很小；不同attention/KV layout或压缩编码可能需要新kernel。
-- **观察 3：CPU↔GPU bandwidth应像HBM和compute一样成为scheduler的一等资源。** batch不能只按FIFO/token budget组成，还要让新增token计算时间覆盖已命中历史KV的load time（§3.2、§4.3.2）。
-  - **依赖假设**：每请求的load tokens与compute tokens可从HiRadixTree准确估算，hardware/model的loading-bound阈值可离线profile。
-- **观察 4：cache miss是有持续时间的状态，而非一个瞬时事件。** Mooncake tool-agent trace中，38%请求与一秒内另一请求共享至少6K tokens；异步scheduler会把整个batch执行时间都变成miss resolution window（§3.2）。
-  - **代价假设**：推迟匹配in-flight prefix的请求可省重复prefill，却会增加个体等待。论文只用100 matched tokens阈值和队首优先缓解，没有SLO/fairness保证。
-- **观察 5：load PCIe与decode主要使用不同瓶颈。** loading饱和PCIe，decode主要饱和HBM，因此loading-bound prefill等待时插入decode batch可填bubble，且资源冲突相对有限（§4.3.3、图 7）。
-  - **可能失效场景**：GPU I/O kernel仍占SM；大decode batch、attention-heavy decode或统一内存平台可能让两者竞争更强。
-- **观察 6：cache distance决定优化重点。** 相似请求紧邻时delay-hit deferral最有用；距离大时CPU命中更多、GPU I/O和balanced batch更重要（§5.3.3、图 11）。
-- **假设 1：目标是prefill-dominated的long-context reuse。** 低复用、single-turn、长generation或主要使用sparse/linear attention的服务不在核心覆盖范围（§3、§6）。
+- **观察 1：细粒度匹配与有效搬运不必使用相同的物理粒度。** 论文用多个 GPU 线程并发搬运碎片；H200 上两个 CUDA block 达到 48 GB/s，同时并发 prefill 和 decode 的性能下降分别少于 5%、10%（§3.1、§4.2、图 5）。[^paper]
+  - **代价假设**：GPU 有少量可供 I/O kernel 使用的计算资源，额外的 SM、寄存器和缓存竞争低于节省的小页传输开销；其他模型和设备上需要重新配置。
+- **观察 2：不同存储层可以使用不同布局。** 论文在 GPU 上采用按层布局，在主机和 SSD 上采用按页布局，I/O kernel 根据目标偏移在线重排（§4.2.1、图 6）。这是系统实现，不是对所有布局的性能证明。[^paper]
+  - **依赖假设**：布局转换是可高效索引的规则重排；不同注意力结构、压缩编码或张量并行方式可能需要新内核。
+- **观察 3：逐层重叠仍可能留下 I/O 等待。** 图 1 中，即使加载路径达到理论 PCIe 带宽的 75%，所测 prefill 时间仍有最高 24% 在等待缓存；论文据此按加载与计算量平衡批次（§3.2、§4.3.2）。[^paper]
+  - **依赖假设**：每个请求的待加载量、待计算量和加载瓶颈阈值能从缓存状态与离线画像可靠估算。工作负载或带宽变化时，固定阈值可能失准。
+- **观察 4：首次缺失尚未完成时，相同前缀的请求可能重复计算。** Mooncake 工具与智能体轨迹中，38% 的请求与一秒内另一请求共享至少 6K token 前缀；异步调度可能延长缺失尚未解决的窗口（§3.2）。[^paper]
+  - **代价假设**：等待前一个请求生成缓存能省下足够的重复计算，且该请求能够正常完成。推迟后续请求会增加个体等待；论文的阈值和队首优先不构成公平性或 SLO 保证。
+- **观察 5：所测加载与解码的主要瓶颈不同。** 论文分析缓存加载主要使用 PCIe、decode 主要受 HBM 带宽限制，并在加载受限时尝试插入 decode（§4.3.3、图 7）。[^paper]
+  - **依赖假设**：两种任务有足够互补的空闲资源。I/O kernel 仍占用 SM，大 decode 批次、注意力密集型计算或统一内存平台可能产生更强竞争。
+- **观察 6：相似请求间距改变组件收益。** 图 11 中，最小间距负载的延迟命中处理提高峰值吞吐 42%；较大间距负载则更多受益于 I/O 优化和批次平衡（§5.3.3）。[^paper]
+  - **依赖假设**：实际服务存在可复用的长上下文，且请求间距分布与评测足够相近。低复用、单轮请求、长输出或其他注意力架构下，优化重点可能不同。
 
 ## 核心方法
 
@@ -130,3 +130,7 @@ GPU-assisted I/O把原本由DMA engine承担的工作移到通用SM，会与未�
 - **相关概念**：KV-Cache、PagedAttention、Hierarchical-KV-Cache、Prefix-Caching
 - **相关系统**：SGLang、vLLM、TensorRT-LLM、LMCache
 - **同会议**：[[OSDI-2026]]
+
+## 参考文献
+
+[^paper]: Zhiqiang Xie 等. 《Strata: Hierarchical Context Caching for Long Context Language Model Serving》. OSDI，2026。[论文](https://www.usenix.org/conference/osdi26/presentation/xie-zhiqiang)。

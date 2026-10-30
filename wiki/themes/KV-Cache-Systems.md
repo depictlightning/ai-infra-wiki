@@ -27,7 +27,7 @@ tags: [topic-overview, kv-cache, llm-serving]
 - [[FlexGen-ICML23]] — 联合放置权重、激活与 KV，并在 GPU、CPU 和 SSD 间安排计算与传输。
 - [[NEO-MLSys25]] — 把部分请求的 KV 和解码注意力放在 CPU，按负载安排 GPU–CPU 流水线。
 - [[LMCache-arXiv25]] — 在推理引擎与多级存储后端之间提供 KV 加载、保存和管理接口。
-- [[Mooncake-FAST25]] — 将分离式服务与集群 KV 存储池、传输和缓存感知调度结合；论文笔记尚待进一步复核。
+- [[Mooncake-FAST25]] — 将分离式服务与集群 KV 存储池、传输和缓存感知调度结合。
 
 - [[InfiniGen-OSDI24]] — 以 GPU 上的部分 Key 预测下一层所需条目，从主机内存按需预取完整 KV。
 

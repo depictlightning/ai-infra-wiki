@@ -43,6 +43,7 @@ ECHO 因此把问题分为两部分：让动态 cache manager 完全 graph-frien
 - **观察 4：prefill 按 query block 顺序执行，天然提供跨 query 的 lookahead。** 在计算 block `i+1` 的 index score 时，可以搬 block `i` 的候选 KV；用粗粒度 radix histogram 得到一个 top-k 子集，比完整 top-k 更便宜（§5.2）。
   - **依赖假设**：不同 query token 的选择有足够重叠，且下一块 indexer 计算时间足以覆盖 recall。论文的保守随机选择 microbenchmark 最多只提高 1.1 倍。
 - **观察 5：最终 exact top-k 与预取候选可以分开。** 预测只决定“提前搬什么”，indexer 完成后仍做 exact selection，并 guaranteed recall 所有尚未在 GPU 的选中 token。因此漏预取只损失性能，多预取只浪费带宽，不会把错误 KV 交给 attention（图 5、§3、§5）。
+  - **依赖假设**：最终选择、主机 KV 副本、召回和同步都正确且可用。这保证的是相对于模型原生稀疏选择的访问语义；它不证明与完整注意力等价，也不自动保证浮点逐位一致。
 - **假设 1：host DRAM 和 PCIe 是可独占的大容量二级缓存。** 主实验给 ECHO 约 1000 GB host pool；多模型、多租户、NUMA、page fault、pinning 和 PCIe 争用都没有加入。
 
 ## 核心方法

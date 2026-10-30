@@ -29,13 +29,16 @@ GH200/GB200 用 NVLink-C2C 提供最高 900 GB/s 双向带宽，明显高于 PCI
 
 ## 关键观察 / 隐含假设
 
-- **观察 1：去掉 buffer 不会自动去掉瓶颈。** 在 10,240×10,240 GEMM case study 中，朴素 zero-copy 在 PCIe 上为 1,122 ms，而 HBM baseline 为 56 ms，慢 20×以上；即便换成 NVLink-C2C，仍为 106 ms 对 52 ms，约慢 2×（图 2、§2.3）。
-  - **原因**：同一个 CPU-resident tile 被不同输出 tile 重复读取，CPU→GPU traffic 被放大，L2 hit rate 也从约 77% 降到 32.3%（图 3）。
-- **观察 2：可以把带宽压力从慢链路转移到快 HBM。** 若把 CPU 侧 B/KV tile 留在 SMEM，遍历 GPU-resident A/Q 和中间结果，就能减少远端读取；代价是增加 HBM 对输出的读写。因为 HBM 快得多，这个交换有利（图 4–5、§2.4.1）。
-- **观察 3：新生成的 K/V 被立刻使用。** 分开的 projection 与 Attention kernel 会先把 K/V 写到 CPU cache，再从 CPU 读回。融合后可在 SMEM/register 中直接消费，只把最终 KV 副本写入 CPU（图 7、§2.4.3）。
-- **观察 4：长上下文访问是带宽问题多于单次 load latency。** 每个 SM 读取约 100 KB KV tile，100 多个 SM 并行会形成 MB 级传输，因此 sustained interconnect bandwidth 是主要限制（§2.2.2、§8.2）。
-- **隐含假设 1：平台有 Hopper 级 kernel 能力。** 实现依赖 256 KB L1/SMEM pool、Tensor Memory Accelerator、warp-group specialization、CUTLASS 和 FlashAttention-3。论文只在 GH200/H100 上测，GB200 未测。
-- **隐含假设 2：CPU memory 是便宜且不争用的 KV tier。** KV 通过 `cudaHostAlloc` 长期 pin 住，CPU 不并发修改。多 GPU、其他进程和多个请求共同争用 LPDDR/NUMA bandwidth 时，结论可能变化。
+- **观察 1：去掉 GPU 暂存区不会自动去掉传输瓶颈。** 在 10,240×10,240 GEMM 测试中，朴素零拷贝在 PCIe 上为 1,122 ms，而 HBM 基线为 56 ms；NVLink-C2C 上分别为 106、52 ms。论文测到远端矩阵被重复读取，L2 命中率从约 77% 降到 32.3%（§2.3、图 2–3）。[^paper]
+  - **依赖假设**：实际注意力访问也存在足够多的远端重复读取，可通过调整循环消除；不同形状、请求数量和缓存行为下，GEMM 示例不一定能代表端到端收益。
+- **观察 2：调整分块可以减少远端读取，同时增加 HBM 流量。** 图 4–5 的示例中，将 CPU 侧 B 块留在共享内存后，CPU→GPU 流量从 33.5 GB 降到 0.4 GB，延迟从 106 ms 降至 54 ms；同时中间结果的 HBM 读写增多（§2.4.1）。[^paper]
+  - **依赖假设**：HBM 带宽有足够余量吸收增加的中间读写，CPU 块能在共享内存中获得有效复用。若 HBM 已被其他算子占满或块尺寸不适合，转移瓶颈未必有利。
+- **观察 3：新生成的 KV 会立即被本轮注意力使用。** 分开的投影与注意力内核需要先将新 KV 写入主机缓存，后续注意力再读回；论文用融合内核在片上直接消费新 KV，并保留写出副本（§2.4.3、图 7）。[^paper]
+  - **代价假设**：融合后寄存器和共享内存容量足够，且不同模型形状与数据类型能获得合适内核；融合增加内核复杂度，也不能省掉长期保留 KV 的主机写入。
+- **观察 4：长上下文的并发访问形成较大的聚合传输。** 论文分析每个 SM 约读取 100 KB KV 块，超过 100 个 SM 并行可形成 MB 级传输，因而强调持续的 CPU–GPU 带宽（§2.2.2、§8.2）。[^paper]
+  - **依赖假设**：工作负载具有足够并行度和长上下文以形成上述传输规模；短请求或不同并发度下，单次访问延迟和内核开销可能更重要。
+- **假设 1：平台支持论文使用的内核与高速互连。** 实现依赖 Hopper 级共享内存、TMA、warp-group specialization 等能力；作者测试 GH200/H100，未测试 GB200。更慢的 PCIe 可以节省显存，但不能沿用高速互连上的吞吐结论。[^paper]
+- **假设 2：主机能持续提供固定内存和带宽。** KV 通过 `cudaHostAlloc` 锁页，CPU 不并发修改；多 GPU、多进程和多请求共享 LPDDR／NUMA 带宽时，容量成本与性能需要重新测量。[^paper]
 
 ## 核心方法
 
@@ -140,3 +143,7 @@ KV Cache Manager 使用大量 page-locked host memory，但论文只报告 GPU m
 - **相关概念**：LLM-Inference、KV-Cache、zero-copy、KV offloading、Attention、Flash-Attention、PCIe、Disaggregation
 - **相关系统**：SGLang、vLLM、Pie、FlexGen、Neo
 - **同会议**：[[OSDI-2026]]
+
+## 参考文献
+
+[^paper]: Shutian Luo、Haiying Shen. 《No Buffer, No Bottleneck: Efficient Zero-Copy KV Cache Offloading for Long-Context LLMs》. OSDI，2026。[论文](https://www.usenix.org/conference/osdi26/presentation/luo)。

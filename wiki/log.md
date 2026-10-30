@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-30] 复核 KV Cache Offloading 专题论文
+
+- 以 [[ECHO-OSDI26]] 的问题分析、机制和证据深度为参照，补充 [[FlexGen-ICML23]]、[[NEO-MLSys25]]、[[Mooncake-FAST25]]、[[LMCache-arXiv25]] 和 [[SolidAttention-FAST26]]；梳理成本模型、CPU/GPU 流水线、分布式调度、连接器、SSD 预取及质量和实验边界。
+- 按用户要求，复核专题全部 11 篇的关键观察，将论文事实与对应的依赖假设、失效条件和代价分别列出；同时回看 Mooncake 会议 PDF 的公式、算法和图 1–15，完成原先待复核的图表检查并更新阅读状态。未运行作者代码或复现实验。
+
 ## [2026-10-30] 收录 Buoy
 
 - 收录 [[Buoy-SIGMOD27]] 的 2026 年 PACMMOD 正式版与 MinerU 全文，建立 [[SIGMOD-2027]] 入口；将其纳入 [[KV-Cache-Offloading]] 和 [[KV-Cache-Systems]]，补充分层缓存的准入、替换和分层命中。
