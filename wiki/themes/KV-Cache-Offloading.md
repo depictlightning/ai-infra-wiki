@@ -1,7 +1,7 @@
 ---
 type: theme
 topic: KV-Cache-Offloading
-title: LLM KV Cache 多级存储与卸载
+title: LLM KV Cache Offloading
 theme_kind: lens
 member_tag: lens/kv-cache-offloading
 candidate_tags: [kv-cache, offloading, storage-hierarchy]
@@ -11,7 +11,7 @@ last_updated: 2026-10-30
 tags: [topic-overview, llm-inference, kv-cache, offloading]
 ---
 
-# LLM KV Cache 多级存储与卸载
+# LLM KV Cache Offloading
 
 KV cache 让模型在生成新 token 时复用历史计算，但它的容量随上下文和并发增长。把 KV 扩展到 CPU、SSD 或远端存储，可以腾出 GPU 显存；随之而来的问题是，下一次需要这些数据时，谁读取、搬多少、等待多久，以及还能否保持原来的计算语义。[^flexgen][^infinigen]
 
