@@ -1,5 +1,11 @@
 # Wiki 更新记录
 
+## [2026-10-30] 建立 KV cache 多级存储与卸载专题
+
+- 建立 [[KV-Cache-Offloading]]，按完整访问、GPU 直接访问、CPU 协同计算、近似与原生稀疏选择，以及分层缓存与存储池组织 10 篇论文和 3 篇博客；将 HiCache 与 Strata 作为一条资料线。
+- 新建 [[FlexGen-ICML23]]、[[NEO-MLSys25]]、[[LMCache-arXiv25]] 全文笔记，复用已有 NEO 与 LMCache 的 MinerU 原文；FlexGen 会议版分段使用 MinerU Flash，图表回看 PDF。新增 [[SGLang-HiCache]]、[[SGLang-HiSparse]] 博客及两篇会议入口，相关成员加入 [[KV-Cache-Systems]]。
+- 保留 [[Mooncake-FAST25]] 现有待复核状态，区分稀疏模型语义、完整注意力以及按需预取的准确性；未复现实验。
+
 ## [2026-10-30] 收录 InfiniGen
 
 - 解析 OSDI 2024 会议版全文，建立 [[InfiniGen-OSDI24]] 和 [[OSDI-2024]]，纳入 [[LLM-Inference]]、[[KV-Cache-Systems]]；区分 GPU 预测、CPU 内存保存和可选永久淘汰，并记录实验及质量边界。

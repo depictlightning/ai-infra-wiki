@@ -5,7 +5,7 @@ author: vLLM Team
 published: 2026-09-08
 source_url: https://vllm.ai/blog/2026-09-08-glm53-part1-hybrid-sparse-offloading
 reading_status: reviewed
-tags: [vllm, llm-serving, kv-cache, offloading, sparse-attention, area/kv-cache-systems, area/llm-inference]
+tags: [lens/kv-cache-offloading, vllm, llm-serving, kv-cache, offloading, sparse-attention, area/kv-cache-systems, area/llm-inference]
 last_updated: 2026-10-27
 ---
 

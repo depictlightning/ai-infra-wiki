@@ -5,7 +5,7 @@ full_title: "InfiniGen: Efficient Generative Inference of Large Language Models 
 authors: [Wonbeom Lee, Jungi Lee, Junghwan Seo, Jaewoong Sim]
 venue: OSDI
 year: 2024
-tags: [area/llm-inference, area/kv-cache-systems, llm-inference, kv-cache, offloading, sparse-attention, prefetching]
+tags: [lens/kv-cache-offloading, area/llm-inference, area/kv-cache-systems, llm-inference, kv-cache, offloading, sparse-attention, prefetching]
 source_pdf: "[[osdi2024-lee.pdf]]"
 source_md: "[[osdi2024-lee]]"
 review_status: complete

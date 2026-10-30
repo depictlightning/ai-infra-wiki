@@ -5,7 +5,7 @@ full_title: "Mooncake: Trading More Storage for Less Computation — A KVCache-c
 authors: [Ruoyu Qin, Zheming Li, Weiran He, Jialei Cui, Feng Ren, Mingxing Zhang, Yongwei Wu, Weimin Zheng, Xinran Xu]
 venue: FAST
 year: 2025
-tags: [lens/pd-serving, llm-serving, disaggregated-serving, kv-cache, scheduling, storage]
+tags: [area/kv-cache-systems, lens/kv-cache-offloading, lens/pd-serving, llm-serving, disaggregated-serving, kv-cache, scheduling, storage]
 source_pdf: "[[fast2025-qin.pdf]]"
 source_md: "[[fast2025-qin]]"
 review_status: needs-review

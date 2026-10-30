@@ -5,7 +5,7 @@ full_title: "HiSparse: Scaling Sparse-Attention Decoding with Hierarchical KV Ca
 authors: [Zhiqiang Xie, Zhangheng Huang, Tingwei Huang, Ziyi Xu, Ruiyang Ma, Christos Kozyrakis]
 venue: arXiv
 year: 2026
-tags: [llm-inference, sparse-attention, kv-cache, offloading, prefetching, sglang, area/llm-inference, area/kv-cache-systems, mechanism/gpu-residency, mechanism/data-movement, mechanism/pipeline-overlap, mechanism/access-wait]
+tags: [lens/kv-cache-offloading, llm-inference, sparse-attention, kv-cache, offloading, prefetching, sglang, area/llm-inference, area/kv-cache-systems, mechanism/gpu-residency, mechanism/data-movement, mechanism/pipeline-overlap, mechanism/access-wait]
 source_pdf: "[[arxiv26-xie-hisparse.pdf]]"
 source_md: "[[arxiv26-xie-hisparse]]"
 review_status: complete

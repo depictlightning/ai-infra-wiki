@@ -5,7 +5,7 @@ title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 21
+paper_count: 25
 first_generated: 2026-10-23
 last_updated: 2026-10-30
 tags: [topic-overview, kv-cache, llm-serving]
@@ -15,13 +15,18 @@ tags: [topic-overview, kv-cache, llm-serving]
 
 长上下文推理会反复使用历史 KV cache。以下论文从模型结构、缓存驻留、数据搬运和请求分配等位置处理这个问题。本页先给出阅读路线；更细的实验对照与设计空间留待后续补充。
 
-从完整推理路径进入本问题，可先读 [[LLM-Inference]]。
+从完整推理路径进入本问题，可先读 [[LLM-Inference]]。GPU、CPU、SSD 与远端之间的 KV 卸载和分层访问另见 [[KV-Cache-Offloading]]。
 
 ## 纳入范围
 
 本专题收录以 **KV cache 的跨层共享、驻留、搬运或复用调度** 为主要问题的论文。`kv-cache` 标签用于发现候选，`## 核心论文` 是人工确认的成员名单；同样带有该标签、但主要研究别的问题的论文不会自动加入。成员可以同时属于其他专题。模型结构论文和运行时系统论文的评测指标不同，不能直接比较吞吐收益。
 
 ## 核心论文
+
+- [[FlexGen-ICML23]] — 联合放置权重、激活与 KV，并在 GPU、CPU 和 SSD 间安排计算与传输。
+- [[NEO-MLSys25]] — 把部分请求的 KV 和解码注意力放在 CPU，按负载安排 GPU–CPU 流水线。
+- [[LMCache-arXiv25]] — 在推理引擎与多级存储后端之间提供 KV 加载、保存和管理接口。
+- [[Mooncake-FAST25]] — 将分离式服务与集群 KV 存储池、传输和缓存感知调度结合；论文笔记尚待进一步复核。
 
 - [[InfiniGen-OSDI24]] — 以 GPU 上的部分 Key 预测下一层所需条目，从主机内存按需预取完整 KV。
 

@@ -1,12 +1,14 @@
 # AI Infra Wiki
 
-Quartz site for AI infrastructure research notes, including OSDI, SOSP, MLSys, ICML and other conference papers, selected preprints, technical reports, and curated blog entries. The main reading themes are LLM Inference, LLM Serving, and LLM Training; PD Serving, Inference Simulation, KV Cache Systems, DeepSeek and Speculative Decoding are focused collections. The SOSP 2026 collection includes 8 full-text notes and 6 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
+Quartz site for AI infrastructure research notes, including OSDI, SOSP, MLSys, ICML and other conference papers, selected preprints, technical reports, and curated blog entries. The main reading themes are LLM Inference, LLM Serving, and LLM Training; PD Serving, Inference Simulation, KV Cache Systems, KV Cache Offloading, DeepSeek and Speculative Decoding are focused collections. The SOSP 2026 collection includes 8 full-text notes and 6 clearly marked abstract-only notes. The SIGCOMM note has been checked against the conference version supplied by the user. Blog pages label whether their source text has been reviewed.
 
 FAST 2026 and MLSys 2026 are being screened for work directly relevant to LLM training, inference, and serving. Their conference pages distinguish completed reviews from notes still requiring verification; the MLSys list is not complete.
 
 The OSDI 2025 collection currently contains one selected paper, NanoFlow. Its full-text note records unresolved differences between reported figures and plotted results.
 
 The OSDI 2024 collection contains InfiniGen, DistServe, and Sarathi-Serve notes on KV offloading and prefill/decode serving.
+
+The KV Cache Offloading theme compares GPU, CPU, SSD and cluster storage paths using 10 paper notes and 3 technical blog entries. Its Mooncake paper note retains a needs-review status.
 
 ## Local preview
 

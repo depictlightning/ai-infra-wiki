@@ -5,7 +5,7 @@ full_title: "SolidAttention: Low-Latency SSD-based Serving on Memory-Constrained
 authors: [Xinrui Zheng, Dongliang Wei, Jianxiang Gao, Yixin Song, Zeyu Mi, Haibo Chen]
 venue: FAST
 year: 2026
-tags: [llm-inference, kv-cache, sparse-attention, ssd-offloading, prefetching, area/llm-inference, area/kv-cache-systems]
+tags: [lens/kv-cache-offloading, llm-inference, kv-cache, sparse-attention, ssd-offloading, prefetching, area/llm-inference, area/kv-cache-systems]
 source_pdf: "[[fast2026-zheng.pdf]]"
 source_md: "[[fast2026-zheng]]"
 review_status: complete
