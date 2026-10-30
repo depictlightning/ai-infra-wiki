@@ -5,9 +5,9 @@ title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 20
+paper_count: 21
 first_generated: 2026-10-23
-last_updated: 2026-10-28
+last_updated: 2026-10-30
 tags: [topic-overview, kv-cache, llm-serving]
 ---
 
@@ -22,6 +22,8 @@ tags: [topic-overview, kv-cache, llm-serving]
 本专题收录以 **KV cache 的跨层共享、驻留、搬运或复用调度** 为主要问题的论文。`kv-cache` 标签用于发现候选，`## 核心论文` 是人工确认的成员名单；同样带有该标签、但主要研究别的问题的论文不会自动加入。成员可以同时属于其他专题。模型结构论文和运行时系统论文的评测指标不同，不能直接比较吞吐收益。
 
 ## 核心论文
+
+- [[InfiniGen-OSDI24]] — 以 GPU 上的部分 Key 预测下一层所需条目，从主机内存按需预取完整 KV。
 
 - [[RaidServe-MLSys26]] — 跨层循环放置 KV，并从主机备份恢复故障 GPU 上的请求状态。
 
@@ -62,6 +64,8 @@ tags: [topic-overview, kv-cache, llm-serving]
 [[UnlimitedOCR2-TechReport26]] 面向多页 OCR，通过视觉块选择减少单步读取，并用页面分块、边界页复用和旧块释放控制 KV 驻留；其跨页上下文能力受分块范围限制。它与 HySparse 系列的模型、工作负载和测量指标不同。
 
 再看 **KV 在哪里**。[[HiSparse-arXiv26]] 和 [[ECHO-OSDI26]] 用主机完整历史支撑 GPU 热缓存；HiSparse 的精确跨层预取依赖共享索引，普通相邻层猜测在其实验中没有端到端收益。[[DirectKV-OSDI26]] 探索 GPU 直接访问主机内存，收益取决于互连和访问布局。这些方法的主机容量、设备预算与延迟需要一起核算。
+
+[[InfiniGen-OSDI24]] 用相邻层输入和 GPU 上的部分 Key 预测需要回载的 token；预测是近似的，部分 Key 自身占显存，主机池达到容量上限时还可能永久淘汰历史。它的 PCIe 3.0 单 GPU 实验与后续方案的硬件和质量指标不同，不能直接比较加速倍数。
 
 再问 **命中后怎样送达计算设备**。[[Strata-OSDI26]] 处理单条分层路径上的小页传输，[[DualPath-SIGCOMM26]] 在预填充与解码两侧分担外部存储读取。[[LMetric-OSDI26]] 则在请求进入实例前权衡前缀复用与排队负载。它们优化的瓶颈位置不同；后续比较应统一工作负载、硬件拓扑与延迟指标，不能直接排列论文报告的加速倍数。
 

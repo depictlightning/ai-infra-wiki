@@ -6,6 +6,8 @@ FAST 2026 and MLSys 2026 are being screened for work directly relevant to LLM tr
 
 The OSDI 2025 collection currently contains one selected paper, NanoFlow. Its full-text note records unresolved differences between reported figures and plotted results.
 
+The OSDI 2024 collection contains InfiniGen, DistServe, and Sarathi-Serve notes on KV offloading and prefill/decode serving.
+
 ## Local preview
 
 cd quartz

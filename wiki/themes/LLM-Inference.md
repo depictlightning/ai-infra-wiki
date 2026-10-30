@@ -4,9 +4,9 @@ topic: LLM-Inference
 title: LLM Inference
 theme_kind: area
 member_tag: area/llm-inference
-paper_count: 35
+paper_count: 36
 first_generated: 2026-10-27
-last_updated: 2026-10-29
+last_updated: 2026-10-30
 tags: [topic-overview, llm-inference]
 ---
 
@@ -20,9 +20,11 @@ tags: [topic-overview, llm-inference]
 
 ## 核心论文
 
-本专题共 35 篇核心论文，按论文去重计数：
+本专题共 36 篇核心论文，按论文去重计数：
 
 - [[DFlash-ICML26]]
+
+- [[InfiniGen-OSDI24]]
 
 - [[HySparse-arXiv26]]、[[HySparse2-arXiv26]]、[[HiSparse-arXiv26]]、[[ECHO-OSDI26]]
 - [[DirectKV-OSDI26]]、[[Strata-OSDI26]]、[[ADAngel-OSDI26]]、[[KTransformers-SOSP25]]
@@ -107,6 +109,8 @@ tags: [topic-overview, llm-inference]
 
 ### 08 卸载与分层存储
 
+- [[InfiniGen-OSDI24]] — 在主机内存保存历史 KV，用 GPU 上的部分 Key 预测下一层需要取回的条目。
+
 - [[PipelinedSharding-MLSys26]] — 在主机内存与 GPU 显存之间调度权重、KV 和计算。
 
 - [[LocalityAwareBeam-MLSys26]] — 分组连续生成多个 token，降低主机与 GPU 间的 KV 搬运。
@@ -120,6 +124,7 @@ tags: [topic-overview, llm-inference]
 
 ### 09 预取与访问预测
 
+- [[InfiniGen-OSDI24]] — 用前一层输入和部分 Key 预测下一层注意力，提前取回所选 KV。
 - [[HiSparse-arXiv26]] — 在共享索引层组中提前回载所需 KV。
 - [[ECHO-OSDI26]] — 利用跨层稀疏选择相关性提前取回 KV。
 - [[Strata-OSDI26]] — 在排队期间将 SSD 命中的 KV 预取到 DRAM。

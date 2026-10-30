@@ -1,5 +1,9 @@
 # Wiki 更新记录
 
+## [2026-10-30] 收录 InfiniGen
+
+- 解析 OSDI 2024 会议版全文，建立 [[InfiniGen-OSDI24]] 和 [[OSDI-2024]]，纳入 [[LLM-Inference]]、[[KV-Cache-Systems]]；区分 GPU 预测、CPU 内存保存和可选永久淘汰，并记录实验及质量边界。
+
 ## [2026-10-30] 收录 NanoFlow
 
 - 复用已收录的会议 PDF 和 MinerU 全文，建立 [[NanoFlow-OSDI25]] 及 [[OSDI-2025]] 页面，并纳入 [[LLM-Serving]]；记录理论上限、在线请求率和消融结果的图文口径差异。

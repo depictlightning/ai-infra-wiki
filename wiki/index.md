@@ -14,6 +14,7 @@
 
 - [[OSDI-2026]] — 38 篇：推理服务、KV 缓存、训练与 RL、GPU 软件栈和可靠性。
 - [[OSDI-2025]] — 指定收录 1 篇：NanoFlow 的 GPU 内推理执行与服务吞吐。
+- [[OSDI-2024]] — 已整理 3 篇：InfiniGen、DistServe 与 Sarathi-Serve。
 - [[SOSP-2025]] — 指定收录 1 篇：KTransformers 的 CPU/GPU 混合 MoE 推理。
 - [[SOSP-2026]] — 14 篇：推理与服务、训练、GPU 内核与调度、模型存储、可观测性。
 - [[SIGCOMM-2026]] — 指定收录 1 篇：分离式 KV cache 存储 I/O 与智能体推理。
@@ -27,7 +28,7 @@
 
 ### 主线
 
-- [[LLM-Inference]] — 35 篇论文 | 按稀疏化、量化、内核、复用、投机解码等十类方法查找。
+- [[LLM-Inference]] — 36 篇论文 | 按稀疏化、量化、内核、复用、投机解码等十类方法查找。
 - [[LLM-Serving]] — 25 篇论文 | 批处理、阶段调度、路由、模型放置、数据路径与生产观测。
 - [[LLM-Training]] — 20 篇论文 | 并行训练、RL 后训练、权重同步、数据供给、容错和调试。
 
@@ -37,7 +38,7 @@
 
 - [[PD-Serving]] — 20 篇论文 | 预填充与解码的混合、分离和阶段调度。
 - [[Inference-Simulation]] — 4 篇核心论文 | 推理模拟器、性能画像、配置搜索与评测。
-- [[KV-Cache-Systems]] — 20 篇论文 | KV cache 的共享、驻留、搬运与复用。
+- [[KV-Cache-Systems]] — 21 篇论文 | KV cache 的共享、驻留、搬运与复用。
 - [[DeepSeek]] — 2 篇核心论文 | DeepSeek 模型与推理基础设施资料。
 - [[Speculative-Decoding]] — 9 篇论文 | 推测解码的无损采样、草稿生成、验证与系统调度。
 
