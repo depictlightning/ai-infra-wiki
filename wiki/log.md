@@ -1,5 +1,10 @@
 # Wiki 更新记录
 
+## [2026-10-30] 收录 Buoy
+
+- 收录 [[Buoy-SIGMOD27]] 的 2026 年 PACMMOD 正式版与 MinerU 全文，建立 [[SIGMOD-2027]] 入口；将其纳入 [[KV-Cache-Offloading]] 和 [[KV-Cache-Systems]]，补充分层缓存的准入、替换和分层命中。
+- PDF 来自开放获取镜像并核对 DOI；MinerU 按页段解析，图表和算法回看 PDF。区分模拟命中率、顺序回放的 vLLM 指标及 SSD 扩展，记录幽灵缓存与 SSD 真实数据层的区别。
+
 ## [2026-10-30] 建立 KV cache 多级存储与卸载专题
 
 - 建立 [[KV-Cache-Offloading]]，按完整访问、GPU 直接访问、CPU 协同计算、近似与原生稀疏选择，以及分层缓存与存储池组织 10 篇论文和 3 篇博客；将 HiCache 与 Strata 作为一条资料线。

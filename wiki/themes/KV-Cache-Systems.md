@@ -5,7 +5,7 @@ title: KV Cache Systems
 theme_kind: area
 member_tag: area/kv-cache-systems
 candidate_tags: [kv-cache]
-paper_count: 25
+paper_count: 26
 first_generated: 2026-10-23
 last_updated: 2026-10-30
 tags: [topic-overview, kv-cache, llm-serving]
@@ -23,6 +23,7 @@ tags: [topic-overview, kv-cache, llm-serving]
 
 ## 核心论文
 
+- [[Buoy-SIGMOD27]] — 按前缀深度和复用信号进行准入、分层替换与 HBM 热点保留。
 - [[FlexGen-ICML23]] — 联合放置权重、激活与 KV，并在 GPU、CPU 和 SSD 间安排计算与传输。
 - [[NEO-MLSys25]] — 把部分请求的 KV 和解码注意力放在 CPU，按负载安排 GPU–CPU 流水线。
 - [[LMCache-arXiv25]] — 在推理引擎与多级存储后端之间提供 KV 加载、保存和管理接口。

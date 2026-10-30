@@ -5,7 +5,7 @@ title: LLM KV Cache Offloading
 theme_kind: lens
 member_tag: lens/kv-cache-offloading
 candidate_tags: [kv-cache, offloading, storage-hierarchy]
-paper_count: 10
+paper_count: 11
 first_generated: 2026-10-30
 last_updated: 2026-10-30
 tags: [topic-overview, llm-inference, kv-cache, offloading]
@@ -35,6 +35,7 @@ KV cache 让模型在生成新 token 时复用历史计算，但它的容量随�
 - [[DirectKV-OSDI26]]（2026）— GPU kernel 直接访问主机内存中的 KV，减少显存暂存。
 - [[ECHO-OSDI26]]（2026）— 对原生稀疏注意力模型按需回载 KV，并在计算前补齐准确选择。
 - [[HiSparse-arXiv26]]（2026）— 主机保存历史、GPU 维护热工作集，用稀疏选择和可选精确预取管理驻留。
+- [[Buoy-SIGMOD27]]（2026 年发表，SIGMOD 2027）— 利用前缀深度、准入和访问反馈管理分层缓存，兼顾总命中与 HBM 命中。
 
 ## 相关博客
 
@@ -105,6 +106,7 @@ CPU 上的历史 KV ──┼─ GPU kernel 直接读取主机内存 → GPU 注
 | [[SGLang-HiCache]] / [[Strata-OSDI26]] | SGLang 内的 GPU、CPU 与外部存储分层；HiRadixTree 和控制器管理位置 | 匹配前缀后加载，支持分层预取与计算重叠 | 存储布局、写入策略、缓存命中后等待与请求调度 |
 | [[LMCache-arXiv25]] | 推理引擎与不同存储／网络后端之间的独立缓存层 | 连接器报告命中并发起读取、保存或传输 | 引擎版本、chunk 与页的转换、管理器和后端配置 |
 | [[Mooncake-FAST25]] | 面向服务集群的 KV 存储池及传输、调度 | 在不同实例之间定位、共享或交接 KV | 节点位置、网络、热点复制、负载及 P/D 分配 |
+| [[Buoy-SIGMOD27]] | 前缀缓存的准入与跨 HBM、DRAM 替换；论文另测 SSD 扩展 | 按深度、近期访问和重访信号决定保留位置 | 分层命中率、回载开销、缓存准入和工作负载变化 |
 
 例如 SGLang + HiCache 可以使用 Mooncake 作为外部后端；LMCache 也可以对接 Mooncake Store。**引擎缓存层与共享存储池处于不同职责位置**，但各自也有搬运和管理能力。配置上仍要确认实际版本、后端和数据路径。[^hicache][^lmcache-docs]
 
@@ -115,6 +117,8 @@ CPU 上的历史 KV ──┼─ GPU kernel 直接读取主机内存 → GPU 注
 ### 缓存命中不等于立即可用
 
 假设新请求需要已保存的 100K token 前缀：系统先查到位置，再等待可用带宽，把数据从存储、主机内存送到 GPU 并转换布局；如果实际加载比重算更慢，命中也不一定降低 TTFT。[[LMCache-arXiv25]] 图 15 的低带宽实验就出现过这样的交叉。并发请求同时等待同一前缀时，还要考虑重复加载、重复计算和排队。[[Strata-OSDI26]] 将加载时间和正在生成但尚未可复用的前缀纳入调度。[^lmcache][^strata]
+
+[[Buoy-SIGMOD27]] 从替换策略补充这一问题：浅层前缀可能被多条请求路径共享，新块不必都长期留在显存。Buoy 用深度感知准入、访问位和仅保存块 ID 的幽灵队列过滤候选，将复用的块提升到 HBM。它的三层实验中，Qwen-B 上 S3-FIFO 总命中率为 52.45%、Buoy 为 51.85%，但 HBM 命中率分别为 0.65% 和 45.94%。这是模拟器在指定容量下的结果；实际 vLLM 测试顺序回放请求，不能直接推断高并发排队行为。[^buoy]
 
 ## 横向对照
 
@@ -132,6 +136,7 @@ CPU 上的历史 KV ──┼─ GPU kernel 直接读取主机内存 → GPU 注
 | [[Strata-OSDI26]] | CPU、外部存储 | 分层前缀匹配、GPU 辅助搬运与调度 | 精确前缀复用；加载、复制及调度等待需要核算 |
 | [[LMCache-arXiv25]] | CPU、磁盘、远端 | 引擎连接器和可配置缓存后端 | 普通复用可保存完整 KV；若启用压缩需另核对精度 |
 | [[Mooncake-FAST25]] | 集群内主机存储与远端 | KV 存储池、跨节点共享和传输 | 缓存位置、网络、调度及多副本占用影响收益 |
+| [[Buoy-SIGMOD27]] | CPU；另评估 SSD | 按前缀结构和复用反馈准入、提升及淘汰 | 缺失部分正确重算；命中层次、写入与元数据影响性能 |
 
 ## 如何设计可比较的实验
 
@@ -160,3 +165,4 @@ CPU 上的历史 KV ──┼─ GPU kernel 直接读取主机内存 → GPU 注
 [^lmcache]: Yuhan Liu、Jiayi Yao、Yihua Cheng 等. 《LMCache: An Efficient KV Cache Layer for Enterprise-Scale LLM Inference》. arXiv:2510.09665v2，2025。[报告](https://arxiv.org/abs/2510.09665v2)。
 [^lmcache-docs]: LMCache. 《Architecture Overview》. [项目文档](https://docs.lmcache.ai/developer_guide/architecture.html)，访问于 2026-10-30。
 [^mooncake]: Ruoyu Qin 等. 《Mooncake: Trading More Storage for Less Computation — A KVCache-centric Architecture for Serving LLM Chatbot》. FAST，2025。[论文](https://www.usenix.org/conference/fast25/presentation/qin)。
+[^buoy]: Liang Wang 等. 《Buoy: Efficient and Effective Cache Replacement for Prefix Caching》. Proceedings of the ACM on Management of Data，2026；SIGMOD 2027 录用。[论文](https://doi.org/10.1145/3837101)。

@@ -20,6 +20,7 @@
 - [[SOSP-2025]] — 指定收录 1 篇：KTransformers 的 CPU/GPU 混合 MoE 推理。
 - [[SOSP-2026]] — 14 篇：推理与服务、训练、GPU 内核与调度、模型存储、可观测性。
 - [[SIGCOMM-2026]] — 指定收录 1 篇：分离式 KV cache 存储 I/O 与智能体推理。
+- [[SIGMOD-2027]] — 指定收录 Buoy：分层前缀 KV 缓存的准入和替换；论文于 2026 年先行发表。
 - [[FAST-2026]] — 7 篇已建页，正在逐篇复核；包括 KV 存储、模型加载与训练检查点。
 - [[MLSys-2026]] — 正在筛选；已建 49 篇笔记，其中 29 篇完成复核，尚非完整名单。
 - ICML 2026 — [[DFlash-ICML26]]：以块扩散生成推测解码草稿；已核对正式版全文与关键图表。
@@ -41,8 +42,8 @@
 
 - [[PD-Serving]] — 20 篇论文 | 预填充与解码的混合、分离和阶段调度。
 - [[Inference-Simulation]] — 4 篇核心论文 | 推理模拟器、性能画像、配置搜索与评测。
-- [[KV-Cache-Systems]] — 25 篇论文 | KV cache 的共享、驻留、搬运与复用。
-- [[KV-Cache-Offloading]] — 10 篇论文 | KV 多级存储、直接访问、CPU 协同计算与选择性回载。
+- [[KV-Cache-Systems]] — 26 篇论文 | KV cache 的共享、驻留、搬运与复用。
+- [[KV-Cache-Offloading]] — 11 篇论文 | KV 多级存储、直接访问、CPU 协同计算与选择性回载。
 - [[DeepSeek]] — 2 篇核心论文 | DeepSeek 模型与推理基础设施资料。
 - [[Speculative-Decoding]] — 9 篇论文 | 推测解码的无损采样、草稿生成、验证与系统调度。
 

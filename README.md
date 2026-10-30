@@ -8,7 +8,7 @@ The OSDI 2025 collection currently contains one selected paper, NanoFlow. Its fu
 
 The OSDI 2024 collection contains InfiniGen, DistServe, and Sarathi-Serve notes on KV offloading and prefill/decode serving.
 
-The KV Cache Offloading theme compares GPU, CPU, SSD and cluster storage paths using 10 paper notes and 3 technical blog entries. Its Mooncake paper note retains a needs-review status.
+The KV Cache Offloading theme compares GPU, CPU, SSD and cluster storage paths using 11 paper notes and 3 technical blog entries. Its Mooncake paper note retains a needs-review status.
 
 ## Local preview
 
