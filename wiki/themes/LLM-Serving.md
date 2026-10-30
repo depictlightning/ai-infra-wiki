@@ -4,9 +4,9 @@ topic: LLM-Serving
 title: LLM Serving
 theme_kind: area
 member_tag: area/llm-serving
-paper_count: 24
+paper_count: 25
 first_generated: 2026-10-23
-last_updated: 2026-10-28
+last_updated: 2026-10-30
 tags: [topic-overview, llm-serving]
 ---
 
@@ -25,6 +25,8 @@ tags: [topic-overview, llm-serving]
 ## 核心论文
 
 ### 批处理与阶段调度
+
+- [[NanoFlow-OSDI25]] — 拆分批次并重叠 GPU 内计算、访存与通信；论文的若干实验倍率和图表数值存在差异。
 
 - [[TriInfer-MLSys26]] — 为图文大模型选择编码、预填充与解码的部署组合，并按阶段组批。
 

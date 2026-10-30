@@ -6,13 +6,14 @@
 
 ## 关于本站
 
-本分支目前整理 OSDI 2026 的 38 篇 AI 基础设施论文、SOSP 2026 的 14 篇、SOSP 2025 论文 [[KTransformers-SOSP25]]、SIGCOMM 2026 论文 [[DualPath-SIGCOMM26]]、arXiv 预印本 [[DSpark-arXiv26]]、[[HiSparse-arXiv26]]、[[HySparse-arXiv26]] 与 [[HySparse2-arXiv26]]，以及技术报告 [[UnlimitedOCR2-TechReport26]]。SOSP 2026 中 8 篇已按全文阅读，6 篇只有公开摘要；每篇页面和会议综述都标明证据等级。
+本分支目前整理 OSDI 2026 的 38 篇 AI 基础设施论文、OSDI 2025 论文 [[NanoFlow-OSDI25]]、SOSP 2026 的 14 篇、SOSP 2025 论文 [[KTransformers-SOSP25]]、SIGCOMM 2026 论文 [[DualPath-SIGCOMM26]]、arXiv 预印本 [[DSpark-arXiv26]]、[[HiSparse-arXiv26]]、[[HySparse-arXiv26]] 与 [[HySparse2-arXiv26]]，以及技术报告 [[UnlimitedOCR2-TechReport26]]。SOSP 2026 中 8 篇已按全文阅读，6 篇只有公开摘要；每篇页面和会议综述都标明证据等级。
 
 [[FAST-2026]] 和 [[MLSys-2026]] 正在筛选与整理，当前结果与待复核状态见会议页。
 
 ## 论文来源
 
 - [[OSDI-2026]] — 38 篇：推理服务、KV 缓存、训练与 RL、GPU 软件栈和可靠性。
+- [[OSDI-2025]] — 指定收录 1 篇：NanoFlow 的 GPU 内推理执行与服务吞吐。
 - [[SOSP-2025]] — 指定收录 1 篇：KTransformers 的 CPU/GPU 混合 MoE 推理。
 - [[SOSP-2026]] — 14 篇：推理与服务、训练、GPU 内核与调度、模型存储、可观测性。
 - [[SIGCOMM-2026]] — 指定收录 1 篇：分离式 KV cache 存储 I/O 与智能体推理。
@@ -27,7 +28,7 @@
 ### 主线
 
 - [[LLM-Inference]] — 35 篇论文 | 按稀疏化、量化、内核、复用、投机解码等十类方法查找。
-- [[LLM-Serving]] — 24 篇论文 | 批处理、阶段调度、路由、模型放置、数据路径与生产观测。
+- [[LLM-Serving]] — 25 篇论文 | 批处理、阶段调度、路由、模型放置、数据路径与生产观测。
 - [[LLM-Training]] — 20 篇论文 | 并行训练、RL 后训练、权重同步、数据供给、容错和调试。
 
 具体方法在这三页内部组织。按论文的主要问题归类，核心成员均已有全文笔记；不符合范围的内容仍可从论文和会议目录阅读。

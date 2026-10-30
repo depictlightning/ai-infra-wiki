@@ -7,7 +7,7 @@ member_tag: lens/pd-serving
 candidate_tags: [disaggregated-serving, chunked-prefill]
 paper_count: 20
 first_generated: 2026-10-29
-last_updated: 2026-10-29
+last_updated: 2026-10-30
 tags: [topic-overview, llm-serving, scheduling]
 ---
 
@@ -61,6 +61,8 @@ tags: [topic-overview, llm-serving, scheduling]
 [[SarathiServe-OSDI24]] 将长 prefill 切块并优先调度已有 decode。[[DuetServe-ICML26]] 进一步在预测 token 间延迟超标时划分同一 GPU 的 SM，允许两阶段并发；SM 划分仍共享内存带宽，两篇论文的硬件和基线也不同。
 
 [[MuxWise-ASPLOS26]] 也在 GPU 内划分 SM，并保持两阶段共享 KV 池；它按 decode 延迟估计与竞争余量分配 SM，以按层 prefill 和异步查询减少调度空档。其实验主要以 P99 TBT 达标评估容量，不应与双 SLO 请求达标率直接比较。SGLang 官方博客提供同作者团队的 PD-Multiplexing 早期实现线索，但具体版本和实验需要分别核对。
+
+[[NanoFlow-OSDI25]] 同样在一个实例内混合阶段，但优化对象是不同子批次的计算、访存与通信操作重叠；它没有按阶段固定划分 SM，也没有求解 P:D 实例数量。其目标和实验指标与上述阶段调度方案不同，可作为 GPU 内执行的对照。
 
 分离部署把阶段放到不同实例，可独立选择批量、并行配置和资源比例。代价是模型副本、阶段交接和 KV 传输，以及两侧容量失衡。prefill 完成的速率若超过 decode 消化能力，排队与 KV 占用会增长；反过来 decode 资源可能空闲。[[PragmaticDisaggregation-MLSys26]] 直接研究这些取舍，其笔记已通读但仍待复核，尤其一处正文与图表的倍数不一致，故暂列候选。
 
