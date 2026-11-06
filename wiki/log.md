@@ -1,5 +1,11 @@
 # Wiki 更新记录
 
+## [2026-11-07] 整理 SSD KV Cache Offloading
+
+- 在 [[KV-Cache-Offloading]] 中按完整回载和分层管理、近似选择性读取、多 SSD 并行及计算型 SSD 梳理技术路径；将已有全文笔记 [[Bidaw-FAST26]] 纳入专题，并分开其观察和依赖假设。
+- 建立 [[IMPRESS-FAST25]]、[[KVSwap-MobiSys26]]、[[InstAttention-HPCA25]]、[[KVDrive-SIGMOD26]] 和 [[Octopus-ATC26]] 的全文阅读初稿，保留预印本与会议终稿的版本说明；MinerU 解析及全文工作流仍待完成，暂不计入专题核心论文。
+- FlashGen 的会议出版页未能取得全文，暂记录论文入口及作者幻灯片；不以幻灯片替代正式论文解析。未复现实验。
+
 ## [2026-10-30] 复核 KV Cache Offloading 专题论文
 
 - 以 [[ECHO-OSDI26]] 的问题分析、机制和证据深度为参照，补充 [[FlexGen-ICML23]]、[[NEO-MLSys25]]、[[Mooncake-FAST25]]、[[LMCache-arXiv25]] 和 [[SolidAttention-FAST26]]；梳理成本模型、CPU/GPU 流水线、分布式调度、连接器、SSD 预取及质量和实验边界。

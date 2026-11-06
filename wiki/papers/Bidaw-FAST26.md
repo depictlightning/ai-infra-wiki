@@ -5,7 +5,7 @@ full_title: "Bidaw: Enhancing Key-Value Caching for Interactive LLM Serving via 
 authors: [Shipeng Hu, Guangyan Zhang, Yuqi Zhou, Yaya Wei, Ziyan Zhong, Jike Chen]
 venue: FAST
 year: 2026
-tags: [llm-serving, kv-cache, tiered-storage, scheduling, eviction, area/llm-serving, area/kv-cache-systems]
+tags: [lens/kv-cache-offloading, llm-serving, kv-cache, tiered-storage, scheduling, eviction, area/llm-serving, area/kv-cache-systems]
 source_pdf: "[[fast2026-hu-shipeng.pdf]]"
 source_md: "[[fast2026-hu-shipeng]]"
 review_status: complete
@@ -29,9 +29,12 @@ last_reviewed: 2026-10-28
 
 ## 关键观察 / 隐含假设
 
-- **冷热请求的加载时长不同**：来自主存和 SSD 的请求混在先进先出队列中，长时间读取可能阻塞已准备好的请求。收益依赖两级存储有足够大的访问时间差（§2.2–2.3）。[^paper]
-- **上一轮回答长度提供交互时间线索**：作者对 12 组轨迹测量，回答长度与加权复用距离的下界的 Spearman 系数为 0.94–0.98；这不是回答长度与每次实际复用距离都具有同样相关性（§3.3、图 12）。[^paper]
-- **该线索依赖用户行为**：公开 ShareGPT 数据没有时间戳，作者用泊松分布模拟后，上一轮回答驱逐策略未再降低未命中率；因此不能假定生成长度在所有负载中都有效（§5.3）。[^paper]
+- **观察 1：冷热请求的加载时长不同。** 来自主存和 SSD 的请求混在先进先出队列中，等待磁盘读取的请求可能阻塞已经准备好的请求（§2.2–2.3）。[^paper]
+  - **依赖假设**：两级存储的访问时间有足够差距，队列中也有可以先运行的请求。请求都在同一存储层或 GPU 已饱和时，拆队列不一定带来相同收益；允许跳过请求还需兼顾公平性。
+- **观察 2：上一轮回答长度可为交互间隔提供线索。** 作者在 12 组轨迹中测得，回答长度与加权复用距离**下界**的 Spearman 系数为 0.94–0.98；这不表示回答长度与每次实际复用距离都有相同相关性（§3.3、图 12）。[^paper]
+  - **依赖假设**：用户阅读较长回答通常需要更长时间，且轨迹中的交互行为能代表后续流量。自动化 agent、批量 API 或用户离线后集中回复时，这种关系可能变化。
+- **观察 3：回答长度线索在合成流量中失效。** ShareGPT 没有时间戳；作者以泊松分布模拟到达时间后，使用上一轮回答长度的驱逐策略未再降低未命中率（§5.3）。[^paper]
+  - **依赖假设**：服务可以获得可信的交互时间，并在工作负载发生变化时重新估计信号。若只有脱离用户行为的合成到达时间，不宜承诺该驱逐策略有效。
 
 ## 核心方法
 
