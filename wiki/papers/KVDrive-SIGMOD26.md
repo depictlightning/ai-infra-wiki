@@ -5,12 +5,12 @@ full_title: "KVDrive: A Holistic Multi-Tier KV Cache Management System for Long-
 authors: [Jian Lin, Jiazhi Mi, Zicong Hong, Haodong Wang, Qianli Liu, Haoyue Zhang, Peng Li, Song Guo]
 venue: SIGMOD
 year: 2026
-tags: [llm-inference, kv-cache, ssd-offloading, sparse-attention, tiered-storage, scheduling]
+tags: [lens/kv-cache-offloading, llm-inference, kv-cache, ssd-offloading, sparse-attention, tiered-storage, scheduling]
 source_pdf: "[[arxiv26-lin-kvdrive.pdf]]"
-source_md: ""
+source_md: "[[arxiv26-lin-kvdrive]]"
 review_status: needs-review
 evidence_level: full-text
-last_reviewed: 2026-11-06
+last_reviewed: 2026-11-07
 ---
 
 # KVDrive：协同 GPU、内存与 SSD 的活跃 KV 管理（SIGMOD 2026）
@@ -19,7 +19,7 @@ last_reviewed: 2026-11-06
 
 > **一句话总结**：KVDrive 将活跃请求的完整 KV 放入 GPU、CPU 和 SSD 分层，联合优化稀疏选择、显存驻留、微批流水线和 SSD 布局；预印本在所测长上下文系统上报告比既有方案最多高 1.74 倍吞吐，但其动态稀疏注意力与完整注意力并非等价。[^paper]
 
-**版本与阅读状态**：SIGMOD 2026 官方录用清单列有同题论文及作者；本页阅读的是 arXiv:2605.18071v1 预印本，而非已核对的会议终稿。全文和部分原图已核查，MinerU 转换及与终稿的差异仍待复核。[^venue][^paper]
+**版本与阅读状态**：SIGMOD 2026 官方录用清单列有同题论文及作者；本页阅读的是 arXiv:2605.18071v1 预印本，而非已核对的会议终稿。预印本已由 MinerU 解析全文，并核对系统图、主要结果与 SSD 对照图；会议终稿尚未取得，因此仍标记为待复核。[^venue][^paper]
 
 ## 问题与动机
 
@@ -89,6 +89,7 @@ prefill 末尾用最后约 16–64 个 token 的注意力估计重要性：完�
 | 预印本摘要报告最高 1.74 倍吞吐 | 这是不同场景中的最高值；图 13 的 L20 场景相对 ShadowKV 最高约提高 70%，模型、上下文和 batch 需逐项查看。 |
 | H20 与 RTX 4090 的吞吐为最佳对照的 1.23–1.53 倍 | 图 14；不能将不同论文、不同硬件的倍数直接排序。 |
 | 动态稀疏质量有下降 | 表 2 的 Qwen3-8B：RULER 平均 Full-KV 为 73.94、KVDrive 为 68.07；Llama-3-8B 为 77.74 与 76.15。平均接近不等于逐任务不变。 |
+| SSD 扩容存在吞吐代价 | 图 21(b) 比较 Llama-3-8B-1048K 的 DRAM-only 与 DRAM+SSD；两组 SSD 柱均低于 DRAM-only。正文称 SSD 相对纯 DRAM 吞吐降低约 40%，但图中未标注精确值，无法直接确认该比例与两组柱形的对应关系；也不能套用于其他配置。 |
 | lookahead 不是所有模型都提升命中 | 表 3：Phi-4 的 Quest、ShadowKV 分别较 LRU 低 1.8、1.5 个百分点；KVDrive 自身从 78.0% 升到 81.0%。 |
 | 不同窗口存在拐点 | 图 16 扫描窗口 2、3、4；较大窗口可减少 I/O，但可能增加 lookup 时间。 |
 | centroid 数随上下文变化 | 图 18 在固定 1.56% 稀疏预算下比较 2048、4096、8192；论文报告 60K 更适合 4096、120K 更适合 8192。 |
@@ -105,18 +106,24 @@ prefill 末尾用最后约 16–64 个 token 的注意力估计重要性：完�
 
 ## 批判性分析
 
+### 论证链条
+
 KVDrive 有三条相互耦合的贡献链：驻留减少 CPU–GPU 搬运，SFC 尝试隐藏剩余等待，SSD 布局和分级暂存减少更慢层的 I/O。读图时需确认某个消融到底测试 DRAM–GPU 还是确实触发 SSD；仅凭完整系统较快，不能推定 SSD 布局单项贡献与总加速相同。[^paper]
+
+### 假设压力测试
 
 预印本一方面把完整历史保存在 SSD，另一方面对 decode 用动态稀疏 attention。存储完整性与注意力完整性是两个问题。表 2 的 Qwen3 RULER 平均下降约 5.87 个百分点，足以说明“保持准确率”不能理解为无损或每个任务均无变化。比较无损系统时，应固定语义、精度和需要访问的 token 集合。[^paper]
 
-另一个边界是基线均由作者统一框架重实现。公平性取决于具体实现与参数是否得到各自适当调优，而不只取决于模型和硬件相同。需要额外测量冷缓存、稳态、后台 SSD I/O、CPU 争用、预热时间、页缓存大小和在线 P95/P99，以判断容量收益能否在真实部署中保留。
+### 实验可信度
 
-## 可继续研究的问题
+另一个边界是基线均由作者统一框架重实现。公平性取决于具体实现与参数是否得到各自适当调优，而不只取决于模型和硬件相同。论文图 21 单独展示了 SSD 层引入后的吞吐下降，说明容量扩展不能等同于没有性能代价；也不能假定所有主结果都使用相同的 SSD 命中和页缓存条件。需要额外测量冷缓存、稳态、后台 SSD I/O、CPU 争用、预热时间、页缓存大小和在线 P95/P99，以判断容量收益能否在真实部署中保留。
 
-1. 在相同精度预算下，SSD 的选择性读取、全量读取和直接重算在哪些上下文长度交叉？
-2. 离线的层/head 分配遇到任务突变时，多久重画像才值得其成本？
-3. 是否可以把 SSD、主机内存和 GPU 的带宽争用纳入同一调度器，并对尾延迟设约束？
-4. 当模型原生提供确定的稀疏选择时，能否将最终选中项补齐并分别评估预测误差与缓存 miss？
+## 局限与后续工作
+
+- 在相同精度预算下，SSD 的选择性读取、全量读取和直接重算在哪些上下文长度交叉？
+- 离线的层/head 分配遇到任务突变时，多久重画像才值得其成本？
+- 是否可以把 SSD、主机内存和 GPU 的带宽争用纳入同一调度器，并对尾延迟设约束？
+- 当模型原生提供确定的稀疏选择时，能否将最终选中项补齐并分别评估预测误差与缓存 miss？
 
 ## 参考资料
 

@@ -5,9 +5,9 @@ title: LLM KV Cache Offloading
 theme_kind: lens
 member_tag: lens/kv-cache-offloading
 candidate_tags: [kv-cache, offloading, storage-hierarchy]
-paper_count: 12
+paper_count: 17
 first_generated: 2026-10-30
-last_updated: 2026-11-06
+last_updated: 2026-11-07
 tags: [topic-overview, llm-inference, kv-cache, offloading]
 ---
 
@@ -29,12 +29,17 @@ KV cache 让模型在生成新 token 时复用历史计算，但它的容量随�
 - [[InfiniGen-OSDI24]]（2024）— 以 GPU 上的部分 Key 预测后续层需要的 KV，从主机选择性回载。
 - [[NEO-MLSys25]]（2025）— 将部分请求的 KV 与解码注意力放在 CPU，以非对称流水线和负载感知调度协同 GPU。
 - [[Mooncake-FAST25]]（2025）— 集群级 KV 存储池、跨实例传输与缓存感知调度。
+- [[IMPRESS-FAST25]]（2025）— 为共享前缀选择重要 KV，并按重要性重排 SSD 数据。
+- [[InstAttention-HPCA25]]（2025）— 将解码注意力放在计算型 SSD；笔记依据 InstInfer 预印本，会议终稿尚未核对。
 - [[LMCache-arXiv25]]（2025）— 位于推理引擎与多级存储之间的 KV 缓存、搬运与控制接口。
 - [[SolidAttention-FAST26]]（2026）— 将完整历史放在 SSD，结合块级近似选择、预取及计算重叠。
 - [[Bidaw-FAST26]]（2026）— 主存与 SSD 共同保存多轮对话状态，结合存储感知调度与替换。
 - [[Strata-OSDI26]]（2026）— 为分层上下文缓存优化数据布局、碎片搬运与缓存感知调度。
 - [[DirectKV-OSDI26]]（2026）— GPU kernel 直接访问主机内存中的 KV，减少显存暂存。
 - [[ECHO-OSDI26]]（2026）— 对原生稀疏注意力模型按需回载 KV，并在计算前补齐准确选择。
+- [[KVDrive-SIGMOD26]]（2026）— 联合管理活跃 KV 的显存驻留、微批流水线与 SSD 层；笔记依据预印本。
+- [[Octopus-ATC26]]（2026）— 用共同激活聚类和多盘调度组织稀疏 KV 读取；笔记依据作者关联的 Swarm 预印本。
+- [[KVSwap-MobiSys26]]（2026，CCF B 类补充）— 用低秩预测、分组读取与复用缓冲支持端侧磁盘卸载。
 - [[HiSparse-arXiv26]]（2026）— 主机保存历史、GPU 维护热工作集，用稀疏选择和可选精确预取管理驻留。
 - [[Buoy-SIGMOD27]]（2026 年发表，SIGMOD 2027）— 利用前缀深度、准入和访问反馈管理分层缓存，兼顾总命中与 HBM 命中。
 
@@ -46,7 +51,7 @@ KV cache 让模型在生成新 token 时复用历史计算，但它的容量随�
 
 ## 阅读路线与判断框架
 
-先读 [[FlexGen-ICML23]]，理解为什么权重、KV、激活的放置和批次调度必须一起考虑。然后比较 [[InfiniGen-OSDI24]]、[[DirectKV-OSDI26]] 和 [[NEO-MLSys25]]：它们分别减少回载量、改变 GPU 访问主机内存的路径，以及让 CPU 承担部分注意力计算。接着看 [[SolidAttention-FAST26]]、[[ECHO-OSDI26]]、[[HiSparse-arXiv26]] 与 [[vLLM-Hybrid-HiSparse]]，区分近似选择和模型原生选择。最后读 [[SGLang-HiCache]] / [[Strata-OSDI26]]、[[LMCache-arXiv25]] 和 [[Mooncake-FAST25]]，理解前缀 KV 的分层保留及共享。
+先读 [[FlexGen-ICML23]]，理解为什么权重、KV、激活的放置和批次调度必须一起考虑。然后比较 [[InfiniGen-OSDI24]]、[[DirectKV-OSDI26]] 和 [[NEO-MLSys25]]：它们分别减少回载量、改变 GPU 访问主机内存的路径，以及让 CPU 承担部分注意力计算。接着看 [[SolidAttention-FAST26]]、[[ECHO-OSDI26]]、[[HiSparse-arXiv26]] 与 [[vLLM-Hybrid-HiSparse]]，区分近似选择和模型原生选择。SSD 方向可从 [[IMPRESS-FAST25]] 的前缀选择读到 [[KVSwap-MobiSys26]] 和 [[KVDrive-SIGMOD26]] 的活跃解码，再比较 [[Octopus-ATC26]] 的多盘聚类和 [[InstAttention-HPCA25]] 的设备内计算。最后读 [[SGLang-HiCache]] / [[Strata-OSDI26]]、[[LMCache-arXiv25]] 和 [[Mooncake-FAST25]]，理解前缀 KV 的分层保留及共享。
 
 每次比较先回答五个问题：
 
@@ -142,12 +147,14 @@ FlashGen（ASPLOS 2025）同样值得与 Bidaw 对照：作者介绍其 GPU/CPU/
 | 工作 | 如何减少 SSD I/O | 缓存语义与主要边界 |
 |---|---|---|
 | [[SolidAttention-FAST26]] | 将历史按块布局，基于代表向量选择块，再通过预测预取、miss 补读和任务调度重叠 SSD 与 GPU | 近似选择；补读能补齐当前**已选块**的预取 miss，不能恢复稀疏选择排除的其他块。 |
-| [[IMPRESS-FAST25]] | 用少数 probe head 估计重要前缀 KV，按重要性重排磁盘块，并按频率和重要比例分层缓存 | 近似前缀恢复；未选前缀不参与后续计算。FAST 正式 PDF 已读，MinerU 及图表复核待完成。 |
-| [[KVSwap-MobiSys26]] | 低秩 Key 预测重要 token 组，对齐磁盘读取，并复用相邻 decode 步的已读组 | 端侧近似选择；极紧 eMMC 预算下，RULER 个别子任务下降超过 50 个百分点。MobiSys 为 CCF B；全文复核待完成。 |
-| [[KVDrive-SIGMOD26]] | 层/head 驻留、微批重叠、重要性预热及 SSD extent 联合减少活跃 KV 搬运 | 动态稀疏 decode；已读作者预印本，会议终稿及 MinerU 待核。 |
+| [[IMPRESS-FAST25]] | 用少数 probe head 估计重要前缀 KV，按重要性重排磁盘块，并按频率和重要比例分层缓存 | 近似前缀恢复；未选前缀不参与后续计算。已阅读 FAST 会议版全文。 |
+| [[KVSwap-MobiSys26]] | 低秩 Key 预测重要 token 组，对齐磁盘读取，并复用相邻 decode 步的已读组 | 端侧近似选择；极紧 eMMC 预算下，RULER 个别子任务下降超过 50 个百分点。MobiSys 为 CCF B；已阅读会议正文。 |
+| [[KVDrive-SIGMOD26]] | 层/head 驻留、微批重叠、重要性预热及 SSD extent 联合减少活跃 KV 搬运 | 动态稀疏 decode；已阅读作者预印本，会议终稿尚未核对。 |
 | [[Octopus-ATC26]] / Swarm | 按共同激活关系聚类，代表索引驻留 DRAM，从多个 SSD 读取选中簇 | 簇选择是近似；当前分析来自作者链接的 Swarm 预印本，Octopus 终稿待核。 |
 
 IMPRESS 和 SolidAttention 都减少 SSD 读取，但两者选取依据不同：前者用多个 head 的选择相似性降低前缀识别成本，后者面向活跃解码的块选择和预取纠错。KVSwap 的重点是统一内存严格受限的端侧设备：低秩表示只用于预测，真实 KV 从磁盘组读取；它的滚动缓冲保存新生成数据，另一个复用缓冲保存已读历史。KVDrive 则同时考虑 GPU 驻留、主机控制和三级数据路径。[^impress][^solid][^kvswap][^kvdrive]
+
+容量扩展不是免费的：KVDrive 预印本图 21 比较 SSD 与仅用 DRAM 的配置，两组 SSD 吞吐均低于纯 DRAM；正文称吞吐降低约 40%，但图中未标精确值，无法直接确认该比例与两组柱形的对应关系。这个数字属于作者所测配置，不能外推到所有 SSD 或内存容量。[^kvdrive]
 
 对比这些近似方法时，不能只固定“读取 10% KV”。块、簇和 token 的选择单位不同；同样的数据字节数可能有不同召回率和读放大。同样地，模型权重/KV 的量化、top-k 预算和任务质量也必须共同固定或分别报告。
 
@@ -185,7 +192,12 @@ Swarm 预印本的思路是将经常一起访问的条目组成簇，再把每�
 | [[InfiniGen-OSDI24]] | CPU | GPU 预测，再回载所选完整 KV | 相对完整注意力近似；索引占显存，主机池可能淘汰 |
 | [[DirectKV-OSDI26]] | CPU | GPU kernel 直接读取主机 KV | 完整访问路径；依赖高速互连及访存布局 |
 | [[NEO-MLSys25]] | CPU | 以请求为单位将 KV 和部分解码注意力留在 CPU | 不靠稀疏裁剪；CPU 带宽、调度和 Q/K/V 通信是代价 |
+| [[IMPRESS-FAST25]] | SSD，经过主机缓存 | 识别重要前缀、重排磁盘块并管理分层驻留 | 近似前缀选择；probe 偏差、重排写入和质量损失需核对 |
 | [[SolidAttention-FAST26]] | SSD，经过主机缓冲 | 选择块并预取，GPU 对所选历史计算 | 相对完整注意力近似；SSD 竞争和局部性影响性能 |
+| [[KVSwap-MobiSys26]] | NVMe / eMMC | 低秩 Key 预测与分组读取，滚动缓冲和复用缓冲协同 | 相对完整注意力近似；端侧预算、组大小与任务质量共同约束 |
+| [[KVDrive-SIGMOD26]] | DRAM、SSD | 活跃 KV 的稀疏选择、驻留与多级搬运 | 动态稀疏为近似；SSD 容量扩展带来 I/O 与吞吐代价 |
+| [[Octopus-ATC26]] / Swarm | 多块 SSD | 共激活聚类、跨盘布局与去重调度 | 近似选择；聚类画像、副本和多盘拓扑增加成本 |
+| [[InstAttention-HPCA25]] / InstInfer | 计算型 SSD | 设备内读取历史 KV 并计算注意力 | 稠密与稀疏路径需分开；依赖定制 CSD，部分结果基于建模 |
 | [[Bidaw-FAST26]] | CPU、SSD | 多轮状态缓存、I/O 感知调度与重要张量选择 | 恢复时可能计算中间张量；效果依赖用户交互与存储位置 |
 | [[ECHO-OSDI26]] | CPU | 模型选择后召回；提前预取并在计算前补齐 | 预取保持原生稀疏模型选择；主机池与索引仍占资源 |
 | [[HiSparse-arXiv26]] | CPU | 完整历史与 GPU 热缓存，未命中时召回 | 保持所测稀疏选择语义；索引和元数据另计 |

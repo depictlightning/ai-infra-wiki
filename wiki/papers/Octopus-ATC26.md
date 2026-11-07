@@ -5,21 +5,21 @@ full_title: "Octopus: Unlocking SSD Parallelism for Sparse KVCache Retrieval"
 authors: [Tuowei Wang, Liyun Chu, Ruwen Fan, Ju Ren]
 venue: ATC
 year: 2026
-tags: [llm-inference, kv-cache, ssd-offloading, sparse-attention, parallel-io, prefetching]
+tags: [lens/kv-cache-offloading, llm-inference, kv-cache, ssd-offloading, sparse-attention, parallel-io, prefetching]
 source_pdf: "[[arxiv26-wang-swarm.pdf]]"
-source_md: ""
+source_md: "[[arxiv26-wang-swarm]]"
 review_status: needs-review
 evidence_level: full-text
-last_reviewed: 2026-11-06
+last_reviewed: 2026-11-07
 ---
 
 # Octopus / Swarm：利用多 SSD 并行回载稀疏 KV（ATC 2026）
 
-> **会议题目**：Octopus: Unlocking SSD Parallelism for Sparse KVCache Retrieval
+> **原题**：Octopus: Unlocking SSD Parallelism for Sparse KVCache Retrieval
 
 > **一句话总结**：作者预印本 Swarm 根据 KV 的共同激活关系聚类，把一个簇的条目分布到多块 SSD，并在读取时去重、均衡副本和重叠计算；它依赖稀疏选择与离线共访问画像，收益和质量均需结合多盘拓扑、数据分布和版本理解。[^preprint]
 
-**版本与阅读状态**：ATC 2026 会议日程列出的题目为 **Octopus**，作者主页将该条目的论文链接指向题为 **Swarm** 的 arXiv:2603.17803v1，作者顺序一致；这建立了作者提供的关联，但目前没有会议终稿可逐项对照。本页所有机制、数字和疑点均针对 Swarm 预印本，不能直接断言 Octopus 终稿完全相同。全文及部分图表正在核对，MinerU 解析待补，维持待复核状态。[^schedule][^authors][^preprint]
+**版本与阅读状态**：ATC 2026 会议日程列出的题目为 **Octopus**，作者主页将该条目的论文链接指向题为 **Swarm** 的 arXiv:2603.17803v1，作者顺序一致；这建立了作者提供的关联，但目前没有会议终稿可逐项对照。预印本已由 MinerU 解析全文，并核对系统图、主实验与 I/O 消融；本页所有机制、数字和疑点均针对 Swarm 预印本，不能断言 Octopus 终稿完全相同，故保留待复核状态。[^schedule][^authors][^preprint]
 
 ## 问题与动机
 
@@ -47,6 +47,8 @@ Swarm 把共同被选中的 KV 组织成簇，再把每簇拆分到多个 SSD；
 离线画像统计两个 KV 条目在注意力中共同激活的次数，构造加权关系图；先选择共同激活密度高的条目作为 medoid（簇代表），再把与现有簇平均距离低于阈值的候选逐步加入。一个条目可以出现在多个簇，以表达重叠访问模式（§5.1、算法 1）。[^preprint]
 
 预印本给出的 `d(i,j)=1−P(i,j)` 与后文“`d=1` 表示总是共同激活”的文字相矛盾：依该定义，`d=1` 对应 `P=0`。实现前应向作者确认概率归一化和距离定义，不能替作者悄悄修正；作者所述基于长度 `N` 的两两关系矩阵在长上下文下也可能有 `O(N²)` 状态，预印本未清楚交代百万 token 的构图成本与稀疏化方式。[^preprint]
+
+按预印本式 2，`P(i,j)` 由所有 `N²` 个条目的共同激活次数之和归一化。在总次数非零时，所有 `P(i,j)` 的平均值因而是 `1/N²`。**这是由公式作出的推导，不是论文的实测结果**：如果实现确实使用完整矩阵和固定精度，那么上下文长度变化时，距离阈值与数值精度可能敏感；也不排除代码采用稀疏表示或重新标定。确认这一点需要实际实现或作者解释。[^preprint]
 
 ### 2. DRAM 保存索引、近期项和热簇，SSD 分布完整簇
 
@@ -103,18 +105,24 @@ Swarm 把共同被选中的 KV 组织成簇，再把每簇拆分到多个 SSD；
 
 ## 批判性分析
 
+### 论证链条
+
 论文的技术链条由“共同被选中的条目 → 按关系聚类 → 每簇分散到多盘 → 合并、去重并为副本选择负载较轻的盘 → 计算和读取重叠”组成。聚类质量和多盘调度分别有消融，但整体吞吐提升同时包含索引、缓存、布局和预取；不能只归因于增加 SSD 数量。[^preprint]
+
+### 假设压力测试
 
 预印本至少有两处值得带着问题阅读：其一，距离公式与 `d=1` 的解释冲突；其二，论文将完整上下文的两两共激活建模为图，但没有充分量化百万 token 情况下的统计、存储和预处理成本。此外，报告的归一化精度应结合各任务绝对分数、查询级失败和与 dense attention 的差距；保持磁盘副本不意味着本步访问语义无损。[^preprint]
 
+### 实验可信度
+
 作者主页给出 Octopus→Swarm 的直接链接，说明二者存在作者认可的关系；但正式论文可能修改名称、算法和结果，当前不应把预印本每一项数值直接标成会议终稿。取得终稿后应逐项复核版本差异、作者公式以及每项实验的真实硬件路径。[^authors]
 
-## 可继续研究的问题
+## 局限与后续工作
 
-1. 对真实请求的新前缀，构建和更新共激活图需要多少 GPU 时间、内存和写入？可否用稀疏图或在线采样替代完整矩阵？
-2. 对任务迁移、突发热点和生成阶段变化，簇半径和缓存分数多快失效？
-3. 在受限 PCIe root complex、冷热盘混用和多租户 I/O 竞争下，多盘聚合收益如何变化？
-4. 如果引擎提供原生精确稀疏选择，能否区分预取失误与实际选择误差，并给未命中项提供确定性补齐？
+- 对真实请求的新前缀，构建和更新共激活图需要多少 GPU 时间、内存和写入？可否用稀疏图或在线采样替代完整矩阵？
+- 对任务迁移、突发热点和生成阶段变化，簇半径和缓存分数多快失效？
+- 在受限 PCIe root complex、冷热盘混用和多租户 I/O 竞争下，多盘聚合收益如何变化？
+- 如果引擎提供原生精确稀疏选择，能否区分预取失误与实际选择误差，并给未命中项提供确定性补齐？
 
 ## 参考资料
 

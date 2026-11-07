@@ -5,12 +5,12 @@ full_title: "KVSwap: Disk-aware KV Cache Offloading for Long-Context On-device I
 authors: [Huawei Zhang, Chunwei Xia, Zheng Wang]
 venue: MobiSys
 year: 2026
-tags: [llm-inference, kv-cache, ssd-offloading, sparse-attention, edge-inference, prefetching]
+tags: [lens/kv-cache-offloading, llm-inference, kv-cache, ssd-offloading, sparse-attention, edge-inference, prefetching]
 source_pdf: "[[mobisys26-zhang-kvswap.pdf]]"
-source_md: ""
-review_status: needs-review
+source_md: "[[mobisys26-zhang-kvswap]]"
+review_status: complete
 evidence_level: full-text
-last_reviewed: 2026-11-06
+last_reviewed: 2026-11-07
 ---
 
 # KVSwap：面向端侧磁盘的分组 KV 卸载（MobiSys 2026）
@@ -19,7 +19,7 @@ last_reviewed: 2026-11-06
 
 > **一句话总结**：KVSwap 把完整 KV 放在磁盘，用低秩 Key 表示预测下一层需要的 token 组，并以组对齐读取、跨步复用和计算重叠减少端侧 I/O；其主要代价是对完整注意力做近似，紧内存和慢盘下部分任务的精度损失明显。[^paper]
 
-**阅读状态与会议范围**：已取得 MobiSys 2026 正式论文 PDF 并阅读全文、核对部分原图；MinerU 转换待补，暂保留待复核状态。MobiSys 为 CCF B 类会议，此条作为端侧 SSD 卸载的补充，与本专题中 CCF A 工作明确区分。论文结论来自作者实验，未独立复现。[^paper]
+**阅读状态与会议范围**：已归档 MobiSys 2026 会议论文 PDF，以 MinerU 解析全文并核对系统图、质量表和消融图。会议正文引用的附录没有包含在该 PDF 中；下文涉及附录时单独注明作者 2025 年预印本，不能断言与会议版一致。MobiSys 为 CCF B 类会议，此条作为端侧 SSD 卸载的补充，与本专题中 CCF A 工作明确区分。论文结论来自作者实验，未独立复现。[^paper][^appendix]
 
 ## 问题与动机
 
@@ -44,7 +44,9 @@ last_reviewed: 2026-11-06
 
 ### 1. 磁盘保存完整数据，内存保存低秩索引
 
-prefill 按层生成完整 KV 并写入磁盘，同时将 K 压缩为较小的预测表示留在内存。作者将多个 KV head 的 Key 拼成矩阵，通过离线样本 SVD 得到低秩投影矩阵 `A`，令 `K_low = flatten(K) A`。推理时投影查询并与低秩 Key 计算近似分数；这个压缩表示用于**选位置**，真正注意力使用从磁盘取回的原始 KV（§3.1–3.2）。[^paper]
+prefill 按层生成完整 KV 并写入磁盘，同时将 K 压缩为较小的预测表示留在内存。作者将多个 KV head 的 Key 拼成矩阵，通过离线样本 SVD 得到低秩投影矩阵 `A`，令 `K_low = flatten(K) A`。对 query head `h`，预测近似得分为 `(Q_h A_{g(h)}) K_low^T`，其中 `g(h)` 对应共享的 KV head；因此无需先恢复所有完整 Key。这个压缩表示用于**选位置**，真正注意力使用从磁盘取回的原始 KV（§3.1–3.3，式 1）。[^paper]
+
+与 [[InfiniGen-OSDI24]] 相似，KVSwap 可用上一层输入预测下一层的选择；区别是它使用跨 head 的低秩 Key 表示，并按磁盘读取组选择 KV。
 
 离线 adapter 的一次性训练和样本获取仍有成本；“在线不做 SVD”不等于整体没有离线准备。低秩 Key 本身并非完整注意力需要的全部 Key：它漏掉或排错重要组时，后续 attention 不会自动看见未选中的磁盘数据。[^paper]
 
@@ -62,7 +64,9 @@ prefill 按层生成完整 KV 并写入磁盘，同时将 K 压缩为较小的�
 
 ### 4. 离线选择组大小和内存分配
 
-用户给出目标模型、最大上下文、最大 batch 和 KV 内存预算，离线贪心搜索组大小、Key 压缩比、选中组数和复用缓冲容量。作者报告所测调优在 30 分钟内完成，但它是启发式搜索，不保证全局最优；若硬件、任务或容量变化，也可能需要重新调参（§3.5、附录 A）。[^paper]
+用户给出目标模型、最大上下文、最大 batch 和 KV 内存预算，离线贪心搜索组大小、Key 压缩比、选中组数和复用缓冲容量。会议正文报告所测调优在 30 分钟内完成，但它是启发式搜索，不保证全局最优；若硬件、任务或容量变化，也可能需要重新调参（§3.5）。[^paper]
+
+**预印本附录提供的调参细节**：arXiv v2 附录 A 先用采样数据建立“复用缓冲容量→复用率”和“压缩率→低秩适配器”两张表，再在目标硬件上测量模型和 I/O 时延。为缩小搜索空间，示例固定所选组数与组大小的乘积 `M×G=400`；求解器先满足内存约束，再寻找能够隐藏足够 I/O 的较小 `G`。如果到达组大小上限仍无法满足，就增加复用缓冲、重新调整压缩率后继续搜索，并允许通过松弛因子保留一部分可见 I/O。该附录来自较早的预印本，只用于解释其公开的求解思路；会议正文报告的耗时是否包含全部预计算，以及最终实现是否完全相同，不能由此确定。[^appendix]
 
 ## 设计取舍
 
@@ -103,19 +107,26 @@ prefill 按层生成完整 KV 并写入磁盘，同时将 K 压缩为较小的�
 
 ## 批判性分析
 
+### 论证链条
+
 KVSwap 同时改变选择算法和磁盘访问粒度：低秩 Key 减少预测状态，跨 head 聚合与组最大值决定回载对象，复用缓冲减少重复读。其优势不是单一的“把 KV 写到 SSD”。图 12 明确揭示组大小改善吞吐与损失精度的关系，表 8 则显示复用对慢盘尤其重要，因此复现时至少需要保留这两组消融。[^paper]
+
+### 假设压力测试
 
 质量评测中的平均数很容易掩盖风险。表 2 的 KVSwap-t/eMMC 在 LongBench 平均仅下降 2.7 个百分点，但 RULER 的部分检索任务下降超过 50 个百分点。预算不足时，选择器可能保住大多数常见输入，却漏掉需要定位的少数关键内容。对有明确正确答案或严格一致性的任务，需按任务及请求分布设最低门槛，而不是只看平均值。[^paper]
 
+### 实验可信度
+
 论文使用真实 Jetson 和两类存储设备，并测试并行任务，但 UFS、长期写入寿命、断电恢复、设备热降频和实际手机应用的内存配额仍需单独验证。最高吞吐来自批处理场景；batch 1 或低请求率下，额外预测和磁盘等待可能占更大比例。[^paper]
 
-## 可继续研究的问题
+## 局限与后续工作
 
-1. 能否按请求质量风险调节 `G`、选择数量和复用缓冲，而不是离线固定一组参数？
-2. 热点工作集突变时，FIFO 与考虑 SSD 读代价、过期时间的替换策略有何差别？
-3. 在手机 UFS、热降频、电池与后台多应用条件下，长时间运行的尾延迟和写入寿命如何？
-4. 对要求严格正确性的输入，能否退回完整历史读取或重算，并给出真正的质量保障？
+- 能否按请求质量风险调节 `G`、选择数量和复用缓冲，而不是离线固定一组参数？
+- 热点工作集突变时，FIFO 与考虑 SSD 读代价、过期时间的替换策略有何差别？
+- 在手机 UFS、热降频、电池与后台多应用条件下，长时间运行的尾延迟和写入寿命如何？
+- 对要求严格正确性的输入，能否退回完整历史读取或重算，并给出真正的质量保障？
 
 ## 参考资料
 
 [^paper]: Huawei Zhang、Chunwei Xia、Zheng Wang. “KVSwap: Disk-aware KV Cache Offloading for Long-Context On-device Inference.” MobiSys 2026。[作者论文](https://summerspringwei.github.io/chunweixia.github.io/publication/mobisys26/mobisys26.pdf)。
+[^appendix]: Huawei Zhang、Chunwei Xia、Zheng Wang. 同题作者预印本 arXiv:2511.11907v2，2025，附录 A–B。[预印本](https://arxiv.org/abs/2511.11907v2)。

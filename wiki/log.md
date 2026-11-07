@@ -1,5 +1,11 @@
 # Wiki 更新记录
 
+## [2026-11-07] 完成 SSD 论文全文解析
+
+- 为 [[IMPRESS-FAST25]]、[[KVSwap-MobiSys26]]、[[InstAttention-HPCA25]]、[[KVDrive-SIGMOD26]] 和 [[Octopus-ATC26]] 归档 MinerU 全文及图片，核对系统图、主要结果与消融；五篇纳入 [[KV-Cache-Offloading]] 核心名单。
+- IMPRESS 和 KVSwap 依据会议 PDF；KVSwap 会议正文引用的缺失附录另查作者预印本并注明版本。InstAttention、KVDrive 和 Octopus 的笔记依据作者预印本，会议终稿尚未核对，继续标记为待复核。
+- 补充 KVDrive 的 SSD 相对纯 DRAM 吞吐代价及各方案的语义和硬件边界；FlashGen 全文仍未取得。未运行作者代码或复现实验。
+
 ## [2026-11-07] 整理 SSD KV Cache Offloading
 
 - 在 [[KV-Cache-Offloading]] 中按完整回载和分层管理、近似选择性读取、多 SSD 并行及计算型 SSD 梳理技术路径；将已有全文笔记 [[Bidaw-FAST26]] 纳入专题，并分开其观察和依赖假设。

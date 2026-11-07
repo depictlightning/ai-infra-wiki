@@ -5,21 +5,21 @@ full_title: "InstAttention: In-Storage Attention Offloading for Cost-Effective L
 authors: [Xiurui Pan, Endian Li, Qiao Li, Shengwen Liang, Yizhou Shan, Ke Zhou, Yingwei Luo, Xiaolin Wang, Jie Zhang]
 venue: HPCA
 year: 2025
-tags: [llm-inference, kv-cache, ssd-offloading, computational-storage, sparse-attention]
+tags: [lens/kv-cache-offloading, llm-inference, kv-cache, ssd-offloading, computational-storage, sparse-attention]
 source_pdf: "[[arxiv24-pan-instinfer.pdf]]"
-source_md: ""
+source_md: "[[arxiv24-pan-instinfer]]"
 review_status: needs-review
 evidence_level: full-text
-last_reviewed: 2026-11-06
+last_reviewed: 2026-11-07
 ---
 
 # InstAttention：在计算型 SSD 内执行解码注意力（HPCA 2025）
 
-> **会议论文**：InstAttention: In-Storage Attention Offloading for Cost-Effective Long-Context LLM Inference
+> **原题**：InstAttention: In-Storage Attention Offloading for Cost-Effective Long-Context LLM Inference
 
 > **一句话总结**：该工作把 KV 和 decode 的注意力算子一起放进计算型 SSD，用设备内部 flash 通道读取数据并把结果返回 GPU；预印本的稠密和 SparF 稀疏配置分别说明数据路径的收益与近似选择的额外收益，评测还包含软件定义 CSD 建模。[^preprint]
 
-**版本与阅读状态**：HPCA 2025 正式录用题名为 InstAttention；当前读到的作者预印本题名为 **InstInfer**，作者与副标题对应，但尚未取得会议终稿，因此本页机制、图表和数字均明确指预印本，不能断言与终稿逐项一致。PDF 正文已读取、部分原图已核对；MinerU 转换和会议版本差异仍待核验。[^venue][^preprint]
+**版本与阅读状态**：HPCA 2025 正式录用题名为 InstAttention；当前读到的作者预印本题名为 **InstInfer**，作者与副标题对应。预印本已由 MinerU 解析全文，并核对系统图、主要结果和扩展性实验；由于尚未取得会议终稿，仍标记为待复核。本页机制、图表和数字均指预印本，不能断言与终稿逐项一致。[^venue][^preprint]
 
 ## 问题与动机
 
@@ -101,18 +101,24 @@ flash 以页读取，因此两个阶段都分两步：先跳过整页都不需�
 
 ## 批判性分析
 
+### 论证链条
+
 与 [[SolidAttention-FAST26]] 和 [[KVSwap-MobiSys26]] 的“选择 KV 并回载到计算设备”相比，InstInfer 的关键变化是计算地点：CSD 读取本地 flash 并执行注意力，GPU 不需要为该算子取回全部历史。两类系统仍共同面对选择准确度、布局、页粒度和后台写入问题；不能把普通 SSD 上的软件预取等同于设备内 attention。[^preprint]
+
+### 假设压力测试
 
 预印本主结果包含稠密 CSD 与稀疏 CSD。dense 路径的意义是隔离计算位置的影响；11.1 倍还叠加了 SparF 的近似，因此不能把它单独归因于近存储计算。单 CSD dense 最佳点只比 host 内存 DeepSpeed 的最佳点高 4.6%，也提醒读者：当主机内容量足够且带宽较高时，CSD 不必然更快。[^preprint]
 
+### 实验可信度
+
 最重要的外推边界是实现真实性：Daisyplus 的原型测量为模型提供依据，但更高通道和更多设备的结果依赖软件定义设备与 FPGA 资源假设。应在真实 CSD 上核查端到端带宽、页级 I/O、P2P 可达性、功耗、写放大和不同 batch 的单请求延迟，并与同精度、同容量的 CPU/GPU 卸载基线比较。
 
-## 可继续研究的问题
+## 局限与后续工作
 
-1. 对原生稀疏模型，设备内能否保留模型准确选择，并只把真正被选择的 KV 用于注意力？
-2. 在 PCIe 交换机和多 CSD 拓扑下，P2P、head 划分和主机控制开销能否随设备数扩展？
-3. 双 Key 布局长期更新产生多少写入和磨损？如何控制写放大与故障恢复？
-4. 实测 128K+ 上下文、batch 1、在线延迟和真实设备功耗时，计算位置的交叉点在哪里？
+- 对原生稀疏模型，设备内能否保留模型准确选择，并只把真正被选择的 KV 用于注意力？
+- 在 PCIe 交换机和多 CSD 拓扑下，P2P、head 划分和主机控制开销能否随设备数扩展？
+- 双 Key 布局长期更新产生多少写入和磨损？如何控制写放大与故障恢复？
+- 实测 128K+ 上下文、batch 1、在线延迟和真实设备功耗时，计算位置的交叉点在哪里？
 
 ## 参考资料
 

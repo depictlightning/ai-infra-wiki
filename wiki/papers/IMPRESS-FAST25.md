@@ -5,12 +5,12 @@ full_title: "IMPRESS: An Importance-Informed Multi-Tier Prefix KV Storage System
 authors: [Weijian Chen, Shuibing He, Haoyang Qu, Ruidong Zhang, Siling Yang, Ping Chen, Yi Zheng, Baoxing Huai, Gang Chen]
 venue: FAST
 year: 2025
-tags: [llm-inference, llm-serving, kv-cache, ssd-offloading, prefix-caching, sparse-attention]
+tags: [lens/kv-cache-offloading, llm-inference, llm-serving, kv-cache, ssd-offloading, prefix-caching, sparse-attention]
 source_pdf: "[[fast2025-chen-weijian-impress.pdf]]"
-source_md: ""
-review_status: needs-review
+source_md: "[[fast2025-chen-weijian-impress]]"
+review_status: complete
 evidence_level: full-text
-last_reviewed: 2026-11-06
+last_reviewed: 2026-11-07
 ---
 
 # IMPRESS：以重要性组织 SSD 上的前缀 KV（FAST 2025）
@@ -19,7 +19,7 @@ last_reviewed: 2026-11-06
 
 > **一句话总结**：IMPRESS 面向磁盘保存大量共享前缀的推理服务，用少数 attention head 估计重要 token、按重要性重排磁盘块，并将访问频率与块内重要 KV 比例一起用于缓存管理；作者在指定实验下报告 TTFT 相比最优对照降低最多 2.8 倍，代价是前缀的部分 KV 不参与后续计算，因此不保持原始完整注意力。[^paper]
 
-**阅读状态**：已取得 FAST 正式 PDF 并阅读全文、核对部分原图；MinerU 转换正在补做，完成前保留待复核状态。以下数字均为论文实验而非独立复现。[^paper]
+**阅读状态**：已归档 FAST 会议 PDF，以 MinerU 解析全文并核对系统图、主要结果和消融图；以下数字均为论文实验，未独立复现。[^paper]
 
 ## 问题与动机
 
@@ -105,20 +105,26 @@ last_reviewed: 2026-11-06
 
 ## 批判性分析
 
+### 论证链条
+
 IMPRESS 的核心链条是“SSD 读取比重算慢 → 只取部分前缀 → 选择本身仍要读 Key → 用跨 head 相似性减少这部分读 → 重排和缓存补足存储效率”。实验分别测试了各环节，但主结果来自三项合用；不能把 2.8 倍完全归因于 probe head 或重排。[^paper]
 
+### 假设压力测试
+
 对重要性预测尤其要分清两个错误：probe 对未读取 head 选错，导致本应使用的 KV 不参与计算；即便 probe 推断完全一致，系统依旧按保留比例裁掉其他 token。两者都可能影响输出，回退分支只能减少第一类风险。以平均准确率为唯一指标会掩盖少量长尾问题，例如某个查询依赖一个低频但决定答案的证据片段。
+
+### 实验可信度
 
 论文将重排放到后台、让磁盘保留完整副本，降低了请求关键路径上的处理量；但较慢 SSD、多模型共享盘、频繁写入和重排过程中的读写竞争会改变结论。可复现实验应同时记录 SSD 写入字节、块重写次数、混合负载下 P95/P99 TTFT，以及缓存从冷态预热的时间。
 
 还值得比较“直接重算、完整加载、近似加载”三条路径随前缀长度、模型大小和 SSD 带宽的交叉点。相同 token 预算下，应逐项评估 needle 检索、跨文档推理和真实多轮会话，报告最差任务及每请求变化，而不只比较平均分。
 
-## 可继续研究的问题
+## 局限与后续工作
 
-1. 能否对用户、任务或前缀设置质量预算，在近似回载与完整重算之间动态选择？
-2. GQA、原生稀疏模型及跨模态前缀的 head 相关性是否仍支持三个固定 probe？
-3. 能否用预测收益抵扣后台重排 I/O 和 SSD 写入成本，决定什么时候不重排？
-4. 当多个请求并发争抢相同 SSD、CPU 缓存和 PCIe 时，缓存替换、读取与调度是否需要共同优化？
+- 能否对用户、任务或前缀设置质量预算，在近似回载与完整重算之间动态选择？
+- GQA、原生稀疏模型及跨模态前缀的 head 相关性是否仍支持三个固定 probe？
+- 能否用预测收益抵扣后台重排 I/O 和 SSD 写入成本，决定什么时候不重排？
+- 当多个请求并发争抢相同 SSD、CPU 缓存和 PCIe 时，缓存替换、读取与调度是否需要共同优化？
 
 ## 参考资料
 
