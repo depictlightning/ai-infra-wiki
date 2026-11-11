@@ -1,5 +1,23 @@
 # Wiki 更新记录
 
+## [2026-11-11] 整理 Tutti
+
+- 依据 arXiv v1 全文整理 [[Tutti-arXiv26]]，并将 GPU 主导 SSD 访问和 I/O 资源调度纳入 [[KV-Cache-Offloading]]；标注论文多 GPU 数值矛盾及 MinerU 解析缺失。
+- 收录 [[LMCache-Phoenix]] 博客，并将 SSD 直达 GPU、Linux I/O 栈和流内顺序纳入 [[KV-Cache-Offloading]]。
+
+## [2026-11-10] 重整 KV Cache Offloading 专题
+
+- 将 [[KV-Cache-Offloading]] 按存储管理、选择性读取、访问与计算位置、I/O 及缓存感知调度组织，先核对 [[Strata-OSDI26]] 的分层存储、I/O 与调度贡献；保留已有博客入口。
+- 将 [[Strata-OSDI26]] 在每个栏目中的方法压缩为一个段落，专题不再列实验数据；独立论文页继续保留实验与完整分析。
+- 将 [[LMCache-arXiv25]] 纳入 [[KV-Cache-Offloading]]，按存储管理、I/O 和缓存感知调度接口概括论文贡献。
+- 将 [[SolidAttention-FAST26]] 的 KV 交错布局、推测预取与 SSD 感知调度纳入 [[KV-Cache-Offloading]] 的 I/O 栏目。
+- 将 [[Bidaw-FAST26]] 的回答长度辅助替换、历史张量选择和双队列调度纳入专题。
+- 将 [[Mooncake-FAST25]] 的分布式 KV 池、传输与缓存感知调度纳入专题。
+- 对照论文引言和问题分析，重写 [[IMPRESS-FAST25]] 的问题与动机，区分 SSD 加载瓶颈、重要 token 识别成本与存储管理挑战。
+- 将 [[IMPRESS-FAST25]] 的重要 token 识别、磁盘重排和分层缓存管理纳入专题。
+- 依据 ATC 会议版 PDF 整理 [[CachedAttention-ATC24]]，并将其分层放置、预取和异步搬运纳入专题；MinerU 服务不可用，使用 PDF 与文本提取核对全文。
+- 其他论文仍保留各自的全文笔记，后续按专题栏目逐篇核对；本次未运行作者代码或复现实验。
+
 ## [2026-11-07] 完成 SSD 论文全文解析
 
 - 为 [[IMPRESS-FAST25]]、[[KVSwap-MobiSys26]]、[[InstAttention-HPCA25]]、[[KVDrive-SIGMOD26]] 和 [[Octopus-ATC26]] 归档 MinerU 全文及图片，核对系统图、主要结果与消融；五篇纳入 [[KV-Cache-Offloading]] 核心名单。

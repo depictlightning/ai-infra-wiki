@@ -15,6 +15,7 @@
 - [[OSDI-2026]] — 38 篇：推理服务、KV 缓存、训练与 RL、GPU 软件栈和可靠性。
 - [[OSDI-2025]] — 指定收录 1 篇：NanoFlow 的 GPU 内推理执行与服务吞吐。
 - [[OSDI-2024]] — 已整理 3 篇：InfiniGen、DistServe 与 Sarathi-Serve。
+- ATC 2024 — [[CachedAttention-ATC24]]：多轮对话的 KV 分层存储与复用。
 - [[ICML-2023]] — 指定收录 FlexGen，介绍 GPU、CPU 和 SSD 协同卸载。
 - [[MLSys-2025]] — 已整理 3 篇：NEO、ThunderServe 和 Seesaw，其中后两篇仍待复核。
 - [[SOSP-2025]] — 指定收录 1 篇：KTransformers 的 CPU/GPU 混合 MoE 推理。
@@ -44,7 +45,7 @@
 - [[PD-Serving]] — 20 篇论文 | 预填充与解码的混合、分离和阶段调度。
 - [[Inference-Simulation]] — 4 篇核心论文 | 推理模拟器、性能画像、配置搜索与评测。
 - [[KV-Cache-Systems]] — 26 篇论文 | KV cache 的共享、驻留、搬运与复用。
-- [[KV-Cache-Offloading]] — 17 篇核心论文 | KV 多级存储、SSD 卸载、直接访问、CPU 协同计算与选择性回载。
+- [[KV-Cache-Offloading]] — 8 篇核心论文 | KV 分层存储、选择性读取、计算位置、I/O 与缓存感知调度。
 - [[DeepSeek]] — 2 篇核心论文 | DeepSeek 模型与推理基础设施资料。
 - [[Speculative-Decoding]] — 9 篇论文 | 推测解码的无损采样、草稿生成、验证与系统调度。
 
@@ -53,6 +54,7 @@
 ## 博客
 
 - [[SGLang-HiCache]] — SGLang 的分层前缀缓存与存储后端；所属专题：[[KV-Cache-Offloading]]。
+- [[LMCache-Phoenix]] — LMCache 接入 Phoenix 的 SSD 到 GPU 直达存储；所属专题：[[KV-Cache-Offloading]]。
 - [[SGLang-HiSparse]] — 原生稀疏注意力的主机与 GPU 分层驻留；所属专题：[[KV-Cache-Offloading]]。
 - [[vLLM-Hybrid-HiSparse]] — vLLM 稀疏 KV 动态卸载的机制与资料导航；所属专题：[[LLM-Inference]]、[[KV-Cache-Systems]]、[[KV-Cache-Offloading]]。
 - [[DeepSeek-V4.1-Flash-Serving]] — DeepSeek V4.1 Flash 大规模推理部署实践；所属专题：[[LLM-Serving]]、[[KV-Cache-Systems]]、[[DeepSeek]]。
